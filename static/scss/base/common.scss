@@ -1,0 +1,47 @@
+@import "_mixins";
+
+/* Globals
+---------------------------------------------------------------------------- */
+
+* {
+    @include box-sizing(border-box);
+}
+
+body {
+    font: {
+        size: 0.9em;
+        family: RobotoLight, arial, helvetica, sans-serif;
+    }
+    color: #fff;
+    background: #000;
+}
+
+.clearfix:after {
+    content: "";
+    clear: both;
+    display: block;
+};
+
+.ir { /* Image Replacement */
+    text-indent: -999em;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.icon {
+    display: inline-block;
+}
+
+.hide {
+  display: none;
+}
+
+noscript {
+    background: #f00;
+    border: 2px solid #f00;
+    display: block;
+    p {
+        text-align: center;
+        font-weight: bold;
+    }
+}

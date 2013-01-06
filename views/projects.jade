@@ -1,0 +1,16 @@
+extend layout
+block content
+    header
+        hgroup
+            h1 projects
+
+    section#canvas
+        ul.tileListNoJS
+            for project, i in projects
+                li
+                    h2 #{project.title}
+                    h3 #{project.short_description}
+                    if project.label
+                        a(href= project.label) Details
+                    else
+                        p No details available

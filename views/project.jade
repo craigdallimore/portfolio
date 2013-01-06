@@ -1,0 +1,10 @@
+extend layout
+block content
+    header
+        hgroup
+            h1 #{project.title}
+    section#canvas
+        nav
+            a(href='/projects/') Back
+        img(src= 'static/img/featured/' + project.label + '.png', alt="Featured image")
+        p #{project.short_description}

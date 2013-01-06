@@ -1,0 +1,27 @@
+/* Typography
+---------------------------------------------------------------------------- */
+@font-face {
+  font-family: 'RobotoRegular';
+  src: url("/static/fonts/Roboto-Regular-webfont.eot");
+  src: url("/static/fonts/Roboto-Regular-webfont.eot?#iefix") format("embedded-opentype"), url("/static/fonts/Roboto-Regular-webfont.woff") format("woff"), url("/static/fonts/Roboto-Regular-webfont.ttf") format("truetype"), url("/static/fonts/Roboto-Regular-webfont.svg#RobotoRegular") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'RobotoLight';
+  src: url("/static/fonts/Roboto-Light-webfont.eot");
+  src: url("/static/fonts/Roboto-Light-webfont.eot?#iefix") format("embedded-opentype"), url("/static/fonts/Roboto-Light-webfont.woff") format("woff"), url("/static/fonts/Roboto-Light-webfont.ttf") format("truetype"), url("/static/fonts/Roboto-Light-webfont.svg#RobotoLight") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* line 26, ../../scss/base/typography.scss */
+a {
+  text-decoration: none;
+}
+
+/* line 30, ../../scss/base/typography.scss */
+h1 {
+  font-size: 4em;
+}

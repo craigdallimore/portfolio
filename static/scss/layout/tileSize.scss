@@ -1,0 +1,31 @@
+@import '_mixins';
+
+$tile-grid: 100px;
+$gutter: 5;
+
+.ts-1, .ts-1 .tile {
+    width: $tile-grid;
+    height: $tile-grid;
+}
+.ts-1 {
+    h3, h4 {
+        display: none;
+    }
+}
+
+.ts-2, .ts-2 .tile {
+    width: ($tile-grid * 2) + 10;
+    height: ($tile-grid * 2) + 10;
+}
+.ts-2 {
+    h4 {
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+    }
+}
+
+.ts-3, .ts-3 .tile {
+    width: ($tile-grid * 3) + 20;
+    height: ($tile-grid * 3) + 20;
+}
