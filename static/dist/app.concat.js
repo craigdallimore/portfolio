@@ -181,10 +181,19 @@ App.module('View', function(View, App, Backbone, Marionette, $, _) {
     View.Project = Marionette.View.extend({
         tagName: 'section',
         className: 'projectDetails',
-        
+        events: {
+            'click .btn_back': 'navigate'
+        },
         template: 'Project',
         initialize: function() {
         },
+
+        navigate: function(e) {
+            e.preventDefault();
+            var href = $(e.target).attr('href');
+            App.vent.trigger('navigate', href, {trigger: true});
+        },
+
         render: function() {
             var json = this.model.toJSON();
             var html = App.Tmpl[this.template](json);
@@ -203,8 +212,9 @@ App.module('Controller', function(Controller, App, Backbone, Marionette, $, _) {
 
         projects: function() {
             App.Page.set('pageTitle', 'Projects');
-
-            App.ProjectCollection = new App.Collection.Project();
+            if(! App.ProjectCollection) {
+                App.ProjectCollection = new App.Collection.Project();
+            }
 
             var projects = new App.View.TileList({
                 collection: App.ProjectCollection,
@@ -215,20 +225,28 @@ App.module('Controller', function(Controller, App, Backbone, Marionette, $, _) {
 
         project: function(label) {
 
-            if(! App.ProjectCollection) return;
+            var showProject = function() {
+                var model = App.ProjectCollection.find( function(project) {
+                    return project.get('label') == label;
+                });
+                var project = new App.View.Project({
+                    model: model
+                });
+                App.Page.set('pageTitle', model.get('title'));
+                App.canvas.show(project);
+            };
 
-            var model = App.ProjectCollection.find( function(project) {
-                return project.get('label') == label;
-            });
-            App.Page.set('pageTitle', model.get('title'));
+            if(! App.ProjectCollection) {
+                App.ProjectCollection = new App.Collection.Project();
+                App.ProjectCollection.fetch({ success: showProject });
+            } else {
+                showProject();
+            }
 
-            var project = new App.View.Project({
-                model: model
-            });
-            App.canvas.show(project);
         }
     };
 });
+
 App.module('Collection', function(Collection, App, Backbone, Marionette, $, _) {
 
     Collection.Project = Backbone.Collection.extend({
@@ -246,7 +264,7 @@ App.module('Collection', function(Collection, App, Backbone, Marionette, $, _) {
 App.module("Tmpl", function(Tmpl, App) {
     Tmpl.TileItem=function(obj){var __t,__p='',__j=Array.prototype.join,print=function(){__p+=__j.call(arguments,'');};with(obj||{}){__p+='<div class="tile">\r <div class="info">\r <a class="s-enlarge enlarge" href="#">Expand</a>\r <a class="more" href="/projects/'+((__t=( label ))==null?'':__t)+'">More</a>\r <h3>'+((__t=( title ))==null?'':__t)+'</h3>\r <h4>'+((__t=( short_description ))==null?'':__t)+'</h4>\r </div>\r</div>';}return __p;};
     Tmpl.Welcome=function(obj){var __t,__p='',__j=Array.prototype.join,print=function(){__p+=__j.call(arguments,'');};with(obj||{}){__p+='<a href="/projects/">Templated link to projects</a>\r';}return __p;};
-    Tmpl.Project=function(obj){var __t,__p='',__j=Array.prototype.join,print=function(){__p+=__j.call(arguments,'');};with(obj||{}){__p+='<nav>\r <a href="/projects/">Back</a>\r</nav>\r<img src="static/img/featured/'+((__t=( label ))==null?'':__t)+'.png" alt="'+((__t=( title ))==null?'':__t)+'">\r<p>'+((__t=( short_description ))==null?'':__t)+'</p>';}return __p;};
+    Tmpl.Project=function(obj){var __t,__p='',__j=Array.prototype.join,print=function(){__p+=__j.call(arguments,'');};with(obj||{}){__p+='<nav>\r <a class="btn_back" href="/projects/">Back</a>\r</nav>\r<img src="static/img/featured/'+((__t=( label ))==null?'':__t)+'.png" alt="'+((__t=( title ))==null?'':__t)+'">\r<p>'+((__t=( short_description ))==null?'':__t)+'</p>';}return __p;};
 });
 App.module("Routing", function(Routing, App, Backbone, Marionette, $, _) {
 

@@ -43,11 +43,13 @@ module.exports = function(grunt) {
                 WEB_APP_STATIC + 'css/base/reset.css',
                 WEB_APP_STATIC + 'css/base/common.css',
                 WEB_APP_STATIC + 'css/base/typography.css',
+                WEB_APP_STATIC + 'css/base/buttons.css',
                 WEB_APP_STATIC + 'css/base/sprites.css',
                 WEB_APP_STATIC + 'css/libs/isotope.css',
                 WEB_APP_STATIC + 'css/layout/header.css',
                 WEB_APP_STATIC + 'css/layout/canvas.css',
                 WEB_APP_STATIC + 'css/modules/tileList.css',
+                WEB_APP_STATIC + 'css/modules/projectDetails.css',
                 WEB_APP_STATIC + 'css/layout/tileSize.css'
             ]
         },

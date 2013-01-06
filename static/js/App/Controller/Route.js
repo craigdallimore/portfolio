@@ -9,8 +9,9 @@ App.module('Controller', function(Controller, App, Backbone, Marionette, $, _) {
 
         projects: function() {
             App.Page.set('pageTitle', 'Projects');
-
-            App.ProjectCollection = new App.Collection.Project();
+            if(! App.ProjectCollection) {
+                App.ProjectCollection = new App.Collection.Project();
+            }
 
             var projects = new App.View.TileList({
                 collection: App.ProjectCollection,
@@ -21,17 +22,24 @@ App.module('Controller', function(Controller, App, Backbone, Marionette, $, _) {
 
         project: function(label) {
 
-            if(! App.ProjectCollection) return;
+            var showProject = function() {
+                var model = App.ProjectCollection.find( function(project) {
+                    return project.get('label') == label;
+                });
+                var project = new App.View.Project({
+                    model: model
+                });
+                App.Page.set('pageTitle', model.get('title'));
+                App.canvas.show(project);
+            };
 
-            var model = App.ProjectCollection.find( function(project) {
-                return project.get('label') == label;
-            });
-            App.Page.set('pageTitle', model.get('title'));
+            if(! App.ProjectCollection) {
+                App.ProjectCollection = new App.Collection.Project();
+                App.ProjectCollection.fetch({ success: showProject });
+            } else {
+                showProject();
+            }
 
-            var project = new App.View.Project({
-                model: model
-            });
-            App.canvas.show(project);
         }
     };
 });
