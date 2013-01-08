@@ -1,7 +1,10 @@
 <div class="tile">
     <div class="info">
         <a class="s-enlarge enlarge" href="#">Expand</a>
-        <a class="more" href="/projects/<%= label %>">More</a>
+        <% if (href_available) { %>
+        <a class="s-icon-forward external" href="//<%= href %>", target="_blank">Link</a>
+        <% } %>
+        <a class="s-icon-info more" href="/projects/<%= label %>">More</a>
         <h3><%= title %></h3>
         <h4><%= short_description %></h4>
     </div>

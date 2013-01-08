@@ -1,7 +1,12 @@
 @import '_mixins';
 
 .projectDetails {
+    position: relative;
     img {
-        margin: 20px 0 0 0;
+        margin: 0 20px 20px 0;
+        float: left;
+    }
+    p {
+        margin: 0;
     }
 }

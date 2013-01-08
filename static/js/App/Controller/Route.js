@@ -7,6 +7,18 @@ App.module('Controller', function(Controller, App, Backbone, Marionette, $, _) {
             App.canvas.show(index);
         },
 
+        about: function() {
+            App.Page.set('pageTitle', 'About / Contact');
+            var about = new App.View.About();
+            App.canvas.show(about);
+        },
+
+        blog: function() {
+            App.Page.set('pageTitle', 'blog');
+            var blog = new App.View.Blog();
+            App.canvas.show(blog);
+        },
+
         projects: function() {
             App.Page.set('pageTitle', 'Projects');
             if(! App.ProjectCollection) {

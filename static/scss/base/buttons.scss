@@ -1,5 +1,22 @@
 @import '_mixins';
 
-.btn_back {
+.btn-back {
     color: #fff;
+    position: absolute;
+    display: block;
+    text-indent: -999em;
+    width: 30px;
+    height: 30px;
+    left: -40px;
+}
+
+.btn-link {
+    color: #fff;
+    position: relative;
+    span {
+        display: block;
+        position: absolute;
+        width: 30px;
+        height: 30px;
+    }
 }

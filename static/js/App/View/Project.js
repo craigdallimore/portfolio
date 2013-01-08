@@ -3,7 +3,7 @@ App.module('View', function(View, App, Backbone, Marionette, $, _) {
         tagName: 'section',
         className: 'projectDetails',
         events: {
-            'click .btn_back': 'navigate'
+            'click .btn-back': 'navigate'
         },
         template: 'Project',
         initialize: function() {

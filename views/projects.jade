@@ -2,7 +2,7 @@ extend layout
 block content
     header
         hgroup
-            h1 projects
+            h1 Projects
 
     section#canvas
         ul.tileListNoJS
@@ -11,6 +11,9 @@ block content
                     h2 #{project.title}
                     h3 #{project.short_description}
                     if project.label
+                        img(src= "/static/img/s/" + project.label + "-1x1.png", alt= project.title)
                         a(href= project.label) Details
                     else
                         p No details available
+                    if project.href_available
+                        a(href= "//" + project.href, target="_blank") Go to #{project.title}

@@ -4,7 +4,11 @@ block content
         hgroup
             h1 #{project.title}
     section#canvas
-        nav
-            a(href='/projects/').btn_back Back
-        img(src= 'static/img/featured/' + project.label + '.png', alt="Featured image")
-        p #{project.short_description}
+        section.projectDetails
+            a(href='/projects/').btn-back.s-icon-back Back
+            if project.href_available
+                a(href='//' + project.href, target='_blank').btn-link
+                    span.s-icon-forward
+                    | Visit #{project.title}
+            img(src='static/img/featured/' + project.label + '.png', alt='Featured image')
+            p #{project.short_description}

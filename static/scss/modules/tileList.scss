@@ -10,20 +10,30 @@
             position: relative;
             overflow: hidden;
         }
+        .enlarge, .more, .external {
+            position: absolute;
+            top: 8px;
+            text-indent: -999em;
+        }
         .enlarge {
-            &:focus {
-                outline: none;
-            }
             width: 14px;
             height: 14px;
-            position: absolute;
-            top: 0px;
-            left: 0px;
-            text-indent: -999em;
+            left: 8px;
+        }
+        .more {
+            width: 30px;
+            height: 30px;
+            right: 8px;
+        }
+        .external {
+            width: 30px;
+            height: 30px;
+            right: 8px;
+            top: 48px;
         }
         &:hover {
             .tile {
-                border: 1px dotted #fff;
+                border: 2px solid #fff;
                 .info {
                     top: 50%;
                 }
@@ -32,19 +42,14 @@
 
         .info {
             @include transition(all, 100ms);
-            background: rgba(0,0,0,0.4);
+            @include box-shadow(0 0 10px rgba(0,0,0,0.7) inset);
+            background: rgba(0,0,0,0.7);
             overflow: hidden;
             width: 100%;
             position: absolute;
             height: 50%;
             top: 100%;
-            a {
-                color: #fff;
-                text-decoration: underline;
-                float: right;
-                margin: 10px;
-                font-size: 1.1em
-            }
+            border-top: 2px solid #fff;
             h3 {
                 text-shadow: 0 1px 0 rgba(0,0,0,0.5);
                 font-size: 1.3em;
@@ -53,7 +58,7 @@
             }
             h4 {
                 font-size: 1.1em;
-                margin: 5px 10px 10px;
+                margin: 5px 48px 10px 10px;
             }
         }
     }

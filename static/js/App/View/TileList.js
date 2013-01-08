@@ -25,12 +25,11 @@ App.module('View', function(View, App, Backbone, Marionette, $, _) {
                     columnWidth: 110
                 }
             });
-            //TODO: use this when SEO and accessability concerns are resolved.
-            //this.$el.children().each(this.fadeInChild);
+            this.$el.children().each(this.fadeInChild);
         },
 
         fadeInChild: function(idx, child) {
-            $(child).hide().fadeIn(idx * 200);
+            $(child).hide().fadeIn(idx * 100);
         },
 
         render: function() {}

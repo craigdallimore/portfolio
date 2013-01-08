@@ -1,5 +1,6 @@
-<nav>
-    <a class="btn_back" href="/projects/">Back</a>
-</nav>
+<a class="btn-back s-icon-back" href="/projects/">Back</a>
 <img src="static/img/featured/<%= label %>.png" alt="<%= title %>">
+<% if (href_available) { %>
+<a class="btn-link" href="//<%= href %>" target="_blank"><span class="s-icon-forward"></span>Visit <%= title %></a>
+<% } %>
 <p><%= short_description %></p>
