@@ -13,10 +13,14 @@
 .btn-link {
     color: #fff;
     position: relative;
+    float: right;
+    margin: 10px 0 20px 40px;
     span {
         display: block;
         position: absolute;
         width: 30px;
         height: 30px;
+        left: -40px;
+        top: -10px;
     }
 }

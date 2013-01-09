@@ -17,7 +17,7 @@ db.open(function(err, db) {
         console.log("Connected to '" + dbname + "' database");
 
         db.collection(dbname, function(err, collection) {
-            //collection.drop(); // todo - delete this
+    //        collection.drop(); // todo - delete this
             collection.findOne(function(err, item) {
                 if (!item){
                    console.log("The 'portfolio' collection doesn't exist. Creating it with sample data");
