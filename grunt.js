@@ -110,11 +110,9 @@ module.exports = function(grunt) {
     });
 
     grunt.registerHelper('templates', function (files) {
-        //var prefix = 'App.Tmpl';
-        var prefix = 'Tmpl';
-        var moduleStart = 'App.module("Tmpl", function(Tmpl, App) {\n';
-        //var output = prefix + ' = {};\n';
-        var output = moduleStart;
+        var prefix = 'Tmpl',
+             moduleStart = 'App.module("Tmpl", function(Tmpl, App) {\n',
+             output = moduleStart;
         files.map(function (filepath) {
             output += '    ' + prefix + '.' +
             filepath.replace('static/templates/', '').replace('.html', '') + '=' +
@@ -129,3 +127,4 @@ module.exports = function(grunt) {
 
 
 };
+
