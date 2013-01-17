@@ -7,17 +7,16 @@ App.module('View', function(View, App, Backbone, Marionette, $, _) {
 
         initialize: function() {
             this.collection.fetch({
-                success: _.bind(this.onFetched, this)
+                success: _.bind(this.masonify, this)
             });
-
             App.vent.on('item:enlarged', _.bind(this.reLayout, this));
-        },
+       },
 
         reLayout: function() {
             this.$el.isotope('reLayout');
         },
 
-        onFetched: function() {
+        masonify: function() {
             this.$el.isotope({
                 itemSelector: 'li',
                 layoutMode: 'masonry',
@@ -32,6 +31,9 @@ App.module('View', function(View, App, Backbone, Marionette, $, _) {
             $(child).hide().fadeIn(idx * 100);
         },
 
+        onClose: function() {
+            App.vent.off('item:enlarged');
+        },
         render: function() {}
 
     });

@@ -15,7 +15,7 @@ App.module('View', function(View, App, Backbone, Marionette, $, _) {
 
         setSize: function(size) {
             var tileSizeRE = /\b(ts-\d)\b/g;
-            var spriteRE = /\b(s-\w+-\dx\d)\b/g;
+            var spriteRE = /\b(s-(\w|-)+\dx\d)\b/g;
             var classes = this.$el[0].className;
             var newClasses = ' ts-' + size + ' s-' + this.model.get('label') + '-' + size + 'x' + size;
 
@@ -43,7 +43,6 @@ App.module('View', function(View, App, Backbone, Marionette, $, _) {
 
         navigate: function(e) {
             e.preventDefault();
-
             var path =  '/projects/' + this.model.get('label');
             App.vent.trigger('navigate', path, {trigger: true});
         },
