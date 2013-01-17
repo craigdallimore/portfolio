@@ -1,6 +1,7 @@
 var express = require('express'),
     app = express(),
     projects = require('./routes/projects');
+    q = require('q');
 //    contacts = require('./routes/contacts');
 
 app.set('views', __dirname + '/views');

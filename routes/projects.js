@@ -47,9 +47,16 @@ exports.findOne = function(key, val, callback) {
     query[key] = val;
     console.log(query);
     db.collection(dbname, function(err, collection) {
+
+
+        var target = q.defer();
+
         collection.findOne(query, function(err, match) {
-            callback(match);
+            target.resolve(match);
         });
+
+        target.promise.then(callback);
+
     });
 };
 
