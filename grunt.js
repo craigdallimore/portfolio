@@ -58,6 +58,7 @@ module.exports = function(grunt) {
         concat: {
             dist: {
                 src: [
+                    WEB_APP_STATIC + 'js/libs/backbone.collection.iterator.js',
                     WEB_APP_STATIC + 'js/libs/jquery.isotope.min.js',
                     WEB_APP_STATIC + 'js/mixin.js',
                     WEB_APP_STATIC + 'js/App/App.js',
