@@ -1,6 +1,7 @@
 @import "_mixins";
 
 #canvas {
+    @include perspective(3200);
     width: 960px;
     margin: 0 auto;
 }

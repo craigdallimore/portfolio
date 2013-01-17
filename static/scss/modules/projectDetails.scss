@@ -2,6 +2,7 @@
 
 .projectDetails {
     position: relative;
+    @include transition(all, 500ms);
     img {
         margin: 0 20px 20px 0;
         float: left;
@@ -9,6 +10,12 @@
     p {
         margin: 10px 0 0 0;
         clear: right;
-        line-height: 1.3em;
+        line-height: 1.7em;
+        color: #a0a0a0;
+    }
+    &.transformed {
+        opacity: 0;
+        @include transform(rotateY(20deg));
+
     }
 }

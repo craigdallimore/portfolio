@@ -1,11 +1,12 @@
 App.module('View', function(View, App, Backbone, Marionette, $, _) {
     View.Project = Marionette.View.extend({
         tagName: 'section',
-        className: 'projectDetails',
+        className: 'projectDetails transformed',
         events: {
             'click .btn-back': 'navigate'
         },
         template: 'Project',
+
         initialize: function() {
         },
 
@@ -18,7 +19,11 @@ App.module('View', function(View, App, Backbone, Marionette, $, _) {
         render: function() {
             var json = this.model.toJSON();
             var html = App.Tmpl[this.template](json);
+            var self = this;
             this.$el.html(html);
+            _.defer(function() {
+                self.$el.removeClass('transformed');
+            });
         }
     });
 });
