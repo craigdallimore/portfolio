@@ -10,26 +10,26 @@
             position: relative;
             overflow: hidden;
         }
-        .enlarge, .more, .external {
+        .enlarge, .shrink, .more, .external {
             position: absolute;
-            top: 8px;
+            top: 10px;
             text-indent: -999em;
         }
-        .enlarge {
-            width: 14px;
-            height: 14px;
-            left: 8px;
+        .enlarge, .shrink {
+            width: 30px;
+            height: 30px;
+            left: 10px;
         }
         .more {
             width: 30px;
             height: 30px;
-            right: 8px;
+            right: 10px;
         }
         .external {
             width: 30px;
             height: 30px;
             right: 8px;
-            top: 48px;
+            top: 50px;
         }
         &:hover {
             .tile {
@@ -49,7 +49,7 @@
             top: 100%;
             overflow: hidden;
             h3 {
-                margin: 33px 10px 0;
+                margin: 50px 10px 0;
                 color: #bababa;
                 font-family: RobotoRegular;
                 font-size: 1.5em;

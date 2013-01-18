@@ -6,7 +6,8 @@ App.module('View', function(View, App, Backbone, Marionette, $, _) {
 
         events: {
             'click .more': 'navigate',
-            'click .enlarge': 'enlarge'
+            'click .enlarge': 'enlarge',
+            'click .shrink': 'enlarge'
         },
 
         initialize: function() {

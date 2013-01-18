@@ -11,6 +11,9 @@ $gutter: 5;
     h3, h4 {
         display: none;
     }
+    .shrink {
+        display: none;
+    }
 }
 
 .ts-2, .ts-2 .tile {
@@ -28,4 +31,7 @@ $gutter: 5;
 .ts-3, .ts-3 .tile {
     width: ($tile-grid * 3) + 20;
     height: ($tile-grid * 3) + 20;
+    .enlarge {
+        display: none;
+    }
 }
