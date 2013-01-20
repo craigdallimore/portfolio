@@ -1,10 +1,18 @@
 /*global module:false*/
 module.exports = function(grunt) {
 
-    var _ = require('underscore');
+    var _ = require('underscore'),
+        fs = require('fs');
+        proc = require('child_process'),
+        WEB_APP_STATIC = 'static/',
+        css_files = fs.readFileSync(__dirname + '/contrib/css_files.txt', 'UTF-8').split('\n');
 
-    var proc = require('child_process'),
-        WEB_APP_STATIC = 'static/';
+    css_files.pop();
+
+    css_files = css_files.map(function(line){
+        return WEB_APP_STATIC + 'css/' +  line;
+    });
+
 
     // Project configuration.
     grunt.initConfig({
@@ -39,19 +47,7 @@ module.exports = function(grunt) {
 
         // CSS Concatenation + Minification
         mincss: {
-            'static/dist/app.min.css': [
-                WEB_APP_STATIC + 'css/base/reset.css',
-                WEB_APP_STATIC + 'css/base/common.css',
-                WEB_APP_STATIC + 'css/base/typography.css',
-                WEB_APP_STATIC + 'css/base/buttons.css',
-                WEB_APP_STATIC + 'css/base/sprites.css',
-                WEB_APP_STATIC + 'css/libs/isotope.css',
-                WEB_APP_STATIC + 'css/layout/header.css',
-                WEB_APP_STATIC + 'css/layout/canvas.css',
-                WEB_APP_STATIC + 'css/modules/tileList.css',
-                WEB_APP_STATIC + 'css/modules/projectDetails.css',
-                WEB_APP_STATIC + 'css/layout/tileSize.css'
-            ]
+            'static/dist/app.min.css': css_files
         },
 
         // JavaScript Concatenation
