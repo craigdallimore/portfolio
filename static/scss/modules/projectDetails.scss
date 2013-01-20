@@ -1,8 +1,7 @@
 @import '_mixins';
 
 .projectDetails {
-    position: relative;
-    @include transition(all, 500ms);
+    @include perspective(3200);
     img {
         margin: 0 20px 20px 0;
         float: left;
@@ -13,9 +12,11 @@
         line-height: 1.7em;
         color: #a0a0a0;
     }
-    &.transformed {
+    .transformed {
+        @include transform(rotateY(5deg));
         opacity: 0;
-        @include transform(rotateY(20deg));
-
+    }
+    .content {
+        @include transition(all, 500ms);
     }
 }

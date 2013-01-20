@@ -1,7 +1,7 @@
 App.module('View', function(View, App, Backbone, Marionette, $, _) {
     View.Project = Marionette.View.extend({
         tagName: 'section',
-        className: 'projectDetails transformed',
+        className: 'projectDetails',
         events: {
             'click .btn-back': 'navigate',
             'click .btn-next': 'navigateNext',
@@ -37,7 +37,7 @@ App.module('View', function(View, App, Backbone, Marionette, $, _) {
             var self = this;
             this.$el.html(html);
             _.defer(function() {
-                self.$el.removeClass('transformed');
+                self.$el.find('.transformed').removeClass('transformed');
             });
         }
     });

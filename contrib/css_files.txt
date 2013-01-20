@@ -6,6 +6,7 @@ base/sprites.css
 libs/isotope.css
 layout/header.css
 layout/canvas.css
+layout/modal.css
 modules/tileList.css
 modules/projectDetails.css
 layout/tileSize.css

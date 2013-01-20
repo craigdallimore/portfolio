@@ -13,13 +13,12 @@ module.exports = function(grunt) {
         return WEB_APP_STATIC + 'css/' +  line;
     });
 
-
     // Project configuration.
     grunt.initConfig({
 
         watch: {
-            scripts: {
-                files: '<config:concat.dist.src>',
+            js: {
+                files: '<config:concat.js.src>',
                 tasks: 'js'
             },
             css: {
@@ -32,7 +31,7 @@ module.exports = function(grunt) {
             },
             templates: {
                 files: [ WEB_APP_STATIC + 'templates/**/*.html' ],
-                tasks: 'templates js'
+                tasks: 'tmpl'
             }
         },
 
@@ -52,7 +51,7 @@ module.exports = function(grunt) {
 
         // JavaScript Concatenation
         concat: {
-            dist: {
+            js: {
                 src: [
                     WEB_APP_STATIC + 'js/libs/backbone.collection.iterator.js',
                     WEB_APP_STATIC + 'js/libs/jquery.isotope.min.js',
@@ -73,32 +72,51 @@ module.exports = function(grunt) {
                     WEB_APP_STATIC + 'js/App/App.Routing.js'
                 ],
                 dest: WEB_APP_STATIC + 'dist/app.concat.js'
+            },
+            css: {
+                src: css_files,
+                dest: WEB_APP_STATIC + 'dist/app.concat.css'
             }
         },
 
         // JavaScript minification
         min: {
-            dist: {
-                src: ['<config:concat.dist.dest>'],
+            js: {
+                src: ['<config:concat.js.dest>'],
                 dest: WEB_APP_STATIC + 'dist/app.min.js'
             }
         }
+
     });
 
 
     // Plugins
-    grunt.loadNpmTasks('grunt-contrib'); //Load contrib tasks for css concat
+    grunt.loadNpmTasks('grunt-contrib');
 
     // Tasks
     grunt.registerTask('dev', 'templates css js');
-    grunt.registerTask('css', 'mincss');
-    grunt.registerTask('js', 'concat min');
+    grunt.registerTask('css', 'concat:css mincss');
+    grunt.registerTask('js', 'concat:js min');
+    grunt.registerTask('tmpl', 'templates js');
 
     grunt.registerTask("sass", "SASS -> CSS", function() {
         proc.exec("compass compile ./static");
     });
 
-    grunt.registerMultiTask('templates', 'Compile underscore templates to JS', function () {
+    grunt.registerTask('welcome', function() {
+        var text =
+'                _/                                           \n' +
+'               _/                                            \n' +
+'          _/_/_/    _/_/      _/_/_/    _/_/    _/    _/     \n' +
+'       _/    _/  _/_/_/_/  _/        _/    _/  _/    _/      \n' +
+'      _/    _/  _/        _/        _/    _/  _/    _/       \n' +
+'       _/_/_/    _/_/_/    _/_/_/    _/_/      _/_/_/        \n' +
+'                                                  _/         \n' +
+'                                               _/_/';
+        console.log(text);
+    });
+
+    grunt.registerMultiTask('templates', 'Compile underscore templates to JS', function() {
         var files = grunt.file.expandFiles(this.file.src),
             dest = this.file.dest || '.';
         var src = grunt.helper('templates', files);
@@ -106,14 +124,12 @@ module.exports = function(grunt) {
         console.log("underscore templates rendered as JavaScript");
     });
 
-    grunt.registerHelper('templates', function (files) {
-        var prefix = 'Tmpl',
-             moduleStart = 'App.module("Tmpl", function(Tmpl, App) {\n',
-             output = moduleStart;
-        files.map(function (filepath) {
-            output += '    ' + prefix + '.' +
-            filepath.replace('static/templates/', '').replace('.html', '') + '=' +
-            _.template(grunt.task.directive(filepath, grunt.file.read)).source.replace(/(\n|\t|\\n|\\t)/gi, '').replace(/\s+/gi, ' ') + ';\n';
+    grunt.registerHelper('templates', function(files) {
+        var output = 'App.module("Tmpl", function(Tmpl, App) {\n';
+
+        files.map( function(filepath) {
+            output += '    Tmpl.' +
+            filepath.replace('static/templates/', '').replace('.html', '') + '=' + _.template(grunt.task.directive(filepath, grunt.file.read)).source.replace(/(\n|\t|\\n|\\t)/gi, '').replace(/\s+/gi, ' ') + ';\n';
         });
 
         output += '});';

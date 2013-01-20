@@ -1,0 +1,10 @@
+@import "_mixins";
+
+#modal {
+    height: 1px;
+    top: 50%;
+
+    p {
+        display: block
+    }
+}
