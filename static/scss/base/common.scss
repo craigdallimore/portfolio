@@ -15,6 +15,7 @@ body {
     color: #d0d0d0;
     background: #f0f0f0;
 }
+
 .clearfix:after {
     content: "";
     clear: both;
@@ -38,6 +39,7 @@ body {
 noscript {
     background: #f00;
     border: 2px solid #f00;
+    border-top: 7px solid #f00;
     display: block;
     p {
         text-align: center;

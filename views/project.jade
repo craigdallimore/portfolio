@@ -8,6 +8,10 @@ block content
         section.projectDetails
             img(src='static/img/featured/' + project.label + '.png', alt='Featured image')
             p #{project.long_description}
+            ul
+                for tech, i in project.technology
+                    li #{tech}
+                    
     section#modal
         nav.pivotControls
             a(href="/projects/").btn-back.s-icon-up-50 Back
