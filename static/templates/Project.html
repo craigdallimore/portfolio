@@ -1,4 +1,9 @@
 <div class="content transformed">
     <img src="static/img/featured/<%= label %>.png" alt="<%= title %>">
     <p><%= long_description %></p>
+    <ul>
+        <% for(var tech in technology) { %>
+        <li><%= technology[tech] %></li>
+        <% } %>
+    </ul>
 </div>
