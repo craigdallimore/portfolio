@@ -9,9 +9,14 @@ App.module('View', function(View, App, Backbone, Marionette, $, _) {
         },
 
         render: function() {
+            var self = this;
             var json = this.model.toJSON();
             var html = App.Tmpl[this.template](json);
             this.$el.html(html);
+            _.defer( function() {
+                self.$el.find('.titleTransformed').removeClass('titleTransformed');
+                self.$el.find('.subTitleTransformed').removeClass('subTitleTransformed');
+            });
         }
     });
 });

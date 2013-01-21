@@ -7,4 +7,18 @@ body > header {
         width: 960px;
         margin: 0 auto;
     }
+    h1 {
+        @include transition(all, 100ms);
+    }
+    h2 {
+        @include transition(all, 175ms);
+    }
+    .titleTransformed {
+        @include transform(translate(25px, 0));
+        opacity: 0;
+    }
+    .subTitleTransformed {
+        @include transform(skew(30deg) translate(50px, 0));
+        opacity: 0;
+    }
 }

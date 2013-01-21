@@ -6,11 +6,12 @@ block content
             h2 #{project.short_description}
     section#canvas
         section.projectDetails
-            a(href='/projects/').btn-back.s-icon-back Back
-            if project.href_available
-                a(href='//' + project.href, target='_blank').btn-link
-                    span.s-icon-forward
-                    | Visit #{project.title}
             img(src='static/img/featured/' + project.label + '.png', alt='Featured image')
             p #{project.long_description}
     section#modal
+        nav.pivotControls
+            a(href="/projects/").btn-back.s-icon-up-50 Back
+            if project.href_available
+                a(href='//' + project.href, target='_blank').btn-link.s-icon-link-50
+                    span.s-icon-forward
+                    | Visit #{project.title}

@@ -13,7 +13,7 @@
         color: #a0a0a0;
     }
     .transformed {
-        @include transform(rotateY(5deg));
+        @include transform(rotateY(15deg));
         opacity: 0;
     }
     .content {
