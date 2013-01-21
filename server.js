@@ -1,8 +1,7 @@
 var express = require('express'),
     app = express(),
-    projects = require('./routes/projects');
+    db = require('./mongo.js');
     q = require('q');
-//    contacts = require('./routes/contacts');
 
 app.set('views', __dirname + '/views');
 app.use('view engine', 'jade');
@@ -20,7 +19,7 @@ app.use('/blog/static', express.static(__dirname + '/static'));
 
 // Individual project
 app.get('/projects/:label', function(req, res) {
-    projects.findOne('label', req.params.label, function(project) {
+    db.findOne('projects', 'label', req.params.label, function(project) {
 
         if (project) {
             res.render('project.jade', {
@@ -34,7 +33,7 @@ app.get('/projects/:label', function(req, res) {
 
 // Project list
 app.get('/projects/', function(req, res) {
-    projects.findAll(function(json) {
+    db.findAll('projects', function(json) {
         res.render('projects.jade', {
             projects: json
         });
@@ -56,7 +55,7 @@ app.get('/', function(req, res) {
 
 // API
 app.get('/api/projects/:id', function(req, res) {
-    projects.findOne('id', parseInt(req.params.id, 10), function(json) {
+    db.findOne('projects', 'id', parseInt(req.params.id, 10), function(json) {
         if (json) {
             res.send(json);
         } else {
@@ -66,16 +65,18 @@ app.get('/api/projects/:id', function(req, res) {
 });
 
 app.get('/api/projects', function(req, res) {
-    projects.findAll(function(json) {
+    db.findAll('projects', function(json) {
         res.send(json);
     });
 });
 
-// app.get('/api/contact/social', function(req, res) {
-//     contacts.findAll(function(json) {
-//         res.send(json);
-//     });
-// });
+app.get('/api/tech', function(req, res) {
+    console.log('Someone req tech!');
+    db.findAll('technologies', function(json) {
+        res.send(json);
+    });
+});
+
 
 //404
 app.get('*', function(req, res) {

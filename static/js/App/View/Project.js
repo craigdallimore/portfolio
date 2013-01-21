@@ -10,7 +10,6 @@ App.module('View', function(View, App, Backbone, Marionette, $, _) {
 
             this.$el.find('.transformed').removeClass('transformed');
             this.$el.find('.techList li').each(function(i, li) {
-                _.log(i, li);
                 var time = i * 150;
                 setTimeout(function() {
                     $(li).removeClass('techTransformed');
@@ -20,8 +19,12 @@ App.module('View', function(View, App, Backbone, Marionette, $, _) {
 
         render: function() {
             var json = this.model.toJSON();
+
+            json.dictionary = {};
+            _.log(json);
             var html = App.Tmpl[this.template](json);
             var self = this;
+
             this.$el.html(html);
             _.defer(function() {
                 self.animate();
