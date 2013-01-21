@@ -8,7 +8,7 @@
         "href": "",
         "short_description": "Implemented a friend picker UI for the Bud Light Lime party cottage Facebook competition.",
         "long_description": "This was a Facebook app promoting Bud Light Lime. The prize was a weekend in a party cottage for the user and their friends. Users were able to create up to 3 `party cottages` with the app, each with a number of slots for friends. Users could invite Facebook friends to fill the slots, and so the app would propagate. Each `slot` would have an archetypical role, e.g. `The Flirt`, `The Skinny Dipper` and so on.\nThe part of the app I worked on was the `picker` tool that enabled the user to assign friends to roles, some form validation and the management of modal popups within the application.",
-        "technology": [ "CSS", "HTML", "jQuery", "JavaScript", "Facebook" ],
+        "technology": [ "css3", "html5", "jquery", "js", "fb" ],
         "client": "bnotions",
         "startDate": "2011-05-11",
         "endDate": "2011-06-10"
@@ -22,7 +22,7 @@
         "href": "",
         "short_description": "An iPhone app for organising sporting events backed by the Canada Broadcasting Corportation.",
         "long_description": "This was an iOS app targetting the iPhone, built with jQuery Mobile, Phonegap and was the first app built with the BNOTIONS mobile web platform called MoSiS. It was an experiment social event management app made for the CBC, and enabled users to organise groups of friends to go to sporting events and share their experiences. Users could sign up with Facebook, add images and videos, suggest events to their friends and check in at events. The app was briefly featured on the App Store within Canada.\nI contributed HTML, CSS and JavaScript for this project.",
-        "technology": [ "CSS", "HTML", "jQuery", "JavaScript", "jQTouch", "iScroll", "PHP" ],
+        "technology": [ "css3", "html5", "jquery", "js", "jqt", "php" ],
         "client": "bnotions",
         "startDate": "2011-06-10",
         "endDate": "2011-09-09"
@@ -36,7 +36,7 @@
         "href": "",
         "short_description": "Displays a list of upcoming videos on the Oprah Winfrey Network for the OWN Facebook page.",
         "long_description": "A very straightforward Facebook app. It shows a listing of upcoming shows on the Oprah Winfrey Network, with the option to play a trailer for each show.\nMy role was producing the HTML, image, and CSS assets, as well as implementing the HTML5 / flash video player.",
-        "technology": [ "CSS", "HTML", "jQuery", "JavaScript", "Facebook" ],
+        "technology": [ "css3", "html5", "jquery", "js", "fb" ],
         "client": "bnotions",
         "startDate": "2011-09-19",
         "endDate": "2011-09-25"
@@ -50,7 +50,7 @@
         "href": "",
         "short_description": "A mapping tool to calculate the 'natural capital' of a geographic area, with the David Suzuki Foundation.",
         "long_description": "This is a mapping tool proposed by the David Suzuki Foundation. Users would be able to draw an area on a map and get back information about the 'natural capital' of the area drawn. This was implemented with the google maps API.\nI contributed the maps implementation, a video player, HTML, CSS and some of the JavaScript for this project.",
-        "technology": [ "CSS", "HTML", "jQuery", "JavaScript", "Google Maps API" ],
+        "technology": [ "css3", "html5", "jquery", "js", "gmaps" ],
         "client": "bnotions",
         "startDate": "2011-09-22",
         "endDate": "2012-02-21"
@@ -64,7 +64,7 @@
         "href": "",
         "short_description": "A multipart form for generating leads at a conference, presented on iPads.",
         "long_description": "This was an iPad application made for use in a trade show. It was a tool for sales reps to use to help gather leads by letting interested people fill in a few simple forms on the iPad.\nWe approached this as a webview running in Phonegap. The app used jQuery to capture form events and deliver data back to the server, and to change between views on the app.",
-        "technology": [ "CSS", "HTML", "jQuery", "JavaScript", "PhoneGap", "iOS webview" ],
+        "technology": [ "css3", "html5", "jquery", "js", "phonegap" ],
         "client": "bnotions",
         "startDate": "2011-06-29",
         "endDate": "2011-07-06"
@@ -78,7 +78,7 @@
         "href": "",
         "short_description": "A mobile view for the ETFO website, including a custom crossword game written in JavaScript",
         "long_description": "This was an app for both mobile and desktop to help the Elementary Teachers Federation of Ontario coordinate industrial action. Part of the requirements was a crossword puzzle that would help users become familiar with some of the terminology used to exaplin their position.\nI was brought in to the project to produce the crossword puzzle using JavaScript. It had to work with touch / keyboard / mouse and be managed through wordpress. I constructed a way of representing a crossword puzzle as a JSON object, and built a plugin that would permit the creation and consumption of these objects. Admins could essentially 'draw' a crossword on a grid, fill in the letters and the plugin would interpret the crossword and provide a set of inputs with clue numbers that the admin could use to put in the clues.\nThis happened in reverse on the user facing side – the JSON object would be interpreted and a crossword grid would be dynamically built. The crossword app was  able to reasonably guess the direction the user was attempting to type in and would shift focus to the next horizontal / vertical cell upon a keystroke.",
-        "technology": ["Wordpress", "HTML", "CSS", "JavaScript", "jQuery", "MoSiS", "jQuery Mobile", "PhoneGap"],
+        "technology": [ "css3", "html5", "jquery", "js", "wp", "phonegap"],
         "client": "bnotions",
         "startDate": "2011-10-11",
         "endDate": "2011-06-11"
@@ -92,7 +92,7 @@
         "href": "",
         "short_description": "A Facebook app for We Day - tracks your 'Vow of Silence' on Facebook",
         "long_description": "BNOTIONS and other Toronto agencies took part in a hackathon called 'Hack for a Cause', which was held at the Toronto Facebook offices, and produced some promotional applications for a charity named 'Free the Children', and their event 'We Day'.\nI worked on a Facebook web app called 'Vow of Silence', which enabled users to take a social media vow of silence – it would record how much time they spent not using Facebook having taken their vow, in solidarity with children denied basic human rights. The app would prompt their friends to join in and reveal how many hours of silent solidary had passed. I contributed HTML, CSS and some JavaScript for this app.",
-        "technology": [ "HTML", "CSS", "JavaScript" ],
+        "technology": [ "css3", "html5", "jquery", "js" ],
         "client": "bnotions",
         "startDate": "2011-11-05",
         "endDate": "2011-11-19"
@@ -106,7 +106,7 @@
         "href": "hostcommittee.com",
         "short_description": "A tool to organise and host exclusive events.",
         "long_description": "This project was a richly animated tool for organising exclusive parties and events. The lists of party-goers were represented with lush cards that would smoothly animate in and flip in three dimensions to reveal extra details.\nI contributed some JavaScript and jQuery to manage the positioning of cards as the animations occurred, and to organise sorting and filtering of cards as part of a friend finding feature. I also built logic for an events calendar, which also used a card-like metaphor to swing in/out months of cards as the user navigated their history of events. This application used the isotope.js library extensively.",
-        "technology": [ "HTML", "CSS", "JavaScript", "grunt.js", "jQuery", "isotope.js" ],
+        "technology": [ "css3", "html5", "jquery", "js", "grunt", "isotope" ],
         "client": "bnotions",
         "startDate": "2012-03-06",
         "endDate": "2012-05-30"
@@ -120,7 +120,7 @@
         "href": "",
         "short_description": "An (abandoned) gift selection interface for Chapters Indigo",
         "long_description": "This was a tool to help shoppers select gifts from the Chapters / Indigo catelogue. Users could pick an architypical personality ( Green Thumb, Fab Foodie ) to match their recipient and get a list of products populated by Indigos API to match the personality. This was proposed to exist within the Indigo website as a single page app, but unfortunately the project was cancelled prior to completion.\nI built the HTML, CSS and image assets, as well as the jQuery app that consumed the gift picker API.",
-        "technology": [ "HTML", "CSS", "JavaScript" ],
+        "technology": [ "css3", "html5", "jquery", "js" ],
         "client": "bnotions",
         "startDate": "2010-09-08",
         "endDate": "2010-10-19"
@@ -134,7 +134,7 @@
         "href": "",
         "short_description": "A Facebook competition app for Interac",
         "long_description": "This was a Facebook competition to coincide with Interacs rebranding. Users could fill out a quiz to go in a draw to win some money.\nThe quiz was paginated – one page per question – with multichoice answers. The quiz was built with a regular HTML form, with each question page revealed in turn to simulate changing pages without a page refresh. The radio button elements were hidden and progressively enhanced with custom controls bound to the radio buttons with a bit of jQuery. Users would not be able to skip ahead – when they anwer a question, the next would be unlocked. However the user could always go back and change a previous answer before completing the quiz.\nI built the HTML, CSS and JavaScript / jQuery for this competition.",
-        "technology": [ "Facebook", "HTML", "CSS", "JavaScript", "jQuery" ],
+        "technology": [ "css3", "html5", "jquery", "js", "fb" ],
         "client": "bnotions",
         "startDate": "2011-01-06",
         "endDate": "2011-12-19"
@@ -148,7 +148,7 @@
         "href": "",
         "short_description": "Facebook promo where users could create a quiz for their friends.",
         "long_description": "This was a Facebook competition to tie in to a celebration of Alexander Keiths birthday. Alexander Keiths is a well known brand of beer in Canada, and every year the company runs promotions to mark the event.\nThis app enabled users to create a quiz for their friends to fill out – a set of questions the user would select answers for. If their nominated friend answers the questions the same way, they enter the draw for various prizes.\nI contributed some HTML and CSS, and built the front end behaviour for the quiz forms. These required 'custom' form elements and were paginated with one question per page. The ability to flip back through the pages and redo questions was required, and the form would not permit the user to proceed without setting / answering a question.",
-        "technology": [ "HTML", "CSS", "JavaScript", "jQuery", "Facebook" ],
+        "technology": [ "css3", "html5", "jquery", "js", "fb" ],
         "client": "bnotions",
         "startDate": "2011-07-25",
         "endDate": "2011-08-10"
@@ -162,7 +162,7 @@
         "href": "",
         "short_description": "Facebook promo for Lean Cuisine",
         "long_description": "This was a bilingual Facebook application for Lean Cuisine, supporting an advertising campaign called 'Tales from the Scales'. Tales from the Scales featured a weekly video and daily diary following the progress of a young lady using Lean Cuisine products and exercise to lose weight. The public was able to comment on the updates to cheer her on. My role was producing HTML, image and CSS assets for the various views for each language.This is a brand page to promote Mobicartel, the Android Development wing of BNOTIONS. It features a custom jQuery slider that flicks though the various apps published by Mobicartel, the content of which is managed through Wordpress.",
-        "technology": ["HTML", "CSS", "Facebook"],
+        "technology": [ "css3", "html5", "jquery", "js", "fb"],
         "client": "bnotions",
         "startDate": "2010-08-23",
         "endDate": "2010-09-15"
@@ -176,7 +176,7 @@
         "href": "",
         "short_description": "A Facebook competition - users could nominate their 'Father of the Year' to win NHL prizes.",
         "long_description": "This was a bilingual Facebook competition for Fathers Day, promoted by LG and the NHL. Users could nominate their father as LG's Most Valuable Father by uploading an image of their father and a reason why he should win MVF. Prizes such as NHL tickets and LG televisions were offered.\nI provided the HTML, CSS, JavaScript and jQuery for this application. There were numberous forms which required form element replacements and JavaScript prompting to help guide the users through the submission process.",
-        "technology": [ "HTML", "CSS", "JavaScript", "jQuery", "jQuery UI", "Facebook"],
+        "technology": [ "css3", "html5", "jquery", "jqueryui", "js", "fb" ],
         "client": "bnotions",
         "startDate": "2011-04-08",
         "endDate": "2011-05-30"
@@ -190,7 +190,7 @@
         "href": "mobicartel.com",
         "short_description": "A showcase site for the Android applications made by Mobicartel",
         "long_description": "This is a brand page to promote Mobicartel, the Android Development wing of BNOTIONS. It features a custom jQuery slider that flicks though the various apps published by Mobicartel, the content of which is managed through Wordpress.",
-        "technology": [ "HTML", "CSS", "JavaScript", "jQuery", "WordPress", "PHP" ],
+        "technology": [ "css3", "html5", "jquery", "js", "wp", "php" ],
         "client": "bnotions",
         "startDate": "2011-07-18",
         "endDate": "2011-07-23"
@@ -204,7 +204,7 @@
         "href": "",
         "short_description": "An internal resource centre for Motorola",
         "long_description": "The Motorola Associate Community Site is an aggregator of news and information about upcoming and present Motorola products. It is also an internal social network for Motorola sales representatives, and not public facing.\nWe built this using Wordpress for some of the content management features. I contributed HTML, CSS, some JavaScript and jQuery for galleries, sliders and form validation.",
-        "technology": [ "HTML", "CSS", "jQuery", "WordPress" ],
+        "technology": [ "css3", "html5", "jquery", "js", "wp" ],
         "client": "bnotions",
         "startDate": "2010-09-08",
         "endDate": "2010-11-09"
@@ -218,7 +218,7 @@
         "href": "",
         "short_description": "A Facebook competition to promote the Motorola Atrix",
         "long_description": "This was a Facebook app to promote the Motorola Atrix. Users would be prompted to click on one of three Motorola products, with a chance to instantly win the product. Some animation was desired for the interaction with the product images – they would  smoothly grow on hover, and when clicked a thumbprint would show over them, and a red laser would appear and slide up and down, as if scanning the thumbprint.\nI contributed the jQuery animation and interactions, and guidance on the HTML and CSS.",
-        "technology": [ "HTML", "CSS", "JavaScript", "jQuery", "Facebook" ],
+        "technology": [ "css3", "html5", "jquery", "js", "fb" ],
         "client": "bnotions",
         "startDate": "2011-02-28",
         "endDate": "2011-04-22"
@@ -232,7 +232,7 @@
         "href": "",
         "short_description": "A NokiaUSA homepage takeover promotion for the Nokia Astound",
         "long_description": "This was a homepage takeover for NokiaUSA.com. The promotion was for The Nokia Astound handset and had a number of animated elements that would trigger as the user scrolled down the page. Tooltips would fade in and out, the various hands would become more or less bright, and the background would show a parallax effect. Additionally this was my first work with HTML5 video, providing a fallback to flash video for Internet Explorer 8 and below. We also produced slightly different levels of effects for different browsers, as we discovered performance issues with the amount of DOM manipulation in less capable browsers.",
-        "technology": [ "HTML", "CSS", "JavaScript", "jQuery", "HTML5 Video", "Parallax" ],
+        "technology": [ "css3", "html5", "jquery", "js" ],
         "client": "bnotions",
         "startDate": "2011-03-10",
         "endDate": "2011-05-17"
@@ -246,7 +246,7 @@
         "href": "",
         "short_description": "A Medical Data visualisation tool with rich charts and maps",
         "long_description": "Compass is a Google Maps based tool for finding relationships between Doctors, medical facilities and medical suppliers in the United States. I believe the purpose is to help suppliers find which Doctors are influential in making purchasing decisions for medical facilities.\nIt is a single page application that manages a very large amount of data; many hundreds of thousands of records can be pulled, and one of the challenges was finding effective ways of representing a large number of point on a Google map without impacting performance.",
-        "technology": [ "HTML", "CSS", "JavaScript", "jQuery", "Google Maps API", "Fusion Charts API", "SPA" ],
+        "technology": [ "css3", "html5", "jquery", "js", "gmaps" ],
         "client": "bnotions",
         "startDate": "2012-01-16",
         "endDate": "2012-02-27"
@@ -260,7 +260,7 @@
         "href": "",
         "short_description": "A Facebook competition where the user picks from 3 friends to share a prize",
         "long_description": "This was a bi-lingual Facebook app for Quiznos. It featured a competition where a user could pick one of three selected 'best' Facebook friends to share in a prize. The presentation of the best friend finder was like a slot machine with three slots. When the user had authenticated with Facebook and started the 'finder', their friends avatars would spin through the slots, slowing down to reveal the three chosen by our determination of who they have the best relationship with.\nMy role in this project was creating the HTML, image and CSS assets, and producing the slot machine effect with jQuery.",
-        "technology": [ "HTML", "CSS", "JavaScript", "jQuery", "Facebook"],
+        "technology": [ "css3", "html5", "jquery", "js",  "fb"],
         "client": "bnotions",
         "startDate": "2010-11-13",
         "endDate": "2010-11-29"
@@ -274,7 +274,7 @@
         "href": "",
         "short_description": "A site to organise groups and events",
         "long_description": "I joined this project partway through it's build, and returned to New Zealand before the project was completed. The product is not released yet. This is one of the more detailed projects I've worked on; it is built with Backbone and Marionette, rendered by Pyramid which in turn was consuming an API produced with Django. \nI contributed to an event based validation module, rewrote most of the underscore templates and SCSS to keep pace with a radical redesign of the user interface and information architecture. I also built several view modules to manage various collections across the application.",
-        "technology": [ "HTML", "SPA", "CSS", "JavaScript", "jQuery", "Underscore", "Backbone", "Marionette", "grunt.js", "SCSS", "Compass"],
+        "technology": [ "css3", "html5", "jquery", "js", "underscore", "backbone", "marionette", "grunt", "sass", "compass" ],
         "client": "bnotions",
         "startDate": "2012-08-13",
         "endDate": "2012-11-23"
@@ -288,7 +288,7 @@
         "href": "",
         "short_description": "A Facebook promotion for Rogers Canada",
         "long_description": "Rogers Canada ran a promotion where a hidden Android character would be printed in the Metro subway magazine for each day of the competition. People who found the Android and entered a code printed with it would get a chance to win various prizes. The code would be entered into this Facebook app we built for Rogers. The app featured a sliding gallery of Androids that had either been found or were still unclaimed, and some modal views and form validation.\nI assisted a junior developer with the HTML and CSS and contributed the JavaScript  / jQuery behaviour for this app.",
-        "technology": [ "HTML", "CSS", "JavaScript", "jQuery", "Facebook" ],
+        "technology": [ "css3", "html5", "jquery", "js", "fb" ],
         "client": "bnotions",
         "startDate": "2011-04-01",
         "endDate": "2011-04-08"
@@ -302,7 +302,7 @@
         "href": "",
         "short_description": "A Facebook page promoting Rogers Canadas low-cost cellphones.",
         "long_description": "This was a very simple Facebook app to promote low cost phones for Rogers Canada. There were only a few views, changed with page refreshes.\nI contributed HTML, CSS and some form validation using jQuery.",
-        "technology": [ "HTML", "CSS", "JavaScript", "jQuery", "Facebook" ],
+        "technology": [ "css3", "html5", "jquery", "js", "fb" ],
         "client": "bnotions",
         "startDate": "2010-10-18",
         "endDate": "2010-11-10"
@@ -316,7 +316,7 @@
         "href": "",
         "short_description": "A daily giveaway on Facebook where users could vote for a preferred item.",
         "long_description": "This was my first app with BNOTIONS. It was a Facebook competition for Rogers Canada with daily giveaways based on a daily vote, awarding prizes that would increase based on the number of votes cast. This would encourage partcipants to recruit their friends to vote each day. A person who cast a vote from the winning side would be selected for the daily prize.\nI produced the HTML, CSS and image resources for this application.",
-        "technology": [ "HTML", "CSS", "JavaScript", "jQuery", "Facebook" ],
+        "technology": [ "css3", "html5", "jquery", "js", "fb" ],
         "client": "bnotions",
         "startDate": "2010-08-20",
         "endDate": "2010-09-17"
@@ -330,7 +330,7 @@
         "href": "therichnessproject.com",
         "short_description": "Scotiabank would donate to a chosen charity when a user uploads content to this scrollable wall of imges and videos.",
         "long_description": "The Richness Project is part of a wider advertising campaign from Scotiabank Canada, with the tagline \"You're Richer Than You Think\". Users could upload a 'Richness Moment' – a picture, video or text – which they associate with personal richness, and choose a charity. In return, Scotiabank would use the Richness Moment on this site and donate a dollar to the chosen charity.</p><p>The site acts as a giant, horizontally scrolling gallery of images and text. The gallery employs a customized masonry.js for the grid layout, and the items are produced with mustache templating.\nThe upload tool examines images EXIF data to auto-rotate the uploaded images, and enables the user to crop and preview their entry before submission. The video player is HTML5 with a flash fallback, and most of the DOM manipulation is done through jQuery.",
-        "technology": [ "HTML", "CSS", "SCSS", "JavaScript", "jQuery", "masonry.js" ],
+        "technology": [ "css3", "html5", "jquery", "js", "sass" ],
         "client": "bnotions",
         "startDate": "2012-02-21",
         "endDate": "2012-08-15"
@@ -344,7 +344,7 @@
         "href": "",
         "short_description": "An embeddable widget version of the Scotiabank 'Richness Project' web app",
         "long_description": "This project followed the launch of the Richness Prject web app. The client desired a widget version of the upload tool that could be installed on third party websites, ideally with one line of HTML. This presented interesting challenges: our widget needed to be able to work in environments that we could not predict. It was very possible to run into naming collisions in our CSS or JavaScript, so efforts were made form the start to encapsulate our widget as neatly as possible and not interfere with  the host ( or accidentally inherit unwanted styles from the host! ). Meanwhile our widget needed to act like a single page app in miniature, enable cross domain video and image uploads and Facebook logins.\nI implemented a solution using the lightweight Ender library for the selector engine and DOM manipulation normalization. Cross-domain ajax was a custom implementation and a library named 'q' was used for composing Promise objects.",
-        "technology": [],
+        "technology": [ "css3", "html5", "ender", "js" ],
         "client": "bnotions",
         "startDate": "2012-07-03",
         "endDate": "2012-08-08"
@@ -358,7 +358,7 @@
         "href": "",
         "short_description": "A Facebook tool to help cigarette smokers quit.",
         "long_description": "Smober Up was a Facebook application and tool to help smokers calculate the financial cost of their habit and get information about how long it will take for their body to get back to normal if they quit.\nI built the multi-step questionnaire that gathered the information about their current usage and produced the animated counter that dialled up the number of dollars spent on cigarettes, once the calculation had completed. This was a jQuery / JavaScript solution. I also delivered HTML, image and CSS assets.",
-        "technology": [ "HTML", "CSS", "JavaScript", "jQuery", "Facebook" ],
+        "technology": [ "css3", "html5", "jquery", "js", "fb" ],
         "client": "bnotions",
         "startDate": "2010-11-15",
         "endDate": "2011-01-12"
@@ -372,7 +372,7 @@
         "href": "",
         "short_description": "A touchscreen kiosk app built for Chrome Canary to inform the Toronto public about upcoming development",
         "long_description": "The Toronto waterfront has seen a lot of renovation recently, and a kiosk application was implemented to enable the public to look up images, videos, maps and text descriptions of the proposed changes. Users could also sign up for email announcements using an onscreen keyboard.\nThis was done with a large percussive touchscreen and Google Chrome running a JavaScript application.\nTech: HTML, CSS, JavaScript, jQuery, Touch APIs, HTML5 video API, Chrome Canary.",
-        "technology": [ "HTML", "CSS", "JavaScript", "jQuery", "Chrome Canary", "Touchscreen Kiosk"],
+        "technology": [ "css3", "html5", "jquery", "js", "canary" ],
         "client": "bnotions",
         "startDate": "2010-10-27",
         "endDate": "2010-11-02"
@@ -386,7 +386,7 @@
         "href": "skillodex.com",
         "short_description": "A employee skill finder BNOTIONS built in a two day hack-a-thon",
         "long_description": "In early 2012, a crack team from BNOTIONS attended the DX3 Toronto Tech trade show with a wrestling ring. We set up tables on the ring, pulled out our laptops and started hacking away on an experiment called Skillodex, to see if we can produce an API, a website and a mobile app in two days in the middle of a trade show.\nSkillodex is a service that enables the collection and estimation of skills within an organisation. Employees can create profiles and populate it with their various skills and employers can check their companies Skillodex to find the hidden talents of their crew.\nFor this hackathon, I worked on the web team. My contributions were some JavaScript to sync the ranking of employees with our custom API, and to produce charts using the Google Charts API.",
-        "technology": [ "HTML", "CSS", "JavaScript", "jQuery", "Google Charts API"],
+        "technology": [ "css3", "html5", "jquery", "js" ],
         "client": "bnotions",
         "startDate": "2012-01-25",
         "endDate": "2012-01-26"
