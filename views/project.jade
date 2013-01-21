@@ -1,8 +1,9 @@
 extend layout
 block content
-    header
+    header#header
         hgroup
             h1 #{project.title}
+            h2 #{project.short_description}
     section#canvas
         section.projectDetails
             a(href='/projects/').btn-back.s-icon-back Back
@@ -13,4 +14,3 @@ block content
             img(src='static/img/featured/' + project.label + '.png', alt='Featured image')
             p #{project.long_description}
     section#modal
-        p I'm centered!

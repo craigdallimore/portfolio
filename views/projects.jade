@@ -1,6 +1,6 @@
 extend layout
 block content
-    header
+    header#header
         hgroup
             h1 Projects
 
@@ -17,3 +17,4 @@ block content
                         p No details available
                     if project.href_available
                         a(href= "//" + project.href, target="_blank") Go to #{project.title}
+    section#modal

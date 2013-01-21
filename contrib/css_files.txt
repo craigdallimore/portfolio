@@ -9,4 +9,5 @@ layout/canvas.css
 layout/modal.css
 modules/tileList.css
 modules/projectDetails.css
+modules/pivotControls.css
 layout/tileSize.css

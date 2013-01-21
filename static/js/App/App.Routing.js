@@ -16,16 +16,6 @@ App.module("Routing", function(Routing, App, Backbone, Marionette, $, _) {
             controller: App.Controller.Route
         });
 
-        App.Page = new App.Model.Page({
-            title: 'Portfolio',
-            pageTitle: 'Portfolio'
-        });
-
-        App.PageInstance = new App.View.Page({
-            model: App.Page,
-            el: 'html'
-        });
-
         App.vent.on('navigate', App.Router.navigate);
 
         if(Modernizr.history) {
