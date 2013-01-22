@@ -67,3 +67,29 @@
 .js .tileListNoJS {
     display: none;
 }
+.tileListNoJS {
+    > li {
+        overflow: hidden;
+        margin-top: 10px;
+        background: #fff;
+    }
+    h2 {
+        margin: 10px 10px 10px 110px;
+
+    }
+    h3 {
+        color: #888;
+        margin: 10px 10px 10px 110px;
+    }
+    img {
+        float: left;
+    }
+    a {
+        display: block;
+        width: 30px;
+        height: 30px;
+        text-indent: -999em;
+        float: left;
+        margin: 0 0 0 10px;
+    }
+}

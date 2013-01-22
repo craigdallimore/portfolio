@@ -8,13 +8,10 @@ block content
         ul.tileListNoJS
             for project, i in projects
                 li
+                    img(src= "/static/img/s/" + project.label + "-1x1.png", alt= project.title)
                     h2 #{project.title}
                     h3 #{project.short_description}
-                    if project.label
-                        img(src= "/static/img/s/" + project.label + "-1x1.png", alt= project.title)
-                        a(href= project.label) Details
-                    else
-                        p No details available
+                    a(href= project.label).s-icon-info-30 Details
                     if project.href_available
-                        a(href= "//" + project.href, target="_blank") Go to #{project.title}
+                        a(href= "//" + project.href, target="_blank").s-icon-link-30 Go to #{project.title}
     section#modal

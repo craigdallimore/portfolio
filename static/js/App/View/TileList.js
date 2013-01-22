@@ -6,6 +6,7 @@ App.module('View', function(View, App, Backbone, Marionette, $, _) {
         className: 'tileList',
 
         initialize: function() {
+
             this.collection.fetch({
                 success: _.bind(this.masonify, this)
             });
@@ -31,10 +32,11 @@ App.module('View', function(View, App, Backbone, Marionette, $, _) {
             $(child).hide().fadeIn(idx * 100);
         },
 
+        render: function() {},
+
         onClose: function() {
             App.vent.off('item:enlarged');
-        },
-        render: function() {}
+        }
 
     });
 
