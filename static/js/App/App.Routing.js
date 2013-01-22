@@ -6,7 +6,8 @@ App.module("Routing", function(Routing, App, Backbone, Marionette, $, _) {
             'blog/':            'blog',
             'about/':           'about',
             'projects/':        'projects',
-            'projects/:name':   'project'
+            'projects/:name':   'project',
+            'projects/:name/':  'project'
         }
     });
 
