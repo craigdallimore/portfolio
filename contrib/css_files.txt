@@ -10,6 +10,7 @@ layout/modal.css
 modules/tile.css
 modules/tileList.css
 modules/techList.css
+modules/tipList.css
 modules/projectDetails.css
 modules/pivotControls.css
 layout/tileSize.css

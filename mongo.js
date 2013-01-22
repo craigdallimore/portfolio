@@ -64,19 +64,10 @@ exports.findOne = function(collName, key, val, callback) {
 
 var populateDB = function () {
     var projects = require('./data/projects.json');
-    var technologies = require('./data/technologies.json');
-
 
     db.collection('projects', function(err, collection) {
         collection.insert(projects, function(err, result) {
             console.log('Created sample project data');
         });
     });
-
-    db.collection('technologies', function(err, collection) {
-      collection.insert(technologies, function(err, result) {
-        console.log('Created sample technology data');
-      });
-    });
-
 };

@@ -19,9 +19,8 @@ App.module('View', function(View, App, Backbone, Marionette, $, _) {
 
         render: function() {
             var json = this.model.toJSON();
+            json.dictionary = App.Data.TechDictionary();
 
-            json.dictionary = {};
-            _.log(json);
             var html = App.Tmpl[this.template](json);
             var self = this;
 

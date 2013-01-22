@@ -1,0 +1,35 @@
+@import "_mixins";
+
+.tipList {
+    > li {
+        position: relative;
+        &:hover {
+            .tip {
+                display: block;
+            }
+        }
+    }
+    .tip {
+        position: absolute;
+        background: #333;
+        bottom: -43px;
+        left: 25px;
+        display: none;
+        text-align: center;
+        padding: 7px 0 2px;
+        width: 85px;
+        z-index: 1;
+        &:after {
+            content: "";
+            display: block;
+            border: 5px solid #333;
+            border-right: 5px solid transparent;
+            border-top: 5px solid transparent;
+            width: 0;
+            height: 0;
+            left: 0;
+            top: -10px;
+            position: absolute;
+        }
+    }
+}
