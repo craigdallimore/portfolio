@@ -16,4 +16,22 @@ exports.init = function(app, db) {
         });
     });
 
+    app.get('/api/books', function(req, res) {
+        db.findAll('books', function(json) {
+            res.send(json);
+        });
+    });
+
+    app.get('/api/networks', function(req, res) {
+        db.findAll('networks', function(json) {
+            res.send(json);
+        });
+    });
+
+    app.get('/api/flush', function(req, res) {
+        db.flush( function(result) {
+            res.send(result);
+        });
+    });
+
 };

@@ -18,7 +18,7 @@ db.open(function(err, db) {
         console.log("Connected to '" + dbname + "' database");
 
         db.collection('projects', function(err, collection) {
-         //   collection.drop(); // todo - delete this
+//            collection.drop(); // todo - delete this
             collection.findOne(function(err, item) {
                 if (!item) {
                    console.log("The 'projects' collection doesn't exist. Creating it with sample data");
@@ -36,7 +36,9 @@ db.open(function(err, db) {
 // Find all items in a collection
 exports.findAll = function(collName, callback) {
     db.collection(collName, function(err, collection) {
+      console.log(collName + 'retreived');
         if (err) throw err;
+        console.log(collection);
         collection.find().toArray(function(err, items) {
             callback(items);
         });
@@ -47,9 +49,7 @@ exports.findAll = function(collName, callback) {
 exports.findOne = function(collName, key, val, callback) {
     query = {};
     query[key] = val;
-    console.log(query);
     db.collection(collName, function(err, collection) {
-
 
         var target = q.defer();
 
@@ -62,12 +62,37 @@ exports.findOne = function(collName, key, val, callback) {
     });
 };
 
-var populateDB = function () {
-    var projects = require('./data/projects.json');
+exports.flush = function( callback ) {
 
-    db.collection('projects', function(err, collection) {
-        collection.insert(projects, function(err, result) {
-            console.log('Created sample project data');
+    var collections = ['projects', 'books', 'networks'];
+    var flush = function(collName) {
+        db.collection(collName, function(err, collection) {
+            collection.drop();
+            console.log('Dropped ' + collName);
         });
-    });
+
+    };
+
+
+    callback('Flushed\n');
+    collections.forEach(flush);
+};
+
+var populateDB = function() {
+
+    var collections = ['projects', 'books', 'networks'];
+    var insert = function(collName) {
+
+        var json = require('./data/' + collName  + '.json');
+
+
+        db.collection(collName, function(err, collection) {
+            collection.insert(json, function(err, result) {
+                console.log('Created sample data for ' + collName);
+            });
+        });
+    };
+
+    collections.forEach(insert);
+
 };

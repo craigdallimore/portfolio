@@ -13,8 +13,10 @@ App.module('Controller', function(Controller, App, Backbone, Marionette, $, _) {
             var about = new App.View.About();
             var page = new App.Model.Page({ title: 'About / Contact' });
             var header = new App.View.Header({ model: page });
+
             App.canvas.show(about);
             App.header.show(header);
+
         },
 
         blog: function() {

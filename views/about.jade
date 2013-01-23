@@ -6,16 +6,24 @@ block content
 
     section#canvas
         section.about
-          h2 Craig Dallimore
-          h3 Front End Web Developer
+            h2 Craig Dallimore
+            h3 Front End Web Developer
 
-          h3 Technology
+            h3 Technology
 
-          h3 Networks
-          ul.networkList 
-            li This would start a list of social networks
+            h3 Networks
+            section.networkList 
+                ul.tipList
+                    for network, i in networks
+                        li
+                            a(class='s-network-' + network.label, href='//' + network.url)
+                                span.tip #{network.platform}
 
-          h3 Books I like
-          ul.bookList 
-            li This would start a list of books
+            h3 Books I like
+            section.bookList 
+                ul.tipList
+                    for book, i in books
+                        li
+                            a(class='s-book-' + book.label, href='//' + book.link)
+                                span.tip #{book.title}
     section#modal

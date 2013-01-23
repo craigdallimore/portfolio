@@ -23,7 +23,7 @@ app.configure('development', function() {
 files.forEach(function(file) {
     var filePath = path.resolve('./', RoutePath, file),
         route = require(filePath);
-    route.init(app, db);
+    route.init(app, db, q);
 });
 
 app.listen(3000);

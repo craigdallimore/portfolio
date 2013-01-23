@@ -11,6 +11,8 @@ modules/tile.css
 modules/tileList.css
 modules/techList.css
 modules/tipList.css
+modules/networkList.css
+modules/bookList.css
 modules/projectDetails.css
 modules/pivotControls.css
 layout/tileSize.css

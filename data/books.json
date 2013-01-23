@@ -1,0 +1,92 @@
+[
+  {
+    "title": "JavaScript: The Good Parts",
+    "author": "Douglas Crockford",
+    "link": "http://www.amazon.com/gp/product/B0026OR2ZY",
+    "label": "goodparts"
+  },
+  {
+    "title": "The Pragmatic Programmer: From Journeyman to Master",
+    "author": "Andrew Hunt, David Thomas",
+    "link": "http://www.amazon.com/gp/product/B000SEGEKI",
+    "label": "pragmatic"
+  },
+  {
+    "title": "Node for Front-End Developers",
+    "author": "Garann Means",
+    "link": "http://www.amazon.com/gp/product/B0073U0XFM",
+    "label": "nodeffe"
+  },
+  {
+    "title": "Test-Driven JavaScript Development ",
+    "author": "Christian Johansen",
+    "link": "www.amazon.com/gp/product/B004519O02",
+    "label": "tddjs"
+  },
+  {
+    "title": "The Node Beginner Book",
+    "author": "Manuel Kiessling",
+    "link": "http://www.amazon.com/gp/product/B005T75AF4",
+    "label": "nodebeginner"
+  },
+  {
+    "title": "Design Patterns: Elements of Reusable Object-Oriented Software",
+    "author": "Erich Gamma, Richard Helm, Ralph Johnson, John Vlissides",
+    "link": "http://www.amazon.com/gp/product/B000SEIBB8",
+    "label": "gof"
+  },
+  {
+    "title": "JavaScript: The Definitive Guide",
+    "author": "David Flanagan",
+    "link": "http://www.amazon.com/gp/product/B004XQX4K0",
+    "label": "jsdef"
+  },
+  {
+    "title": "Learn Java for Android Development",
+    "author": "Jeff Friesen",
+    "link": "http://www.amazon.com/gp/product/B004VHODYM",
+    "label": "javaandroid"
+  },
+  {
+    "title": "Effective Java",
+    "author": "Joshua Bloch",
+    "link": "http://www.amazon.com/gp/product/B000WJOUPA",
+    "label": "effectivejava"
+  },
+  {
+    "title": "JavaScript Patterns",
+    "author": "Stoyan Stefanov",
+    "link": "http://www.amazon.com/gp/product/B0046RERXE",
+    "label": "jspatterns"
+  },
+  {
+    "title": "Learn Python The Hard Way",
+    "author": "John Schember",
+    "link": "http://learnpythonthehardway.org/book/",
+    "label": "learnpython"
+  },
+  {
+    "title": "JavaScript Enlightenment",
+    "author": "Cody Lindley",
+    "link": "http://www.javascriptenlightenment.com/",
+    "label": "jsenlightenment"
+  },
+  {
+    "title": "Scalable and Modular Architecture for CSS",
+    "author": "Jonathan Snook",
+    "link": "http://smacss.com/",
+    "label": "smacss"
+  },
+  {
+    "title": "Backbone Fundamentals / Developing Backbone Applications",
+    "author": "Addy Osmani",
+    "link": "http://addyosmani.github.com/backbone-fundamentals/",
+    "label": "backbonefundamentals"
+  },
+  {
+    "title": "Learning JavaScript Design Patterns",
+    "author": "Addy Osmani",
+    "link": "http://shop.oreilly.com/product/0636920025832.do",
+    "label": "learningjsdesignpatterns"
+  }
+]
