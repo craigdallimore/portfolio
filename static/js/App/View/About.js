@@ -5,7 +5,7 @@ App.module('View', function(View, App, Backbone, Marionette, $, _) {
         className: 'about',
         template: 'About',
         initialize: function() {
-            _.log('Init about view');
+
             var self = this;
 
             App.addRegions({
@@ -30,9 +30,7 @@ App.module('View', function(View, App, Backbone, Marionette, $, _) {
         },
 
         renderBooks: function() {
-            _.log('Renderbooks');
             var bookCollection = new App.Collection.Book();
-            _.log(2);
             var bookList = new App.View.BookList({
                 collection: bookCollection,
                 itemView: App.View.Book

@@ -1,0 +1,10 @@
+[
+  {
+    "id": 1,
+    "firstname": "Craig",
+    "lastname": "Dallimore",
+    "title": "Frontend Web Developer",
+    "label": "craigdallimore",
+    "statement": "I am a front-end web developer.\n\nFor the past few years I’ve been working in Toronto full-time for a technology agency called BNOTIONS on their web team.\n\nAt BNOTIONS I worked on numerous applications as part of advertising campaigns - producing HTML templates and JavaScript interactive behaviour to integrate with a Kohana backend. The majority of my work has been on Facebook applications such as short-lived competition pages.\n\nI also worked on an application for a touchscreen kiosk running Chrome, made a crossword puzzle in JavaScript and some so called ‘hybrid’ mobile applications using JQTouch, jQuery Mobile and Phonegap. One of these was briefly featured in the Apple App Store. I graduated from Natcoll Design Technology (now known as Yoobee) in Auckland, where I attained a diploma in Web Design and Development. During my study I worked on the web team for a travel advertising agency called Jasons Travel Media, and as a designer/developer for The Web Company from graduation through to moving to Toronto in late July 2010.\n\nPrevious to this study, I had 8 years of experience in film, TV and video post-production. I’ve worked in television studios, on movie sets, and authored DVD collections. \n\nI am also flirting with Haskell, Python, Windows 8 Metro apps, and node.js."
+  }
+]

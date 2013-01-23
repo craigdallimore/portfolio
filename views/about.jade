@@ -6,10 +6,10 @@ block content
 
     section#canvas
         section.about
-            h2 Craig Dallimore
-            h3 Front End Web Developer
-
-            h3 Technology
+            section.profile
+                figure(class='s-avatar-' + profile.label)
+                h2 #{profile.firstname} #{profile.lastname}
+                p #{profile.statement}
 
             h3 Networks
             section.networkList 

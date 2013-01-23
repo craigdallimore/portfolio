@@ -34,4 +34,14 @@ exports.init = function(app, db) {
         });
     });
 
+    app.get('/api/profiles/:id', function(req, res) {
+        db.findOne('profiles', 'id', parseInt(req.params.id, 10), function(json) {
+            if (json) {
+                res.send(json);
+            } else {
+                res.send('');
+            }
+        });
+    });
+
 };

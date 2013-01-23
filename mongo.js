@@ -18,7 +18,6 @@ db.open(function(err, db) {
         console.log("Connected to '" + dbname + "' database");
 
         db.collection('projects', function(err, collection) {
-//            collection.drop(); // todo - delete this
             collection.findOne(function(err, item) {
                 if (!item) {
                    console.log("The 'projects' collection doesn't exist. Creating it with sample data");
@@ -38,7 +37,6 @@ exports.findAll = function(collName, callback) {
     db.collection(collName, function(err, collection) {
       console.log(collName + 'retreived');
         if (err) throw err;
-        console.log(collection);
         collection.find().toArray(function(err, items) {
             callback(items);
         });
@@ -48,12 +46,15 @@ exports.findAll = function(collName, callback) {
 // Find a single item in a collection
 exports.findOne = function(collName, key, val, callback) {
     query = {};
+    console.log('find one', collName, key, val);
     query[key] = val;
     db.collection(collName, function(err, collection) {
 
+        if(err) throw err;
         var target = q.defer();
 
         collection.findOne(query, function(err, match) {
+            console.log('deep');
             target.resolve(match);
         });
 
@@ -64,7 +65,7 @@ exports.findOne = function(collName, key, val, callback) {
 
 exports.flush = function( callback ) {
 
-    var collections = ['projects', 'books', 'networks'];
+    var collections = ['projects', 'books', 'networks', 'profiles'];
     var flush = function(collName) {
         db.collection(collName, function(err, collection) {
             collection.drop();
@@ -80,7 +81,7 @@ exports.flush = function( callback ) {
 
 var populateDB = function() {
 
-    var collections = ['projects', 'books', 'networks'];
+    var collections = ['projects', 'books', 'networks', 'profiles'];
     var insert = function(collName) {
 
         var json = require('./data/' + collName  + '.json');
