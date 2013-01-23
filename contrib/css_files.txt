@@ -14,5 +14,6 @@ modules/tipList.css
 modules/networkList.css
 modules/bookList.css
 modules/projectDetails.css
+modules/about.css
 modules/pivotControls.css
 layout/tileSize.css

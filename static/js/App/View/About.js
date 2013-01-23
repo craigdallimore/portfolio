@@ -6,15 +6,30 @@ App.module('View', function(View, App, Backbone, Marionette, $, _) {
         template: 'About',
         initialize: function() {
 
+            _.log('About view initialized');
             var self = this;
 
             App.addRegions({
+                profile: '#canvas .profile',
                 networkList: '#canvas .networkList',
                 bookList: '#canvas .bookList'
             });
 
+            _.defer(self.renderProfile);
             _.defer(self.renderNetworks);
             _.defer(self.renderBooks);
+        },
+
+        renderProfile: function() {
+
+            _.log('render profile');
+            var profileModel = new App.Model.Profile();
+            var profileView = new App.View.Profile({ model: profileModel });
+
+            profileModel.fetch().success(function() {
+                App.profile.show(profileView);
+            });
+
         },
 
         renderNetworks: function() {

@@ -1,0 +1,30 @@
+@import "_mixins";
+
+.about {
+    > section {
+        overflow: hidden;
+        border: 1px solid #aaa;
+    }
+
+    .profile {
+        figure {
+            display: block;
+            width: 150px;
+            height: 150px;
+            float: left;
+        }    
+    }
+
+    .techList {
+    
+    }
+
+    .networkList {
+    
+    }
+
+    .bookList {
+    
+    }
+
+}
