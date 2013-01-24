@@ -57,28 +57,38 @@ module.exports = function(grunt) {
                     WEB_APP_STATIC + 'js/libs/jquery.isotope.min.js',
                     WEB_APP_STATIC + 'js/mixin.js',
                     WEB_APP_STATIC + 'js/App/App.js',
+
+                    WEB_APP_STATIC + 'js/App/Model/Tech.js',
                     WEB_APP_STATIC + 'js/App/Model/Profile.js',
                     WEB_APP_STATIC + 'js/App/Model/Page.js',
                     WEB_APP_STATIC + 'js/App/Model/Project.js',
                     WEB_APP_STATIC + 'js/App/Model/Network.js',
                     WEB_APP_STATIC + 'js/App/Model/Book.js',
+
                     WEB_APP_STATIC + 'js/App/View/Index.js',
                     WEB_APP_STATIC + 'js/App/View/Header.js',
                     WEB_APP_STATIC + 'js/App/View/About.js',
                     WEB_APP_STATIC + 'js/App/View/Blog.js',
+                    WEB_APP_STATIC + 'js/App/View/Project.js',
+                    WEB_APP_STATIC + 'js/App/View/Profile.js',
+                    WEB_APP_STATIC + 'js/App/View/PivotControls.js',
+
+                    WEB_APP_STATIC + 'js/App/View/Tech.js',
+                    WEB_APP_STATIC + 'js/App/View/TechList.js',
+
                     WEB_APP_STATIC + 'js/App/View/Tile.js',
                     WEB_APP_STATIC + 'js/App/View/TileList.js',
                     WEB_APP_STATIC + 'js/App/View/Network.js',
                     WEB_APP_STATIC + 'js/App/View/NetworkList.js',
                     WEB_APP_STATIC + 'js/App/View/Book.js',
                     WEB_APP_STATIC + 'js/App/View/BookList.js',
-                    WEB_APP_STATIC + 'js/App/View/Project.js',
-                    WEB_APP_STATIC + 'js/App/View/Profile.js',
-                    WEB_APP_STATIC + 'js/App/View/PivotControls.js',
+
+
                     WEB_APP_STATIC + 'js/App/Controller/Route.js',
                     WEB_APP_STATIC + 'js/App/Collection/Project.js',
                     WEB_APP_STATIC + 'js/App/Collection/Network.js',
                     WEB_APP_STATIC + 'js/App/Collection/Book.js',
+
                     WEB_APP_STATIC + 'js/App/App.Tmpl.js',
                     WEB_APP_STATIC + 'js/App/App.Data.js',
                     WEB_APP_STATIC + 'js/App/App.Routing.js'

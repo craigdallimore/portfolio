@@ -2,8 +2,21 @@
 
 .about {
     > section {
-        overflow: hidden;
-        border: 1px solid #aaa;
+        margin-top: 10px;
+        &:after {
+            display: block;
+            content: "";
+            clear: both;
+        }
+    }
+
+    h2 {
+        color: #aaa;
+        font-size: 1.5em;
+        margin-top: 20px;
+        &:first-child {
+            margin-top: 0;
+        }
     }
 
     .profile {
@@ -13,6 +26,28 @@
             height: 150px;
             float: left;
         }    
+        h3 {
+            font-size: 1.5em;
+            margin: 0 0 0 160px;
+        }
+        a {
+            margin: 20px 0 0 200px;
+            display: block;
+            position: relative;
+            color: #666;
+            span {
+                position: absolute;
+                width: 30px;
+                height: 30px;
+                left: -40px;
+                top: -9px;
+            }
+            &:first-child {
+                margin-top: 10px;
+            }
+        }
+
+
     }
 
     .techList {

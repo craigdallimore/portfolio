@@ -1,6 +1,6 @@
 [
     { "backbone": { "label": "Backbone.js"}},
-    { "canary": { "label": "Chrome Canary"}},
+    { "canary":  { "label": "Chrome Canary"}},
     { "compass": { "label": "Compass"}},
     { "css3": { "label": "CSS 3"}},
     { "ender": { "label": "Ender.js"}},

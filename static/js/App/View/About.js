@@ -12,17 +12,18 @@ App.module('View', function(View, App, Backbone, Marionette, $, _) {
             App.addRegions({
                 profile: '#canvas .profile',
                 networkList: '#canvas .networkList',
-                bookList: '#canvas .bookList'
+                bookList: '#canvas .bookList',
+                techList: '#canvas .about .techList'
             });
 
             _.defer(self.renderProfile);
             _.defer(self.renderNetworks);
             _.defer(self.renderBooks);
+            _.defer(self.renderTech);
         },
 
         renderProfile: function() {
 
-            _.log('render profile');
             var profileModel = new App.Model.Profile();
             var profileView = new App.View.Profile({ model: profileModel });
 
@@ -54,6 +55,11 @@ App.module('View', function(View, App, Backbone, Marionette, $, _) {
             App.bookList.show(bookList);
 
         },
+
+        renderTech: function() {
+            _.log('rendertech');
+        },
+
 
         render: function() {
             var self = this;
