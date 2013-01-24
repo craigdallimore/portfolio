@@ -9,9 +9,39 @@ block content
             section.profile
                 figure(class='s-avatar-' + profile.label)
                 h2 #{profile.firstname} #{profile.lastname}
-                p #{profile.statement}
+                a(href='//' + profile.url)
+                    span.s-icon-link-30
+                    | #{profile.url}
+                a(href='mailto:' + profile.email)
+                    span.s-icon-email-30
+                    | #{profile.email}
 
-            h3 Networks
+                a(href='/projects/').btn-go
+                    span.s-icon-right-30
+                    | Look at my project gallery
+
+                a(href='/downloads/' + profile.label + '.vcd')
+                    span.s-icon-download-30
+                    | Download my contact details
+
+
+                a(href='/downloads/' + profile.label + '.docx')
+                    span.s-icon-download-30
+                    | Download my CV (docx)
+
+
+                a(href='/downloads/' + profile.label + '.pdf')
+                    span.s-icon-download-30
+                    | Download my CV (pdf)
+
+            h2 Tech I've been using
+            section.techList
+                ul.tipList
+                    for tech, i in technologies
+                        li(class='s-logo-' + tech.label)
+                            span.tip #{tech.name}
+
+            h2 Find me on these networks
             section.networkList 
                 ul.tipList
                     for network, i in networks
@@ -19,7 +49,7 @@ block content
                             a(class='s-network-' + network.label, href='//' + network.url)
                                 span.tip #{network.platform}
 
-            h3 Books I like
+            h2 Books I've been reading
             section.bookList 
                 ul.tipList
                     for book, i in books

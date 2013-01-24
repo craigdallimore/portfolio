@@ -3,6 +3,7 @@
 .about {
     > section {
         margin-top: 10px;
+        padding-bottom: 10px;
         &:after {
             display: block;
             content: "";
@@ -50,15 +51,24 @@
     }
 
     .techList {
-    
+        margin-left: -10px;
+        li:first-child {
+            margin-left: 10px;
+        }
     }
 
     .networkList {
-    
+        margin-left: -10px;
+        li:first-child {
+            margin-left: 10px;
+        }
     }
 
     .bookList {
-    
+        margin-left: -10px;
+        li:first-child {
+            margin-left: 10px;
+        }
     }
 
 }
