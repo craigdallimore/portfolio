@@ -28,6 +28,12 @@ exports.init = function(app, db) {
         });
     });
 
+    app.get('/api/tech', function(req, res) {
+        db.findAll('technologies', function(json) {
+            res.send(json);
+        });
+    });
+
     app.get('/api/flush', function(req, res) {
         db.flush( function(result) {
             res.send(result);

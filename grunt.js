@@ -88,6 +88,7 @@ module.exports = function(grunt) {
                     WEB_APP_STATIC + 'js/App/Collection/Project.js',
                     WEB_APP_STATIC + 'js/App/Collection/Network.js',
                     WEB_APP_STATIC + 'js/App/Collection/Book.js',
+                    WEB_APP_STATIC + 'js/App/Collection/Tech.js',
 
                     WEB_APP_STATIC + 'js/App/App.Tmpl.js',
                     WEB_APP_STATIC + 'js/App/App.Data.js',

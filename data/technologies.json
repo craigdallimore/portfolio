@@ -1,22 +1,152 @@
 [
-    { "backbone": { "label": "Backbone.js"}},
-    { "canary":  { "label": "Chrome Canary"}},
-    { "compass": { "label": "Compass"}},
-    { "css3": { "label": "CSS 3"}},
-    { "ender": { "label": "Ender.js"}},
-    { "fb": { "label": "Facebook"}},
-    { "gmaps": { "label": "Google Maps API"}},
-    { "grunt": { "label": "grunt.js"}},
-    { "html5": { "label": "HTML 5"}},
-    { "isotope": { "label":  "Isotope"}},
-    { "jqt": { "label":  "JQTouch"}},
-    { "jquery": { "label":  "jQuery"}},
-    {  "jqueryui": { "label": "jQuery UI"}},
-    { "js": { "label": "JavaScript"}},
-    { "marionette": { "label":  "marionette.js"}},
-    { "phonegap": { "label":  "PhoneGap"}},
-    { "php": { "label":  "PHP"}},
-    { "sass": { "label":  "SASS / SCSS"}},
-    { "underscore": { "label":  "underscore.js"}},
-    { "wp": { "label":  "WordPress"}}
+    {
+      "label": "win8",
+      "affinity": 90,
+      "skill": 60,
+      "name": "WinJS / Metro"
+    },
+    {
+      "label": "android",
+      "affinity": 65,
+      "skill": 20,
+      "name": "Android Framework"
+    },
+    {
+      "label": "java",
+      "affinity": 15,
+      "skill": 15,
+      "name": "Java"
+    },
+    {
+      "label": "node",
+      "affinity": 95,
+      "skill": 45,
+      "name": "Node.js"
+    },
+    {
+      "label": "express",
+      "affinity": 78,
+      "skill": 55,
+      "name": "ExpressJS"
+    },
+    {
+      "label": "json",
+      "affinity": 88,
+      "skill": 89,
+      "name": "JSON"
+    },
+    {
+      "label": "backbone",
+      "affinity": 90,
+      "skill": 68,
+      "name": "Backbone.js"
+    },
+    {
+      "label": "compass",
+      "affinity": 90,
+      "skill": 80,
+      "name": "Compass"
+    },
+    {
+      "label": "css3",
+      "affinity": 70,
+      "skill": 85,
+      "name": "CSS 3"
+    },
+    {
+      "label": "ender",
+      "affinity": 55,
+      "skill": 60,
+      "name": "Ender.js"
+    },
+    {
+      "label": "fb",
+      "affinity": 50,
+      "skill": 55,
+      "name": "Facebook API"
+    },
+    {
+      "label": "gmaps",
+      "affinity": 88,
+      "skill": 75,
+      "name": "Google Maps API"
+    },
+    {
+      "label": "grunt",
+      "affinity": 92,
+      "skill": 70,
+      "name": "grunt.js"
+    },
+    {
+      "label": "html5",
+      "affinity": 80,
+      "skill": 85,
+      "name": "HTML 5"
+    },
+    {
+      "label": "isotope",
+      "affinity": 70,
+      "skill": 90,
+      "name": "Isotope"
+    },
+    {
+      "label": "jqt",
+      "affinity": 45,
+      "skill": 43,
+      "name": "JQTouch"
+    },
+    {
+      "label": "jquery",
+      "affinity": 95,
+      "skill": 92,
+      "name": "jQuery"
+    },
+    {
+      "label":  "jqueryui",
+      "affinity": 85,
+      "skill": 80,
+      "name": "jQuery UI"
+    },
+    {
+      "label": "js",
+      "affinity": 99,
+      "skill": 85,
+      "name": "JavaScript"
+    },
+    {
+      "label": "marionette",
+      "affinity": 88,
+      "skill": 60,
+      "name": "marionette.js"
+    },
+    {
+      "label": "phonegap",
+      "affinity": 55,
+      "skill": 45,
+      "name": "PhoneGap"
+    },
+    {
+      "label": "php",
+      "affinity": 15,
+      "skill": 20,
+      "name": "PHP"
+    },
+    {
+      "label": "sass",
+      "affinity": 95,
+      "skill": 85,
+      "name": "SASS / SCSS"
+    },
+    {
+      "label": "underscore",
+      "affinity": 90,
+      "skill": 85,
+      "name": "underscore.js"
+    },
+    {
+      "label": "wp",
+      "affinity": 75,
+      "skill": 70,
+      "name": "WordPress"
+    }
 ]

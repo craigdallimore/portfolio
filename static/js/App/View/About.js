@@ -4,9 +4,20 @@ App.module('View', function(View, App, Backbone, Marionette, $, _) {
         tagName: 'section',
         className: 'about',
         template: 'About',
+
+        events: {
+            'click .btn-go': 'navigate'
+        },
+
+        navigate: function(e) {
+            e.preventDefault();
+
+            var path =  $(e.target).attr('href');
+            App.vent.trigger('navigate', path, {trigger: true});
+        },
+
         initialize: function() {
 
-            _.log('About view initialized');
             var self = this;
 
             App.addRegions({
@@ -20,6 +31,13 @@ App.module('View', function(View, App, Backbone, Marionette, $, _) {
             _.defer(self.renderNetworks);
             _.defer(self.renderBooks);
             _.defer(self.renderTech);
+        },
+
+        close: function() {
+            App.profile.close();
+            App.networkList.close();
+            App.bookList.close();
+            App.techList.close();
         },
 
         renderProfile: function() {
@@ -57,7 +75,13 @@ App.module('View', function(View, App, Backbone, Marionette, $, _) {
         },
 
         renderTech: function() {
-            _.log('rendertech');
+            var techCollection = new App.Collection.Tech();
+            var techList = new App.View.TechList({
+                collection: techCollection,
+                itemView: App.View.Tech
+            });
+
+            App.techList.show(techList);
         },
 
 

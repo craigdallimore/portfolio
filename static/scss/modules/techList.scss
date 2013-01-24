@@ -1,7 +1,7 @@
 @import "_mixins";
 
 .techList {
-    > li {
+    li {
         @include transition(all, 200ms);
         display: block;
         float: left;

@@ -6,7 +6,7 @@ var mongo = require('mongodb'),
 
 var server = new Server('localhost', 27017, { auto_reconnect: true });
 var dbname = 'dev_portfolio';
-
+var collNames = ['projects', 'books', 'networks', 'profiles', 'technologies'];
 
 db = new Db(dbname, server, { safe: true});
 
@@ -65,7 +65,6 @@ exports.findOne = function(collName, key, val, callback) {
 
 exports.flush = function( callback ) {
 
-    var collections = ['projects', 'books', 'networks', 'profiles'];
     var flush = function(collName) {
         db.collection(collName, function(err, collection) {
             collection.drop();
@@ -76,16 +75,14 @@ exports.flush = function( callback ) {
 
 
     callback('Flushed\n');
-    collections.forEach(flush);
+    collNames.forEach(flush);
 };
 
 var populateDB = function() {
 
-    var collections = ['projects', 'books', 'networks', 'profiles'];
     var insert = function(collName) {
 
         var json = require('./data/' + collName  + '.json');
-
 
         db.collection(collName, function(err, collection) {
             collection.insert(json, function(err, result) {
@@ -94,6 +91,6 @@ var populateDB = function() {
         });
     };
 
-    collections.forEach(insert);
+    collNames.forEach(insert);
 
 };
