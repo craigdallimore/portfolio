@@ -17,12 +17,23 @@ App.module('View', function(View, App, Backbone, Marionette, $, _) {
             this.$el.isotope('reLayout');
         },
 
+        setHeight: function() {
+            _.log('set height');
+            var height = this.$el.outerHeight();
+            App.vent.trigger('canvas:height', height);
+        },
+
+
         masonify: function() {
+            var self = this;
             this.$el.isotope({
                 itemSelector: 'li',
                 layoutMode: 'masonry',
                 masonry: {
                     columnWidth: 110
+                },
+                onLayout: function() {
+                    self.setHeight();
                 }
             });
             this.$el.children().each(this.fadeInChild);

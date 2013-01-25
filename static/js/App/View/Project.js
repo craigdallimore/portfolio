@@ -4,6 +4,20 @@ App.module('View', function(View, App, Backbone, Marionette, $, _) {
         className: 'projectDetails',
         template: 'Project',
 
+
+        setSize: function() {
+
+            var self = this,
+                img = this.$el.find('img'),
+                src = $(img).attr('src'),
+                $img = $('<img>', { src: src });
+
+            $img.load(function() {
+                var height = self.$el.outerHeight();
+                App.vent.trigger('canvas:height', height);
+            });
+        },
+
         animate: function() {
             this.$el.find('.projectTransformed').removeClass('projectTransformed');
         },
@@ -18,6 +32,7 @@ App.module('View', function(View, App, Backbone, Marionette, $, _) {
             this.$el.html(html);
             _.defer(function() {
                 self.animate();
+                self.setSize();
                 self.animateList('.transformed', 150);
             });
         }
