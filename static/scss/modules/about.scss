@@ -12,6 +12,7 @@
     }
 
     h2 {
+        @include transition(all, 300ms);
         color: #aaa;
         font-size: 1.5em;
         margin-top: 20px;
@@ -20,6 +21,10 @@
         }
     }
 
+    > .transformed {
+        @include transform(translate(50px, 0));
+        opacity: 0;
+    }
     .profile {
         figure {
             display: block;
@@ -31,9 +36,11 @@
             font-size: 1.5em;
         }
         a {
+            @include transition(all, 300ms);
             margin: 20px 0 0 40px;
-            display: block;
             position: relative;
+            float: left;
+            clear: left;
             color: #666;
             span {
                 position: absolute;
@@ -46,28 +53,24 @@
                 margin-top: 10px;
             }
         }
-
+        .transformed {
+            @include transform(translate(50px, 0) rotateY(90deg));
+            opacity: 0;
+        }
 
     }
 
-    .techList {
+    .techList, .networkList, .bookList {
         margin-left: -10px;
+        li {
+            @include transition(all, 500ms);
+        }
         li:first-child {
             margin-left: 10px;
         }
-    }
-
-    .networkList {
-        margin-left: -10px;
-        li:first-child {
-            margin-left: 10px;
-        }
-    }
-
-    .bookList {
-        margin-left: -10px;
-        li:first-child {
-            margin-left: 10px;
+        .transformed {
+            opacity: 0;
+            @include transform(translate(100px, 0) rotateY(90deg));
         }
     }
 

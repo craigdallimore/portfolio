@@ -1,6 +1,6 @@
 App.module('View', function(View, App, Backbone, Marionette, $, _) {
 
-    View.About = Marionette.View.extend({
+    View.About = App.View.AnimationView.extend({
         tagName: 'section',
         className: 'about',
         template: 'About',
@@ -11,8 +11,12 @@ App.module('View', function(View, App, Backbone, Marionette, $, _) {
 
         navigate: function(e) {
             e.preventDefault();
-
-            var path =  $(e.target).attr('href');
+            var path;
+            if(e.target.tagName === 'SPAN') {
+                path = $(e.target).parent('a').attr('href');
+            } else {
+               path =  $(e.target).attr('href');
+            }
             App.vent.trigger('navigate', path, {trigger: true});
         },
 
@@ -27,10 +31,13 @@ App.module('View', function(View, App, Backbone, Marionette, $, _) {
                 techList: '#canvas .about .techList'
             });
 
-            _.defer(self.renderProfile);
-            _.defer(self.renderNetworks);
-            _.defer(self.renderBooks);
-            _.defer(self.renderTech);
+            _.defer(function() {
+                self.renderProfile();
+                self.renderNetworks();
+                self.renderBooks();
+                self.renderTech();
+                self.animateList('h2', 150);
+            });
         },
 
         close: function() {

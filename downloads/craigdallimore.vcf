@@ -1,0 +1,10 @@
+BEGIN:VCARD
+VERSION:3.0
+N:Dallimore;Craig
+FN:Craig Dallimore
+TITLE:Front End Web Developer
+PHOTO;VALUE=URL;TYPE=JPG:https://lh4.googleusercontent.com/-NOJE-ee8dDQ/AAAAAAAAAAI/AAAAAAAADGA/FiZhr9CT4NE/s250-c-k/photo.jpg
+TEL;TYPE=WORK,VOICE:(+6421) 0833-2173
+EMAIL;TYPE=PREF,INTERNET:craig@plusplusplusplus.com
+REV:2013-01-25T09:00:00Z
+END:VCARD

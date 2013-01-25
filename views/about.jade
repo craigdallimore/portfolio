@@ -20,7 +20,7 @@ block content
                     span.s-icon-right-30
                     | Look at my project gallery
 
-                a(href='/downloads/' + profile.label + '.vcd')
+                a(href='/downloads/' + profile.label + '.vcf')
                     span.s-icon-download-30
                     | Download my contact details
 
@@ -34,7 +34,7 @@ block content
                     span.s-icon-download-30
                     | Download my CV (pdf)
 
-            h2 Tech I've been using
+            h2 I've built sites using these technologies
             section.techList
                 ul.tipList
                     for tech, i in technologies
@@ -49,7 +49,7 @@ block content
                             a(class='s-network-' + network.label, href='//' + network.url)
                                 span.tip #{network.platform}
 
-            h2 Books I've been reading
+            h2 I've been reading these books
             section.bookList 
                 ul.tipList
                     for book, i in books

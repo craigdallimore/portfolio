@@ -1,7 +1,7 @@
 @import '_mixins';
 
 .projectDetails {
-    @include perspective(3200);
+    @include perspective(3200px);
     img {
         margin: 0 20px 20px 0;
         float: left;

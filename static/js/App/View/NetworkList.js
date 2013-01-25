@@ -1,13 +1,8 @@
 App.module('View', function(View, App, Backbone, Marionette, $, _) {
 
-    View.NetworkList = Marionette.CollectionView.extend({
+    View.NetworkList = App.View.AnimationCollectionView.extend({
         tagName: 'ul',
-        className: 'tipList',
-        initialize: function() {
-            this.collection.fetch();
-        }
-
+        className: 'tipList'
     });
-
 
 });
