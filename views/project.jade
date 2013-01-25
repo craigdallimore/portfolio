@@ -5,7 +5,7 @@ block content
             h1 #{project.title}
             h2 #{project.short_description}
     section#canvas
-        section.projectDetails
+        section.projectDetails.projectNoJS
             img(src='/static/img/featured/' + project.label + '.png', alt='Featured image')
             p #{project.long_description}
             ul.techList
@@ -13,7 +13,7 @@ block content
                     li(class='s-logo-' + tech)
                     
     section#modal
-        nav.pivotControls
+        nav.pivotControls.projectNoJS
             a(href="/projects/").btn-back.s-icon-up-50 Back
             if project.href_available
                 a(href='//' + project.href, target='_blank').btn-link.s-icon-link-50

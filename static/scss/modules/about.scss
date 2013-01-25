@@ -1,6 +1,8 @@
 @import "_mixins";
 
 .about {
+    width: 960px;
+    margin: 0 auto;
     > section {
         margin-top: 10px;
         padding-bottom: 10px;
@@ -74,4 +76,7 @@
         }
     }
 
+}
+.js .aboutNoJS {
+    display: none;
 }

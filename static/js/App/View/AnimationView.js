@@ -1,15 +1,16 @@
 App.module('View', function(View, App, Backbone, Marionette, $, _) {
 
-    View.AnimationView = Marionette.View.extend({
+    var animateList = function(selector, time) {
+        var els = this.$el.find(selector);
+        els.each(function(i, el) {
+            setTimeout(function() {
+                $(el).removeClass('transformed');
+            }, i * time);
+        });
+    };
 
-        animateList: function(tagName, time) {
-            var els = this.$el.find(tagName);
-            els.each(function(i, el) {
-                setTimeout(function(){
-                    $(el).removeClass('transformed');
-                }, i * time);
-            });
-        }
+    View.AnimationView = Marionette.View.extend({
+        animateList: animateList
     });
 
     View.AnimationCollectionView = Marionette.CollectionView.extend({
@@ -20,14 +21,7 @@ App.module('View', function(View, App, Backbone, Marionette, $, _) {
                 self.animateList('.transformed', 50);
             });
         },
-        animateList: function(tagName, time) {
-            var els = this.$el.find(tagName);
-            els.each(function(i, el) {
-                setTimeout(function(){
-                    $(el).removeClass('transformed');
-                }, i * time);
-            });
-        }
+        animateList: animateList
     });
 
 

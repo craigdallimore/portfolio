@@ -1,6 +1,8 @@
 @import '_mixins';
 
 .tileList {
+    width: 960px;
+    margin: 0 auto;
     > li {
         margin: 5px;
         display: block;

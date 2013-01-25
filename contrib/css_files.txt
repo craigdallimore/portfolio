@@ -5,6 +5,7 @@ base/buttons.css
 base/sprites.css
 libs/isotope.css
 layout/header.css
+layout/footer.css
 layout/canvas.css
 layout/modal.css
 modules/tile.css
