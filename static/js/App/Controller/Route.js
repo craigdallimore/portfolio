@@ -5,17 +5,21 @@ App.module('Controller', function(Controller, App, Backbone, Marionette, $, _) {
             var index = new App.View.Index();
             var page = new App.Model.Page({ title: 'Portfolio' });
             var header = new App.View.Header({ model: page });
+            var footer = new App.View.Footer();
             App.canvas.show(index);
             App.header.show(header);
+            App.footer.show(footer);
         },
 
         about: function() {
             var about = new App.View.About();
             var page = new App.Model.Page({ title: 'About / Contact' });
             var header = new App.View.Header({ model: page });
+            var footer = new App.View.Footer();
 
             App.canvas.show(about);
             App.header.show(header);
+            App.footer.show(footer);
 
         },
 
@@ -23,8 +27,10 @@ App.module('Controller', function(Controller, App, Backbone, Marionette, $, _) {
             var blog = new App.View.Blog();
             var page = new App.Model.Page({ title: 'Blog' });
             var header = new App.View.Header({ model: page });
+            var footer = new App.View.Footer();
             App.canvas.show(blog);
             App.header.show(header);
+            App.footer.show(footer);
         },
 
         projects: function() {
@@ -35,6 +41,7 @@ App.module('Controller', function(Controller, App, Backbone, Marionette, $, _) {
 
             var page = new App.Model.Page({ title: 'Projects' });
             var header = new App.View.Header({ model: page });
+            var footer = new App.View.Footer();
             var projects = new App.View.TileList({
                 collection: App.ProjectCollection,
                 itemView: App.View.Tile
@@ -43,6 +50,7 @@ App.module('Controller', function(Controller, App, Backbone, Marionette, $, _) {
             App.canvas.show(projects);
             App.modal.close();
             App.header.show(header);
+            App.footer.show(footer);
         },
 
         project: function(label) {
@@ -56,10 +64,12 @@ App.module('Controller', function(Controller, App, Backbone, Marionette, $, _) {
                 var project = new App.View.Project({ model: model });
                 var projectControls = new App.View.PivotControls({ model: model });
                 var header = new App.View.Header({ model: model });
+                var footer = new App.View.Footer();
 
                 App.canvas.show(project);
                 App.modal.show(projectControls);
                 App.header.show(header);
+                App.footer.show(footer);
             };
 
             if(! App.ProjectCollection) {

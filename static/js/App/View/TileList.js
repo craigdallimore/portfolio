@@ -11,18 +11,12 @@ App.module('View', function(View, App, Backbone, Marionette, $, _) {
                 success: _.bind(this.masonify, this)
             });
             App.vent.on('item:enlarged', _.bind(this.reLayout, this));
+            App.vent.trigger('canvas:removeheight');
        },
 
         reLayout: function() {
             this.$el.isotope('reLayout');
         },
-
-        setHeight: function() {
-            _.log('set height');
-            var height = this.$el.outerHeight();
-            App.vent.trigger('canvas:height', height);
-        },
-
 
         masonify: function() {
             var self = this;
@@ -31,9 +25,6 @@ App.module('View', function(View, App, Backbone, Marionette, $, _) {
                 layoutMode: 'masonry',
                 masonry: {
                     columnWidth: 110
-                },
-                onLayout: function() {
-                    self.setHeight();
                 }
             });
             this.$el.children().each(this.fadeInChild);

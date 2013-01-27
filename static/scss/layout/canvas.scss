@@ -1,6 +1,8 @@
 @import "_mixins";
 
 #canvas {
+    @include transition(height, 400ms);
+    min-height: 400px;
     background: #f0f0f0;
     padding: 30px 0;
 }

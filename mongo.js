@@ -46,7 +46,6 @@ exports.findAll = function(collName, callback) {
 // Find a single item in a collection
 exports.findOne = function(collName, key, val, callback) {
     query = {};
-    console.log('find one', collName, key, val);
     query[key] = val;
     db.collection(collName, function(err, collection) {
 
@@ -54,7 +53,6 @@ exports.findOne = function(collName, key, val, callback) {
         var target = q.defer();
 
         collection.findOne(query, function(err, match) {
-            console.log('deep');
             target.resolve(match);
         });
 

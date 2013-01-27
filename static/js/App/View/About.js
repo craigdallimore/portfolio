@@ -38,6 +38,8 @@ App.module('View', function(View, App, Backbone, Marionette, $, _) {
                 self.renderTech();
                 self.animateList('h2', 150);
             });
+
+            App.vent.trigger('canvas:removeheight');
         },
 
         close: function() {
