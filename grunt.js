@@ -73,18 +73,16 @@ module.exports = function(grunt) {
                     WEB_APP_STATIC + 'js/App/View/Blog.js',
                     WEB_APP_STATIC + 'js/App/View/Project.js',
                     WEB_APP_STATIC + 'js/App/View/Profile.js',
-                    WEB_APP_STATIC + 'js/App/View/PivotControls.js',
 
                     WEB_APP_STATIC + 'js/App/View/Tech.js',
                     WEB_APP_STATIC + 'js/App/View/TechList.js',
 
                     WEB_APP_STATIC + 'js/App/View/Tile.js',
-                    WEB_APP_STATIC + 'js/App/View/TileList.js',
+                    WEB_APP_STATIC + 'js/App/View/Projects.js',
                     WEB_APP_STATIC + 'js/App/View/Network.js',
                     WEB_APP_STATIC + 'js/App/View/NetworkList.js',
                     WEB_APP_STATIC + 'js/App/View/Book.js',
                     WEB_APP_STATIC + 'js/App/View/BookList.js',
-
 
                     WEB_APP_STATIC + 'js/App/Controller/Route.js',
                     WEB_APP_STATIC + 'js/App/Collection/Project.js',

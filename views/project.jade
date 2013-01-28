@@ -6,16 +6,13 @@ block content
             h2 #{project.short_description}
     section#canvas
         section.projectDetails.projectNoJS
-            img(src='/static/img/featured/' + project.label + '.png', alt='Featured image')
-            p #{project.long_description}
-            ul.techList
-                for tech, i in project.technology
-                    li(class='s-logo-' + tech)
-                    
-    section#modal
-        nav.pivotControls.projectNoJS
-            a(href="/projects/").btn-back.s-icon-up-50 Back
-            if project.href_available
-                a(href='//' + project.href, target='_blank').btn-link.s-icon-link-50
-                    span.s-icon-forward
-                    | Visit #{project.title}
+            nav
+                a(href='/projects/')
+                    span.s-icon-left-30
+                    | Projects
+            div.content
+                img(src='/static/img/featured/' + project.label + '.png', alt='Featured image')
+                p #{project.long_description}
+                ul.techList
+                    for tech, i in project.technology
+                        li(class='s-logo-' + tech)

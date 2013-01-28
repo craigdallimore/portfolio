@@ -47,14 +47,15 @@ App.module('View', function(View, App, Backbone, Marionette, $, _) {
             App.networkList.close();
             App.bookList.close();
             App.techList.close();
+            App.vent.off('profile:ready');
         },
 
         renderProfile: function() {
 
-            var profileModel = new App.Model.Profile();
-            var profileView = new App.View.Profile({ model: profileModel });
+            App.ProfileModel = new App.Model.Profile();
+            var profileView = new App.View.Profile({ model: App.ProfileModel  });
 
-            profileModel.fetch().success(function() {
+            App.vent.on('profile:ready', function() {
                 App.profile.show(profileView);
             });
 
@@ -62,9 +63,12 @@ App.module('View', function(View, App, Backbone, Marionette, $, _) {
 
         renderNetworks: function() {
 
-            var networkCollection = new App.Collection.Network();
+            if(!App.NetworkCollection) {
+                App.NetworkCollection = new App.Collection.Network();
+            }
+
             var networkList = new App.View.NetworkList({
-                collection: networkCollection,
+                collection: App.NetworkCollection,
                 itemView: App.View.Network
             });
 
@@ -73,9 +77,13 @@ App.module('View', function(View, App, Backbone, Marionette, $, _) {
         },
 
         renderBooks: function() {
-            var bookCollection = new App.Collection.Book();
+
+            if(!App.BookCollection) {
+                App.BookCollection = new App.Collection.Book();
+            }
+
             var bookList = new App.View.BookList({
-                collection: bookCollection,
+                collection: App.BookCollection,
                 itemView: App.View.Book
             });
 
@@ -84,9 +92,13 @@ App.module('View', function(View, App, Backbone, Marionette, $, _) {
         },
 
         renderTech: function() {
-            var techCollection = new App.Collection.Tech();
+
+            if(!App.TechCollection) {
+                App.TechCollection = new App.Collection.Tech();
+            }
+
             var techList = new App.View.TechList({
-                collection: techCollection,
+                collection: App.TechCollection,
                 itemView: App.View.Tech
             });
 

@@ -42,13 +42,12 @@ App.module('Controller', function(Controller, App, Backbone, Marionette, $, _) {
             var page = new App.Model.Page({ title: 'Projects' });
             var header = new App.View.Header({ model: page });
             var footer = new App.View.Footer();
-            var projects = new App.View.TileList({
+            var projects = new App.View.Projects({
                 collection: App.ProjectCollection,
                 itemView: App.View.Tile
             });
 
             App.canvas.show(projects);
-            App.modal.close();
             App.header.show(header);
             App.footer.show(footer);
         },
@@ -62,12 +61,10 @@ App.module('Controller', function(Controller, App, Backbone, Marionette, $, _) {
                 });
 
                 var project = new App.View.Project({ model: model });
-                var projectControls = new App.View.PivotControls({ model: model });
                 var header = new App.View.Header({ model: model });
                 var footer = new App.View.Footer();
 
                 App.canvas.show(project);
-                App.modal.show(projectControls);
                 App.header.show(header);
                 App.footer.show(footer);
             };

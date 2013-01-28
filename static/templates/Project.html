@@ -1,3 +1,11 @@
+<nav>
+    <a class="btn-back" href="/projects/"><span class="s-icon-up-30"></span>Projects</a>
+    <a class="btn-prev "href="/prev"><span class="s-icon-left-30"></span>Previous</a>
+    <a class="btn-next" href="/next"><span class="s-icon-right-30"></span>Next</a>
+    <% if (href_available) { %>
+    <a class="btn-link" href="//<%= href %>" target="_blank"><span class="s-icon-link-30"></span>Visit <%= title %></a>
+    <% } %>
+</nav>
 <div class="content projectTransformed">
     <img src="/static/img/featured/<%= label %>.png" alt="<%= title %>">
     <p><%= long_description %></p>
