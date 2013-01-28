@@ -29,8 +29,10 @@ App.module('View', function(View, App, Backbone, Marionette, $, _) {
 
         navigateBack: function(e) {
             e.preventDefault();
-            var href = $(e.target).attr('href');
-            App.vent.trigger('navigate', href, {trigger: true});
+            var path = (e.target.tagName === 'SPAN') ?
+                $(e.target).parent().attr('href') :
+                $(e.target).attr('href');
+            App.vent.trigger('navigate', path, {trigger: true});
         },
 
         navigateNext: function(e) {

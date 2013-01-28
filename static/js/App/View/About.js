@@ -52,7 +52,10 @@ App.module('View', function(View, App, Backbone, Marionette, $, _) {
 
         renderProfile: function() {
 
-            App.ProfileModel = new App.Model.Profile();
+            if(!App.ProfileModel) {
+                App.ProfileModel = new App.Model.Profile();
+            }
+
             var profileView = new App.View.Profile({ model: App.ProfileModel  });
 
             App.vent.on('profile:ready', function() {

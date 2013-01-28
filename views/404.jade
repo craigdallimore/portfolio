@@ -1,8 +1,11 @@
 extends layout
 block content
-    header
+    header#header
         hgroup
             h1 404 not found
     div#canvas
-        p We are out of stock. There is nothing in the back of the store.
-        a(href= '/') Back to index?
+        section.fourohfour
+            p We are out of stock. There is nothing in the back of the store.
+            a(href= '/')
+                span.s-icon-left-30
+                | Back to index?

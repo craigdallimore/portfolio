@@ -4,16 +4,16 @@ App.module('View', function(View, App, Backbone, Marionette, $, _) {
         tagName: 'section',
         template: 'Profile',
         initialize: function() {
-            _.log(this.model);
             if(!this.model.has('label')) {
-                _.log('does not have label');
-                this.model.fetch({ silent: true }).done(function() {
+                this.model.fetch().done(function() {
                     App.vent.trigger('profile:ready');
                 });
                 return;
             }
-            _.log('does have label');
-            App.vent.trigger('profile:ready');
+            this.render();
+            _.defer(function() {
+                App.vent.trigger('profile:ready');
+            });
         },
         render: function() {
             var json = this.model.toJSON();
