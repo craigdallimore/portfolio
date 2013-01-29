@@ -1,2 +1,19 @@
+$s-layout:smart;
 @import "s/*.png";
 @include all-s-sprites;
+
+$icon-layout:smart;
+@import "icon/*.png";
+@include all-icon-sprites;
+
+$book-layout:smart;
+@import "book/*.png";
+@include all-book-sprites;
+
+$network-layout:smart;
+@import "network/*.png";
+@include all-network-sprites;
+
+$logo-layout:smart;
+@import "logo/*.png";
+@include all-logo-sprites;

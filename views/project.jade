@@ -8,11 +8,11 @@ block content
         section.projectDetails.projectNoJS
             nav
                 a(href='/projects/')
-                    span.s-icon-left-30
+                    span.icon-up-30
                     | Projects
             div.content
                 img(src='/static/img/featured/' + project.label + '.png', alt='Featured image')
                 p #{project.long_description}
                 ul.techList
                     for tech, i in project.technology
-                        li(class='s-logo-' + tech)
+                        li(class='logo-' + tech)

@@ -1,9 +1,9 @@
 <nav>
-    <a class="btn-back" href="/projects/"><span class="s-icon-up-30"></span>Projects</a>
-    <a class="btn-prev "href="/prev"><span class="s-icon-left-30"></span>Previous</a>
-    <a class="btn-next" href="/next"><span class="s-icon-right-30"></span>Next</a>
+    <a class="btn-back" href="/projects/"><span class="icon-up-30"></span>Projects</a>
+    <a class="btn-prev "href="/prev"><span class="icon-left-30"></span>Previous</a>
+    <a class="btn-next" href="/next"><span class="icon-right-30"></span>Next</a>
     <% if (href_available) { %>
-    <a class="btn-link" href="//<%= href %>" target="_blank"><span class="s-icon-link-30"></span>Visit <%= title %></a>
+    <a class="btn-link" href="//<%= href %>" target="_blank"><span class="icon-link-30"></span>Visit <%= title %></a>
     <% } %>
 </nav>
 <div class="content projectTransformed">
@@ -11,7 +11,7 @@
     <p><%= long_description %></p>
         <ul class="techList tipList">
         <% for(tech in technology) {  %>
-        <li class="s-logo-<%= technology[tech] %> transformed"><span class="tip"><%= dictionary[technology[tech]].label %></span></li>
+        <li class="logo-<%= technology[tech] %> transformed"><span class="tip"><%= dictionary[technology[tech]].label %></span></li>
         <% } %>
         </ul>
 </div>

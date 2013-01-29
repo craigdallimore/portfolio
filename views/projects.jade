@@ -8,7 +8,7 @@ block content
         section.projects
             nav
                 a(href='/about/')
-                    span.s-icon-up-30
+                    span.icon-up-30
                     | About / Contacts
             ul.tileListNoJS
                 for project, i in projects
@@ -16,6 +16,6 @@ block content
                         img(src= "/static/img/s/" + project.label + "-1x1.png", alt= project.title)
                         h2 #{project.title}
                         h3 #{project.short_description}
-                        a(href= project.label).s-icon-info-30 Details
+                        a(href= project.label).icon-info-30 Details
                         if project.href_available
-                            a(href= "//" + project.href, target="_blank").s-icon-link-30 Go to #{project.title}
+                            a(href= "//" + project.href, target="_blank").icon-link-30 Go to #{project.title}

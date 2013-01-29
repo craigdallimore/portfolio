@@ -8,7 +8,7 @@ App.module('View', function(View, App, Backbone, Marionette, $, _) {
             var json = this.model.toJSON();
             var html = App.Tmpl[this.template](json);
             var label = this.model.get('label');
-            this.$el.html(html).addClass('transformed s-logo-' + label);
+            this.$el.html(html).addClass('transformed logo-' + label);
         }
    });
 
