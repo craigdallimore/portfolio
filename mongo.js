@@ -8,7 +8,7 @@ var server = new Server('localhost', 27017, { auto_reconnect: true });
 var dbname = 'dev_portfolio';
 var collNames = ['projects', 'books', 'networks', 'profiles', 'technologies'];
 
-db = new Db(dbname, server, { safe: true});
+var db = new Db(dbname, server, { safe: true});
 
 // Attempt to open connection to database
 db.open(function(err, db) {
@@ -35,7 +35,6 @@ db.open(function(err, db) {
 // Find all items in a collection
 exports.findAll = function(collName, callback) {
     db.collection(collName, function(err, collection) {
-      console.log(collName + 'retreived');
         if (err) throw err;
         collection.find().toArray(function(err, items) {
             callback(items);

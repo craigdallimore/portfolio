@@ -19,3 +19,4 @@ App.vent.on('canvas:removeheight', function() {
 });
 
 App.start();
+_.log('Init app');
