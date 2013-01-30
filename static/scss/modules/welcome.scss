@@ -1,0 +1,10 @@
+@import "_mixins";
+
+.welcome {
+    width: 960px;
+    margin: 0 auto;
+    a {
+        color: #666;
+        display: block;
+    }
+}
