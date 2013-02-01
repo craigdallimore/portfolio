@@ -1,7 +1,7 @@
 App.module('View', function(View, App, Backbone, Marionette, $, _) {
     View.Project = App.View.AnimationView.extend({
         tagName: 'section',
-        className: 'projectDetails',
+        className: 'project',
         template: 'Project',
 
         events: {

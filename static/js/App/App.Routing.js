@@ -23,11 +23,15 @@ App.module("Routing", function(Routing, App, Backbone, Marionette, $, _) {
             Backbone.history.start({ pushState: true });
         } else {
             // Support IE
-            Backbone.history.start({ pushState: false, silent: true});
-            Backbone.history.loadUrl(window.location.pathname);
+            var match = Backbone.history.start({
+                pushState: false,
+                root: '/about'
+            });
         }
     };
 
-    App.vent.on('start', Routing.start());
+    App.vent.on('start', function(){
+        Routing.start();
+    });
 
 });

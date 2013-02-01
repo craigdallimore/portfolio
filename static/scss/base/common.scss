@@ -37,11 +37,10 @@ body {
 }
 
 noscript {
-    background: #f00;
-    border: 2px solid #f00;
-    border-top: 7px solid #f00;
-    display: block;
     p {
+        background: #f00;
+        padding: 7px 2px 2px;
+        display: block;
         color: #fff;
         text-align: center;
         font-weight: bold;

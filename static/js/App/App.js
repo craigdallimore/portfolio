@@ -8,7 +8,7 @@ App.addRegions({
 });
 
 App.vent.on('title:change', function(title) {
-    $('title').text(title);
+    document.title = title;
 });
 
 App.vent.on('canvas:height', function(height) {
@@ -17,6 +17,6 @@ App.vent.on('canvas:height', function(height) {
 App.vent.on('canvas:removeheight', function() {
     $('#canvas').removeAttr('style');
 });
-
-App.start();
-_.log('Init app');
+$(document).ready(function(){
+    App.start();
+});

@@ -4,6 +4,7 @@ base/typography.css
 base/buttons.css
 base/sprites.css
 libs/isotope.css
+layout/responsive.css
 layout/header.css
 layout/footer.css
 layout/canvas.css
@@ -15,7 +16,7 @@ modules/tipList.css
 modules/networkList.css
 modules/bookList.css
 modules/projects.css
-modules/projectDetails.css
+modules/project.css
 modules/about.css
 modules/welcome.css
 modules/fourohfour.css

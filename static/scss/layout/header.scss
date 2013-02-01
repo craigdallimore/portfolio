@@ -1,12 +1,6 @@
 @import "_mixins";
 
 #header {
-    width: 100%;
-    padding: 40px 0 30px;
-    hgroup {
-        width: 960px;
-        margin: 0 auto;
-    }
     h1 {
         @include transition(all, 100ms);
     }

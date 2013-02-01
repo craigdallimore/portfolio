@@ -6,6 +6,7 @@ App.module('Controller', function(Controller, App, Backbone, Marionette, $, _) {
             var page = new App.Model.Page({ title: 'Portfolio' });
             var header = new App.View.Header({ model: page });
             var footer = new App.View.Footer();
+
             App.canvas.show(index);
             App.header.show(header);
             App.footer.show(footer);
@@ -34,11 +35,9 @@ App.module('Controller', function(Controller, App, Backbone, Marionette, $, _) {
         },
 
         projects: function() {
-
             if(! App.ProjectCollection) {
                 App.ProjectCollection = new App.Collection.Project();
             }
-
             var page = new App.Model.Page({ title: 'Projects' });
             var header = new App.View.Header({ model: page });
             var footer = new App.View.Footer();
@@ -46,7 +45,6 @@ App.module('Controller', function(Controller, App, Backbone, Marionette, $, _) {
                 collection: App.ProjectCollection,
                 itemView: App.View.Tile
             });
-
             App.canvas.show(projects);
             App.header.show(header);
             App.footer.show(footer);
