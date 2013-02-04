@@ -32,6 +32,10 @@ module.exports = function(grunt) {
             templates: {
                 files: [ WEB_APP_STATIC + 'templates/**/*.html' ],
                 tasks: 'tmpl'
+            },
+            spec: {
+                files: 'tests/js/tests.js',
+                tasks: 'mocha'
             }
         },
 
@@ -109,6 +113,16 @@ module.exports = function(grunt) {
                 src: ['<config:concat.js.dest>'],
                 dest: WEB_APP_STATIC + 'dist/app.min.js'
             }
+        },
+
+        mocha: {
+            tests: {
+                src: ['tests/tests.html'],
+                options: {
+                    run: true
+                }
+
+            }
         }
 
     });
@@ -116,11 +130,12 @@ module.exports = function(grunt) {
 
     // Plugins
     grunt.loadNpmTasks('grunt-contrib');
+    grunt.loadNpmTasks('grunt-mocha');
 
     // Tasks
     grunt.registerTask('dev', 'templates css js');
     grunt.registerTask('css', 'concat:css mincss');
-    grunt.registerTask('js', 'concat:js min');
+    grunt.registerTask('js', 'concat:js min mocha:tests');
     grunt.registerTask('tmpl', 'templates js');
 
     grunt.registerTask("sass", "SASS -> CSS", function() {

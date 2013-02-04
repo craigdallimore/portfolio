@@ -1,5 +1,6 @@
 var express = require('express'),
     slashes = require('connect-slashes'),
+    http = require('http'),
 
     db = require('./mongo.js'),
     fs = require('fs'),
@@ -8,7 +9,8 @@ var express = require('express'),
     files = fs.readdirSync(RoutePath),
     q = require('q'),
 
-    app = express();
+    app = express(),
+    server = http.createServer(app);
 
 app.set('views', __dirname + '/views');
 app.use('view engine', 'jade');
@@ -27,5 +29,5 @@ files.forEach(function(file) {
     route.init(app, db, q);
 });
 
-app.listen(process.env.VCAP_APP_PORT || 3000);
-console.log("Listening on port 3000");
+server.listen(process.env.VCAP_APP_PORT || 3000);
+console.log("Listening on port %d", server.address().port);

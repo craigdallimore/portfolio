@@ -58,7 +58,6 @@
     }
 
     .techList, .networkList, .bookList {
-        margin-left: -10px;
         li {
             @include transition(all, 500ms);
         }
