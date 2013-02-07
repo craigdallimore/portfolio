@@ -7,33 +7,34 @@ App.module('View', function(View, App, Backbone, Marionette, $, _) {
         events: {
             'click .more': 'navigate',
             'click .enlarge': 'enlarge',
-            'click .shrink': 'enlarge'
+            'click .shrink': 'shrink'
         },
 
         initialize: function() {
-            this.setSize(1);
+            var spriteClass = 's-' + this.model.get('label') + '-1x1';
+            this.$el.addClass('ts-1 ' + spriteClass);
+            this.spriteClass = spriteClass;
         },
 
-        setSize: function(size) {
-            var tileSizeRE = /\b(ts-\d)\b/g;
-            var spriteRE = /\b(s-(\w|-)+\dx\d)\b/g;
-            var classes = this.$el[0].className;
-            var newClasses = ' ts-' + size + ' s-' + this.model.get('label') + '-' + size + 'x' + size;
+        shrink: function(e) {
+            e.preventDefault();
 
-            // Clear old classes
-            classes = classes.replace(spriteRE, '');
-            classes = classes.replace(tileSizeRE, '');
-            // Update with new classes
-            this.$el[0].className = classes + newClasses;
-            this.size = size;
+            var spriteClass = this.spriteClass;
+            this.$el.removeClass('ts-3').addClass('ts-1 ' + spriteClass);
+            this.$el.find('img').remove();
+            App.vent.trigger('item:resized', this.model);
         },
 
-        getRandomSize: function() {
-            var rnd = Math.ceil(Math.random() * 10);
-            var num = 1;
-            if ( rnd > 5 ) num = 2;
-            if ( rnd > 9 ) num = 3;
-            return num;
+        enlarge: function(e) {
+            e.preventDefault();
+
+            var imgPath = '/static/img/3x3/' + this.model.get('label') + '-3x3.png',
+                $img = $('<img>', { src: imgPath }),
+                spriteClass = this.spriteClass;
+
+            this.$el.removeClass('ts-1 ' + spriteClass).addClass('ts-3');
+            this.$el.find('.info').before($img);
+            App.vent.trigger('item:resized', this.model);
         },
 
         render: function() {
@@ -46,13 +47,8 @@ App.module('View', function(View, App, Backbone, Marionette, $, _) {
             e.preventDefault();
             var path =  '/projects/' + this.model.get('label');
             App.vent.trigger('navigate', path, {trigger: true});
-        },
-
-        enlarge: function(e) {
-            e.preventDefault();
-            this.setSize((this.size === 3) ? 1 : 3);
-            App.vent.trigger('item:enlarged', this.model);
         }
+
     });
 
 });

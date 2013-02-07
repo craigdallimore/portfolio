@@ -1,6 +1,9 @@
 /*global module:false*/
 module.exports = function(grunt) {
 
+    var WEB_APP_STATIC = 'static/';
+
+    // Project configuration.
     grunt.initConfig({
 
         watch: {

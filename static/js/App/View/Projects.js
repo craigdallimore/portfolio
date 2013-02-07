@@ -12,7 +12,7 @@ App.module('View', function(View, App, Backbone, Marionette, $, _) {
 
         initialize: function() {
 
-            App.vent.on('item:enlarged', _.bind(this.reLayout, this));
+            App.vent.on('item:resized', _.bind(this.reLayout, this));
             App.vent.trigger('canvas:removeheight');
 
             if(this.collection.length) {
