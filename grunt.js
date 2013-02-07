@@ -1,19 +1,6 @@
 /*global module:false*/
 module.exports = function(grunt) {
 
-    var _ = require('underscore'),
-        fs = require('fs');
-        proc = require('child_process'),
-        WEB_APP_STATIC = 'static/',
-        css_files = fs.readFileSync(__dirname + '/contrib/css_files.txt', 'UTF-8').split('\n');
-
-    css_files.pop();
-
-    css_files = css_files.map(function(line){
-        return WEB_APP_STATIC + 'css/' +  line;
-    });
-
-    // Project configuration.
     grunt.initConfig({
 
         watch: {
@@ -39,18 +26,13 @@ module.exports = function(grunt) {
             }
         },
 
-        templates: {
+        undertmpl: {
             tmpl: {
                 src: [
                     WEB_APP_STATIC + 'templates/*.html'
                 ],
                 dest: WEB_APP_STATIC + 'js/App/App.Tmpl.js'
             }
-        },
-
-        // CSS Concatenation + Minification
-        mincss: {
-            'static/dist/app.min.css': css_files
         },
 
         // JavaScript Concatenation
@@ -88,7 +70,6 @@ module.exports = function(grunt) {
                     WEB_APP_STATIC + 'js/App/View/Book.js',
                     WEB_APP_STATIC + 'js/App/View/BookList.js',
 
-
                     WEB_APP_STATIC + 'js/App/Controller/Route.js',
                     WEB_APP_STATIC + 'js/App/Collection/Project.js',
                     WEB_APP_STATIC + 'js/App/Collection/Network.js',
@@ -101,8 +82,34 @@ module.exports = function(grunt) {
                 ],
                 dest: WEB_APP_STATIC + 'dist/app.concat.js'
             },
+
+            // CSS concatenation
             css: {
-                src: css_files,
+                src: [
+                    WEB_APP_STATIC + 'css/base/reset.css',
+                    WEB_APP_STATIC + 'css/base/common.css',
+                    WEB_APP_STATIC + 'css/base/typography.css',
+                    WEB_APP_STATIC + 'css/base/buttons.css',
+                    WEB_APP_STATIC + 'css/base/sprites.css',
+                    WEB_APP_STATIC + 'css/libs/isotope.css',
+                    WEB_APP_STATIC + 'css/layout/responsive.css',
+                    WEB_APP_STATIC + 'css/layout/header.css',
+                    WEB_APP_STATIC + 'css/layout/footer.css',
+                    WEB_APP_STATIC + 'css/layout/canvas.css',
+                    WEB_APP_STATIC + 'css/layout/modal.css',
+                    WEB_APP_STATIC + 'css/modules/tile.css',
+                    WEB_APP_STATIC + 'css/modules/tileList.css',
+                    WEB_APP_STATIC + 'css/modules/techList.css',
+                    WEB_APP_STATIC + 'css/modules/tipList.css',
+                    WEB_APP_STATIC + 'css/modules/networkList.css',
+                    WEB_APP_STATIC + 'css/modules/bookList.css',
+                    WEB_APP_STATIC + 'css/modules/projects.css',
+                    WEB_APP_STATIC + 'css/modules/project.css',
+                    WEB_APP_STATIC + 'css/modules/about.css',
+                    WEB_APP_STATIC + 'css/modules/welcome.css',
+                    WEB_APP_STATIC + 'css/modules/fourohfour.css',
+                    WEB_APP_STATIC + 'css/layout/tileSize.css'
+                ],
                 dest: WEB_APP_STATIC + 'dist/app.concat.css'
             }
         },
@@ -115,67 +122,36 @@ module.exports = function(grunt) {
             }
         },
 
+        // CSS Concatenation + Minification
+        mincss: {
+            'static/dist/app.min.css': '<config:concat.css.dest>'
+        },
+
         mocha: {
             tests: {
                 src: ['tests/tests.html'],
                 options: {
                     run: true
                 }
-
             }
         }
 
     });
 
 
-    // Plugins
     grunt.loadNpmTasks('grunt-contrib');
     grunt.loadNpmTasks('grunt-mocha');
+    grunt.loadNpmTasks('grunt-undertmpl');
+    grunt.loadNpmTasks('grunt-welcome');
 
-    // Tasks
-    grunt.registerTask('dev', 'templates css js');
+    grunt.registerTask('dev', 'undertmpl css js');
     grunt.registerTask('css', 'concat:css mincss');
-    grunt.registerTask('js', 'concat:js min mocha:tests');
-    grunt.registerTask('tmpl', 'templates js');
+    grunt.registerTask('js', 'concat:js min');
+    grunt.registerTask('tmpl', 'undertmpl js');
 
     grunt.registerTask("sass", "SASS -> CSS", function() {
         proc.exec("compass compile ./static");
     });
-
-    grunt.registerTask('welcome', function() {
-        var text =
-'                _/                                           \n' +
-'               _/                                            \n' +
-'          _/_/_/    _/_/      _/_/_/    _/_/    _/    _/     \n' +
-'       _/    _/  _/_/_/_/  _/        _/    _/  _/    _/      \n' +
-'      _/    _/  _/        _/        _/    _/  _/    _/       \n' +
-'       _/_/_/    _/_/_/    _/_/_/    _/_/      _/_/_/        \n' +
-'                                                  _/         \n' +
-'                                               _/_/';
-        console.log(text);
-    });
-
-    grunt.registerMultiTask('templates', 'Compile underscore templates to JS', function() {
-        var files = grunt.file.expandFiles(this.file.src),
-            dest = this.file.dest || '.';
-        var src = grunt.helper('templates', files);
-        grunt.file.write(dest, src);
-        console.log("underscore templates rendered as JavaScript");
-    });
-
-    grunt.registerHelper('templates', function(files) {
-        var output = 'App.module("Tmpl", function(Tmpl, App) {\n';
-
-        files.map( function(filepath) {
-            output += '    Tmpl.' +
-            filepath.replace('static/templates/', '').replace('.html', '') + '=' + _.template(grunt.task.directive(filepath, grunt.file.read)).source.replace(/(\n|\t|\\n|\\t)/gi, '').replace(/\s+/gi, ' ') + ';\n';
-        });
-
-        output += '});';
-
-        return output;
-    });
-
 
 
 };
