@@ -15,9 +15,9 @@ module.exports = function(grunt) {
                 files: WEB_APP_STATIC + 'css/**/*.css',
                 tasks: 'css'
             },
-            sass: {
+            scss: {
                 files: WEB_APP_STATIC + 'scss/**/*.scss',
-                tasks: 'sass'
+                tasks: 'scss'
             },
             templates: {
                 files: [ WEB_APP_STATIC + 'templates/**/*.html' ],
@@ -152,7 +152,7 @@ module.exports = function(grunt) {
     grunt.registerTask('js', 'concat:js min');
     grunt.registerTask('tmpl', 'undertmpl js');
 
-    grunt.registerTask("sass", "SASS -> CSS", function() {
+    grunt.registerTask("scss", "SCSS -> CSS", function() {
         proc.exec("compass compile ./static");
     });
 
