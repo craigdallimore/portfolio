@@ -1,7 +1,7 @@
 @import "_mixins";
 
 body > footer {
-    border-top: 1px solid #dedede;
+    border-top: 1px solid $body-bdr;
     padding: 30px 0 60px;
 
     li {
@@ -13,7 +13,7 @@ body > footer {
     }
 
     a {
-        color: #fff;
+        color: $footer-text;
         font-size: 1.2em;
         &:hover {
             text-decoration: underline;

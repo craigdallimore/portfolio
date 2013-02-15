@@ -12,8 +12,8 @@ body {
         size: 0.9em;
         family: RobotoLight, arial, helvetica, sans-serif;
     }
-    color: #aaa;
-    background: #333;
+    color: $body-text;
+    background: $body-bg;
 }
 
 .clearfix:after {
@@ -38,10 +38,10 @@ body {
 
 noscript {
     p {
-        background: #f00;
+        background: $noscript-bg;
         padding: 7px 2px 2px;
         display: block;
-        color: #fff;
+        color: $noscript-text;
         text-align: center;
         font-weight: bold;
     }

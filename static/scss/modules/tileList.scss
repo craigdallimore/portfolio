@@ -13,6 +13,9 @@
                 }
                 .back {
                     z-index: 10;
+                    a {
+                        @include transform(translate(0,0));
+                    }
                 }
             }
             .info {
@@ -32,14 +35,13 @@
     > li {
         overflow: hidden;
         margin-top: 10px;
-        background: #fff;
+        background: $tile-bg;
     }
     h2 {
         margin: 10px 10px 10px 110px;
 
     }
     h3 {
-        color: #888;
         margin: 10px 10px 10px 110px;
     }
     img {

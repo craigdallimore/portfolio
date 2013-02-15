@@ -1,7 +1,7 @@
 @import '_mixins';
 
 .tile {
-    @include transition(all, 350ms);
+    @include transition(all, 300ms);
     @include transformStyle(preserve-3d);
     position: relative;
     
@@ -19,11 +19,16 @@
 
     .back {
         @include transform(rotateY(-180deg));
-        background: #fff;
+        background: $tile-bg;
+        overflow: hidden;
         a {
-            color: #999;
+            @include transition(all, 400ms);
+            @include transform(translate(100px, 0));
             margin: 25px 0 0 45px;
             display: block;
+            &:last-child {
+                @include transition(all, 450ms);
+            }
         }
     }
 

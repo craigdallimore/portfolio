@@ -13,7 +13,6 @@
 
     h2 {
         @include transition(all, 300ms);
-        color: #aaa;
         font-size: 1.5em;
         margin-top: 20px;
         &:first-child {
@@ -39,7 +38,6 @@
             position: relative;
             float: left;
             clear: left;
-            color: #666;
             span {
                 position: absolute;
                 width: 30px;

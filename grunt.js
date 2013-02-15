@@ -107,7 +107,6 @@ module.exports = function(grunt) {
                     WEB_APP_STATIC + 'css/modules/tipList.css',
                     WEB_APP_STATIC + 'css/modules/networkList.css',
                     WEB_APP_STATIC + 'css/modules/bookList.css',
-                    WEB_APP_STATIC + 'css/modules/projects.css',
                     WEB_APP_STATIC + 'css/modules/project.css',
                     WEB_APP_STATIC + 'css/modules/about.css',
                     WEB_APP_STATIC + 'css/modules/welcome.css',

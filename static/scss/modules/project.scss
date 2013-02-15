@@ -10,7 +10,6 @@
     p {
         clear: right;
         line-height: 1.7em;
-        color: #666;
     }
     .projectTransformed {
         @include transform(rotateY(15deg));

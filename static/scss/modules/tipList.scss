@@ -10,9 +10,9 @@
         }
     }
     .tip {
-        color: #fff;
+        color: $tip-text;
         position: absolute;
-        background: #333;
+        background: $tip-bg;
         bottom: -43px;
         left: 25px;
         display: none;
@@ -24,7 +24,7 @@
         &:after {
             content: "";
             display: block;
-            border: 5px solid #333;
+            border: 5px solid $tip-bg;
             border-right: 5px solid transparent;
             border-top: 5px solid transparent;
             width: 0;

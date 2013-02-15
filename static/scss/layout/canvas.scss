@@ -3,12 +3,12 @@
 #canvas {
     @include transition(height, 400ms);
     min-height: 400px;
-    background: #f0f0f0;
+    background: $canvas-bg;
     nav {
         overflow: hidden;
         a {
             position: relative;
-            color: #666;
+            color: $nav-text;
         }
         span {
             position: absolute;
