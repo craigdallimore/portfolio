@@ -1,7 +1,9 @@
 @import "compass/css3/transform";
+@import "_colors";
 
 // Box Sixes
 $grid: 12px;
+$tile-grid: 100px;
 
 // Border
 @mixin border-radius($values) {
@@ -68,3 +70,29 @@ $grid: 12px;
     -ms-transition-delay: $delay;
     transition-delay: $delay;
 }
+
+@mixin transformStyle($style) {
+    -webkit-transform-style: $style;
+    -moz-transform-style: $style;
+    -ms-transform-style: $style;
+    -o-transform-style: $style;
+    transform-style: $style;
+}
+
+
+@mixin backface-visibility($value) {
+    -webkit-backface-visibility: $value;
+    -moz-backface-visibility: $value;
+    -ms-backface-visibility: $value;
+    -o-backface-visibility: $value;
+    backface-visibility: $value;
+}
+
+@mixin perspective($value) {
+    -webkit-perspective: $value;
+    -moz-perspective: $value;
+    -ms-perspective: $value;
+    -o-perspective: $value;
+    perspective: $value;
+}
+

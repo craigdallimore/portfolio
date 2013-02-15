@@ -101,6 +101,7 @@ module.exports = function(grunt) {
                     WEB_APP_STATIC + 'css/layout/canvas.css',
                     WEB_APP_STATIC + 'css/layout/modal.css',
                     WEB_APP_STATIC + 'css/modules/tile.css',
+                    WEB_APP_STATIC + 'css/modules/info.css',
                     WEB_APP_STATIC + 'css/modules/tileList.css',
                     WEB_APP_STATIC + 'css/modules/techList.css',
                     WEB_APP_STATIC + 'css/modules/tipList.css',
@@ -151,6 +152,8 @@ module.exports = function(grunt) {
     grunt.registerTask('css', 'concat:css mincss');
     grunt.registerTask('js', 'concat:js min');
     grunt.registerTask('tmpl', 'undertmpl js');
+
+    var proc = require('child_process');
 
     grunt.registerTask("scss", "SCSS -> CSS", function() {
         proc.exec("compass compile ./static");

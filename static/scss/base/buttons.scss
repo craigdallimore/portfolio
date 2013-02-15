@@ -3,3 +3,13 @@
 .btn-back, .btn-prev, .btn-next, .btn-link {
     display: block;
 }
+.btn-enlarge, .btn-shrink, .btn-more, .btn-external {
+    span {
+        width: 30px;
+        height: 30px;
+        position: absolute;
+        left: -35px;
+        top: -10px;
+    }
+    position: relative;
+}

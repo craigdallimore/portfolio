@@ -2,18 +2,29 @@
 
 .tileList {
     > li {
-        margin: 5px;
+        @include perspective(1000);
+        margin: 10px 10px 0 0;
         display: block;
-        background-color: #fff;
         &:hover {
             .tile {
-                .info {
-                    top: 50%;
+                @include transform(rotateY(-180deg));
+                .front {
+                    z-index: 0;
+                }
+                .back {
+                    z-index: 10;
                 }
             }
+            .info {
+                top: 50%;
+            }
+        }
+        .transformed {
+            @include transform(rotateY(-90deg) translate(120px, 0));
+            opacity:0;
         }
     }
-} 
+}
 .js .tileListNoJS {
     display: none;
 }

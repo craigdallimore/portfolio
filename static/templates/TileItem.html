@@ -1,12 +1,17 @@
-<div class="tile">
-    <div class="info">
-        <a class="icon-zoom-in-30 enlarge" href="#" title="Enlarge">Enlarge</a>
-        <a class="icon-zoom-out-30 shrink" href="#" title="Shrink">shrinkk</a>
-        <% if (href_available) { %>
-        <a class="icon-link-30 external" href="//<%= href %>", target="_blank" title="Visit <%= title %>">Link</a>
-        <% } %>
-        <a class="icon-info-30 more" href="/projects/<%= label %>" title="More information">More</a>
-        <h3><%= title %></h3>
-        <h4><%= short_description %></h4>
+<div class="tile transformed">
+    <div class="front"></div>
+    <div class="back">
+        <a class="btn-enlarge" href="#" title="Enlarge"><span class="icon-zoom-in-30"></span>Enlarge</a>
+        <a class="btn-more" href="/projects/<%= label %>" title="More information"><span class="icon-info-30"></span>More</a>
     </div>
+</div>
+
+<div class="info">
+    <a class="btn-shrink" href="#" title="Shrink"><span class="icon-zoom-out-30"></span>Shrink</a>
+    <% if (href_available) { %>
+    <a class="btn-external" href="//<%= href %>", target="_blank" title="Visit <%= title %>"><span class="icon-link-30"></span>Link</a>
+    <% } %>
+    <a class="btn-more" href="/projects/<%= label %>" title="More information"><span class="icon-info-30"></span>More</a>
+    <h3><%= title %></h3>
+    <h4><%= short_description %></h4>
 </div>

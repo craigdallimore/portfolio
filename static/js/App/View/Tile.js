@@ -5,22 +5,19 @@ App.module('View', function(View, App, Backbone, Marionette, $, _) {
         template: 'TileItem',
 
         events: {
-            'click .more': 'navigate',
-            'click .enlarge': 'enlarge',
-            'click .shrink': 'shrink'
+            'click .btn-more': 'navigate',
+            'click .btn-enlarge': 'enlarge',
+            'click .btn-shrink': 'shrink'
         },
 
         initialize: function() {
-            var spriteClass = 's-' + this.model.get('label') + '-1x1';
-            this.$el.addClass('ts-1 ' + spriteClass);
-            this.spriteClass = spriteClass;
+            this.$el.addClass('ts-1');
         },
 
         shrink: function(e) {
             e.preventDefault();
 
-            var spriteClass = this.spriteClass;
-            this.$el.removeClass('ts-3').addClass('ts-1 ' + spriteClass);
+            this.$el.removeClass('ts-3').addClass('ts-1');
             this.$el.find('img').remove();
             App.vent.trigger('item:resized', this.model);
         },
@@ -29,18 +26,19 @@ App.module('View', function(View, App, Backbone, Marionette, $, _) {
             e.preventDefault();
 
             var imgPath = '/static/img/3x3/' + this.model.get('label') + '-3x3.png',
-                $img = $('<img>', { src: imgPath }),
-                spriteClass = this.spriteClass;
+                $img = $('<img>', { src: imgPath });
 
-            this.$el.removeClass('ts-1 ' + spriteClass).addClass('ts-3');
+            this.$el.removeClass('ts-1').addClass('ts-3');
             this.$el.find('.info').before($img);
+
             App.vent.trigger('item:resized', this.model);
         },
 
         render: function() {
             var json = this.model.toJSON();
             var html = App.Tmpl[this.template](json);
-            this.$el.html(html);
+
+            this.$el.html(html).find('.front').addClass('s-' + this.model.get('label') + '-1x1');
         },
 
         navigate: function(e) {

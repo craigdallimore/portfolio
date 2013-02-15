@@ -55,11 +55,13 @@ App.module('View', function(View, App, Backbone, Marionette, $, _) {
                     columnWidth: 110
                 }
             });
-            this.$el.find('.tileList').children().each(this.fadeInChild);
+            this.$el.find('.tileList').children().each(this.animateIn);
         },
 
-        fadeInChild: function(idx, child) {
-            $(child).hide().fadeIn(idx * 100);
+        animateIn: function(idx, child) {
+            setTimeout(function() {
+                $(child).find('.tile').removeClass('transformed');
+            }, idx * 100);
         },
 
         render: function() {
