@@ -48,6 +48,8 @@
 @media all and (min-width: 960px), all and (min-device-width: 960px) {
 
     .about {
+        width: 960px;
+        margin: 0 auto;
         figure {
             height: 150px;
             float: right;
@@ -62,6 +64,8 @@
 @media all and (max-width: 800px), all and (max-device-width: 800px) {
 
     .about {
+        margin: 0;
+        width: 100%;
         figure {
             float: left;
             height: 3em;

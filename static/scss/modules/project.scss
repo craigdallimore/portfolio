@@ -12,7 +12,7 @@
         line-height: 1.8em;
     }
     .projectTransformed {
-        @include transform(rotateY(15deg));
+        @include transform(translate(100px, 0));
         opacity: 0;
     }
     .content {
@@ -27,6 +27,8 @@
 @media all and (min-width: 960px), all and (min-device-width: 960px) {
 
     .project {
+        width: 960px;
+        margin: 0 auto;
         p {
             margin: 5px 0 0 0;
         }
@@ -38,6 +40,8 @@
 @media all and (max-width: 800px), all and (max-device-width: 800px) {
 
     .project {
+        margin: 0;
+        width: 100%;
         img {
             width: 100%;
             margin: 1em 1em 0;

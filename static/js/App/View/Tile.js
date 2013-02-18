@@ -26,12 +26,18 @@ App.module('View', function(View, App, Backbone, Marionette, $, _) {
             e.preventDefault();
 
             var imgPath = '/static/img/3x3/' + this.model.get('label') + '-3x3.png',
-                $img = $('<img>', { src: imgPath });
+                $img = $('<img>', {
+                    src: imgPath,
+                    'class': 'transformed'
+                });
 
             this.$el.removeClass('ts-1').addClass('ts-3');
             this.$el.find('.info').before($img);
 
-            App.vent.trigger('item:resized', this.model);
+            _.defer(function(){
+                $img.removeClass('transformed');
+                App.vent.trigger('item:resized', this.model);
+            });
         },
 
         render: function() {

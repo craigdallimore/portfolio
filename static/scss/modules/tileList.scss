@@ -1,6 +1,7 @@
 @import '_mixins';
 
 .tileList {
+    @include transition(all, 300ms);
     > li {
         @include perspective(1000);
         margin: 10px 10px 0 0;
@@ -27,6 +28,10 @@
             opacity:0;
         }
     }
+    img {
+        @include transition(all, 300ms);
+    }
+
 }
 .js .tileListNoJS {
     display: none;

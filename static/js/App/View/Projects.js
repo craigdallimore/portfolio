@@ -71,7 +71,7 @@ App.module('View', function(View, App, Backbone, Marionette, $, _) {
         },
 
         onClose: function() {
-            App.vent.off('item:enlarged');
+            App.vent.off('item:resized');
         }
 
     });

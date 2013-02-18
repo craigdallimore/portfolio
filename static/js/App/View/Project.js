@@ -1,4 +1,5 @@
 App.module('View', function(View, App, Backbone, Marionette, $, _) {
+
     View.Project = App.View.AnimationView.extend({
         tagName: 'section',
         className: 'project',
@@ -21,10 +22,12 @@ App.module('View', function(View, App, Backbone, Marionette, $, _) {
                 var height = self.$el.outerHeight();
                 App.vent.trigger('canvas:height', height);
             });
+            return this;
         },
 
         animate: function() {
             this.$el.find('.projectTransformed').removeClass('projectTransformed');
+            return this;
         },
 
         navigateBack: function(e) {
@@ -58,9 +61,11 @@ App.module('View', function(View, App, Backbone, Marionette, $, _) {
 
             this.$el.html(html);
             _.defer(function() {
-                self.animate();
-                self.setSize();
-                self.animateList('.transformed', 150);
+
+                self.animate()
+                    .setSize()
+                    .animateList('.transformed', 150);
+
             });
         }
     });
