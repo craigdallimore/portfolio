@@ -1,8 +1,9 @@
 $color-01: #fff;
-$color-04: #eee;
-$color-05: #aaa;
 $color-02: #666;
-$color-03: #333;
+$color-03: #3c4e5a; //#333;
+$color-04: #28353d; //#eee;
+$color-05: #aaa;
+$color-06: #3bb2d0;
 
 // NOSCRIPT
 $noscript-text: #fff;
@@ -11,18 +12,19 @@ $noscript-bg: #f00;
 // TEXT COLOURS
 $footer-text: $color-01;
 $tip-text: $color-01;
-$info-text: $color-02;
-$nav-text: $color-02;
-$body-text: $color-02;
-$link-text: $color-03;
-$heading-text: $color-05;
+$info-text: $color-01;
+$nav-text: $color-01;
+$body-text: $color-01;
+$link-text: $color-01;
+$link-hover-text: $color-06;
+$heading-text: $color-01;
 
 // BACKGROUNDS
-$tile-bg: $color-01;
+$tile-bg: $color-06;
 $body-bg: $color-03;
 $tip-bg: $color-03;
 $canvas-bg: $color-04;
-$info-bg: $color-04;
+$info-bg: $color-06;
 
 // BORDERS
 $body-bdr: #dedede; 

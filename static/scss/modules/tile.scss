@@ -29,6 +29,9 @@
             &:last-child {
                 @include transition(all, 450ms);
             }
+            &:hover {
+                color: $link-text;
+            }
         }
     }
 

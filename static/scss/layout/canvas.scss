@@ -4,11 +4,12 @@
     @include transition(height, 400ms);
     min-height: 400px;
     background: $canvas-bg;
+    padding-bottom: 30px;
     nav {
         overflow: hidden;
         a {
             position: relative;
-            color: $nav-text;
+            font-size: 1.8em;
         }
         span {
             position: absolute;
@@ -16,7 +17,50 @@
             height: 30px;
             display: block;
             left: -40px;
-            top: -10px;
+            top: -5px;
         }
     }
 }
+
+
+@media all and (min-width: 960px), all and (min-device-width: 960px) {
+
+    #canvas {
+        nav {
+            padding: 50px 0 14px;
+            a {
+                float: left;
+                margin: 0 0 0 60px;
+                &:first-child {
+                    margin: 0 0 0 40px;
+                }
+            }
+        }
+    }
+
+}
+
+@media all and (max-width: 800px), all and (max-device-width: 800px) {
+
+    #canvas {
+        padding: 1em 0;
+        nav {
+            margin: 0;
+            padding: 1em;
+            a {
+                margin: 1.5em 1em 0 3em;
+                clear: left;
+                &:first-child {
+                    margin: 0 1em 0 3em;
+                }
+            }
+        }
+    }
+
+}
+
+
+
+
+
+

@@ -2,7 +2,6 @@
 
 .bookList {
     li {
-        @include box-shadow('0 2px 6px rgba(0,0,0,0.2)');
         float: left;
         margin: 10px 0 0 10px;
         a {

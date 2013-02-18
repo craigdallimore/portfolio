@@ -67,6 +67,7 @@ module.exports = function(grunt) {
                     WEB_APP_STATIC + 'js/App/View/TechList.js',
 
                     WEB_APP_STATIC + 'js/App/View/Tile.js',
+                    WEB_APP_STATIC + 'js/App/View/TileEmpty.js',
                     WEB_APP_STATIC + 'js/App/View/Projects.js',
                     WEB_APP_STATIC + 'js/App/View/Network.js',
                     WEB_APP_STATIC + 'js/App/View/NetworkList.js',
@@ -95,7 +96,6 @@ module.exports = function(grunt) {
                     WEB_APP_STATIC + 'css/base/buttons.css',
                     WEB_APP_STATIC + 'css/base/sprites.css',
                     WEB_APP_STATIC + 'css/libs/isotope.css',
-                    WEB_APP_STATIC + 'css/layout/responsive.css',
                     WEB_APP_STATIC + 'css/layout/header.css',
                     WEB_APP_STATIC + 'css/layout/footer.css',
                     WEB_APP_STATIC + 'css/layout/canvas.css',
@@ -109,6 +109,7 @@ module.exports = function(grunt) {
                     WEB_APP_STATIC + 'css/modules/bookList.css',
                     WEB_APP_STATIC + 'css/modules/project.css',
                     WEB_APP_STATIC + 'css/modules/about.css',
+                    WEB_APP_STATIC + 'css/modules/profile.css',
                     WEB_APP_STATIC + 'css/modules/welcome.css',
                     WEB_APP_STATIC + 'css/modules/fourohfour.css',
                     WEB_APP_STATIC + 'css/layout/tileSize.css'

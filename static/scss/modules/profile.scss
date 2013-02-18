@@ -1,0 +1,32 @@
+@import "_mixins";
+
+.profile {
+    figure {
+        border: 1px solid $body-bg;
+        display: block;
+        width: 150px;
+    }    
+    a {
+        @include transition(all, 300ms);
+        margin: 18px 0 0 40px;
+        line-height: 1.1em;
+        font-size: 1.4em;
+        position: relative;
+        float: left;
+        clear: left;
+        span {
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            left: -40px;
+            top: -4px;
+        }
+        &:first-child {
+            margin-top: 10px;
+        }
+    }
+    .transformed {
+        @include transform(translate(50px, 0) rotateY(90deg));
+        opacity: 0;
+    }
+}

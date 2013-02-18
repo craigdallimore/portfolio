@@ -43,7 +43,8 @@ App.module('Controller', function(Controller, App, Backbone, Marionette, $, _) {
             var footer = new App.View.Footer();
             var projects = new App.View.Projects({
                 collection: App.ProjectCollection,
-                itemView: App.View.Tile
+                itemView: App.View.Tile,
+                emptyView: App.View.TileEmpty
             });
             App.canvas.show(projects);
             App.header.show(header);

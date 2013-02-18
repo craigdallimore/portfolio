@@ -28,13 +28,16 @@
 a {
     text-decoration: none;
     color: $link-text;
+    &:hover {
+        color: $link-hover-text;
+    }
 }
 
 h1 {
-    font-size: 4em;
+    font-size: 3.8em;
 }
 h2 {
-    font-size: 1.3em;
+    font-size: 1.8em;
 }
 h1, h2, h3, h4 {
     color: $heading-text;

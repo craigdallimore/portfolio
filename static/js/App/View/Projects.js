@@ -27,6 +27,7 @@ App.module('View', function(View, App, Backbone, Marionette, $, _) {
        },
 
         navigate: function(e) {
+
             e.preventDefault();
 
             var path = (e.target.tagName === 'SPAN') ?
@@ -61,7 +62,7 @@ App.module('View', function(View, App, Backbone, Marionette, $, _) {
         animateIn: function(idx, child) {
             setTimeout(function() {
                 $(child).find('.tile').removeClass('transformed');
-            }, idx * 100);
+            }, idx * 80);
         },
 
         render: function() {
