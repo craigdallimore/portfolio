@@ -4,6 +4,12 @@ body > footer {
     border-top: 1px solid $body-bdr;
     padding: 30px 0 60px;
 
+    > ul {
+        margin: 0 auto;
+        width: 960px;
+    
+    }
+
     li {
         float: left;
         margin-left: 10px;
@@ -21,34 +27,14 @@ body > footer {
     }
 }
 
+@media all and (max-width: $bp_1), all and (max-device-width: $bp_1) {
 
-@media all and (min-width: 960px), all and (min-device-width: 960px) {
-
-    .projects, body > #footer > ul {
-        width: 960px;
-        margin: 0 auto;
-    }
-
-
-}
-
-
-@media all and (max-width: 800px), all and (max-device-width: 800px) {
-
-    .projects,  body > #footer > ul {
-        margin: 0;
-        width: 100%;
-    }    
-        
     body > #footer > ul {
-        margin: 0 1em;
+        width: 100%;
+        margin: 0 2em;
     }
 
 }
-
-
-
-
 
 
 

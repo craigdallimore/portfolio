@@ -16,28 +16,29 @@
         @include transform(skew(30deg) translate(50px, 0));
         opacity: 0;
     }
+    hgroup {
+        padding: 46px 0 34px;
+        margin: 0 auto;
+        width: 960px;
+    }
 }
 
-@media all and (min-width: 960px), all and (min-device-width: 960px) {
+@media all and (max-width: $bp_1), all and (max-device-width: $bp_1) {
 
     #header {
-        width: 100%;
-        padding: 46px 0 34px;
         hgroup {
-            margin: 0 auto;
-            width: 960px;
+            padding: 20px 0 10px;
+            width: auto;
+            margin: 0 2em;
         }
     }
 
 }
 
-@media all and (max-width: 800px), all and (max-device-width: 800px) {
+@media all and (max-width: $bp_2), all and (max-device-width: $bp_2) {
 
     #header {
-        padding: 1em 0;
         hgroup {
-            margin: 0 1em;
-            width: auto;
             h1 {
                 font-size: 2.5em;
             }
@@ -51,7 +52,7 @@
 
 }
 
-@media all and (max-width: 480px), all and (max-device-width: 480px) {
+@media all and (max-width: $bp_3), all and (max-device-width: $bp_3) {
 
     #header {
         hgroup {

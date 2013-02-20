@@ -74,6 +74,7 @@ module.exports = function(grunt) {
                     STATIC + 'css/modules/networkList.css',
                     STATIC + 'css/modules/bookList.css',
                     STATIC + 'css/modules/project.css',
+                    STATIC + 'css/modules/projects.css',
                     STATIC + 'css/modules/about.css',
                     STATIC + 'css/modules/profile.css',
                     STATIC + 'css/modules/welcome.css',

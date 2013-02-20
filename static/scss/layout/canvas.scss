@@ -6,10 +6,16 @@
     background: $canvas-bg;
     padding-bottom: 30px;
     nav {
+        padding: 50px 0 14px;
         overflow: hidden;
         a {
-            position: relative;
             font-size: 1.8em;
+            position: relative;
+            float: left;
+            margin: 0 0 0 60px;
+            &:first-child {
+                margin: 0 0 0 40px;
+            }
         }
         span {
             position: absolute;
@@ -23,16 +29,14 @@
 }
 
 
-@media all and (min-width: 960px), all and (min-device-width: 960px) {
+@media all and (max-width: $bp_1), all and (max-device-width: $bp_1) {
 
     #canvas {
         nav {
-            padding: 50px 0 14px;
+            padding: 1.5em 0 0.5em;
             a {
-                float: left;
-                margin: 0 0 0 60px;
                 &:first-child {
-                    margin: 0 0 0 40px;
+                    margin: 0 0 0 2.5em;
                 }
             }
         }
@@ -40,27 +44,16 @@
 
 }
 
-@media all and (max-width: 800px), all and (max-device-width: 800px) {
+@media all and (max-width: $bp_2), all and (max-device-width: $bp_2) {
 
     #canvas {
-        padding: 1em 0;
         nav {
-            margin: 0;
-            padding: 1em;
             a {
-                margin: 1.5em 1em 0 3em;
                 clear: left;
-                &:first-child {
-                    margin: 0 1em 0 3em;
-                }
+                margin: 0.5em 1em 0 2.5em;
             }
         }
     }
 
 }
-
-
-
-
-
 

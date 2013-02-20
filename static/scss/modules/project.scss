@@ -2,6 +2,8 @@
 
 .project {
     @include perspective(3200px);
+    width: 960px;
+    margin: 0 auto;
     overflow: hidden;
     img {
         margin: 5px 20px 20px 0;
@@ -10,6 +12,7 @@
     p {
         clear: right;
         line-height: 1.8em;
+        margin: 5px 0 0 0;
     }
     .projectTransformed {
         @include transform(translate(100px, 0));
@@ -24,27 +27,22 @@
     display:none;
 }
 
-@media all and (min-width: 960px), all and (min-device-width: 960px) {
+@media all and (max-width: $bp_1), all and (max-device-width: $bp_1) {
 
     .project {
-        width: 960px;
-        margin: 0 auto;
-        p {
-            margin: 5px 0 0 0;
-        }
+        margin: 0;
+        width: 100%;
     }
 
 }
 
 
-@media all and (max-width: 800px), all and (max-device-width: 800px) {
+@media all and (max-width: $bp_2), all and (max-device-width: $bp_2) {
 
     .project {
-        margin: 0;
-        width: 100%;
         img {
             width: 100%;
-            margin: 1em 1em 0;
+            margin: 0 0 1em;
         }
         p {
             margin: 1em;

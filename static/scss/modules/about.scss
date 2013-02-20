@@ -1,6 +1,12 @@
 @import "_mixins";
 
 .about {
+    width: 960px;
+    margin: 0 auto;
+    figure {
+        height: 150px;
+        float: right;
+    }
     > section {
         &:first-child {
             padding-top: 50px;
@@ -28,6 +34,7 @@
     }
 
     .techList, .networkList, .bookList {
+        margin-left: -10px;
         li {
             @include transition(all, 500ms);
         }
@@ -46,42 +53,38 @@
     display: none;
 }
 
-@media all and (min-width: 960px), all and (min-device-width: 960px) {
+@media all and (max-width: $bp_1), all and (max-device-width: $bp_1) {
 
     .about {
-        width: 960px;
-        margin: 0 auto;
-        figure {
-            height: 150px;
-            float: right;
-        }
-        .techList, .bookList, .networkList {
-            margin-left: -10px;
-        }
+        width: auto;
+        margin: 0 2em;
     }
 
 }
 
-@media all and (max-width: 800px), all and (max-device-width: 800px) {
+@media all and (max-width: $bp_2), all and (max-device-width: $bp_2) {
 
     .about {
-        margin: 0;
-        width: 100%;
         figure {
             float: left;
             height: 3em;
             margin-bottom: 1em;
         }
-        h3 {
+        h2 {
             clear: left;
         }
     }
 
 }
 
-@media all and (max-width: 480px), all and (max-device-width: 480px) {
+@media all and (max-width: $bp_3), all and (max-device-width: $bp_3) {
 
     .about {
+        > section {
+            &:first-child {
+                padding-top: 1.5em;
+            }
+        }
         figure {
             float: left;
             height: 3em;

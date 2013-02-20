@@ -22,3 +22,30 @@
         font-size: 1.8em;
     }
 }
+
+
+@media all and (max-width: $bp_1), all and (max-device-width: $bp_1) {
+
+    .fourohfour {
+        padding: 10px 0;
+        width: 100%;
+        a {
+            margin: 20px 0 0 2.5em;
+        } 
+        p {
+            margin: 0 1em;
+        }
+    }
+
+}
+
+@media all and (max-width: $bp_3), all and (max-device-width: $bp_3) {
+
+    .fourohfour {
+        p {
+            font-size: 1em;
+            margin: 1em 2em;
+        }
+    }
+
+}
