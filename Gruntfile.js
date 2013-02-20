@@ -121,6 +121,10 @@ module.exports = function(grunt) {
             sass: {
                 files: STATIC + 'scss/**/*.scss',
                 tasks: 'sass'
+            },
+            templates: {
+                files: STATIC + 'templates/*.html',
+                tasks: 'undertmpl'
             }
         }
 
@@ -137,7 +141,7 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-welcome');
 
     // Tasks
-    grunt.registerTask('dev', ['js', 'css', 'welcome']);
+    grunt.registerTask('dev', ['js', 'css']);
     grunt.registerTask('js', ['concat:js', 'uglify']);
     grunt.registerTask('css', ['concat:css', 'cssmin']);
     grunt.registerTask('sass', ['compass', 'css']);
@@ -151,7 +155,7 @@ Needs welcome!
         undertmpl: {
             tmpl: {
                 src: [
-                    WEB_APP_STATIC + 'templates/*.html'
+                     + 'templates/*.html'
                 ],
                 dest: WEB_APP_STATIC + 'js/App/App.Tmpl.js'
             }
