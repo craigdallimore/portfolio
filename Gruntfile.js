@@ -15,6 +15,7 @@ module.exports = function(grunt) {
                     STATIC + 'js/mixin.js',
                     STATIC + 'js/App/App.js',
 
+                    STATIC + 'js/App/Mixin/Navigation.js',
                     STATIC + 'js/App/Model/Tech.js',
                     STATIC + 'js/App/Model/Profile.js',
                     STATIC + 'js/App/Model/Page.js',

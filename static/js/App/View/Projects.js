@@ -1,11 +1,12 @@
 App.module('View', function(View, App, Backbone, Marionette, $, _) {
 
-    View.Projects = Marionette.CompositeView.extend({
+    View.Projects = Marionette.CompositeView.extend(
+        _.extend({}, App.Mixin.Navigation, {
 
-        template: 'Projects',
-        itemViewContainer: '.tileList',
         tagName: 'section',
         className: 'projects',
+        template: 'Projects',
+        itemViewContainer: '.tileList',
         events: {
             'click nav a': 'navigate'
         },
@@ -13,7 +14,6 @@ App.module('View', function(View, App, Backbone, Marionette, $, _) {
         initialize: function(options) {
 
             App.vent.on('item:resized', _.bind(this.reLayout, this));
-            App.vent.trigger('canvas:removeheight');
 
             if (! options.DOMExists) {
 
@@ -37,16 +37,6 @@ App.module('View', function(View, App, Backbone, Marionette, $, _) {
                 self.masonify();
             }, this);
        },
-
-        navigate: function(e) {
-
-            e.preventDefault();
-
-            var path = (e.target.tagName === 'SPAN') ?
-                $(e.target).parent().attr('href') : $(e.target).attr('href');
-            App.vent.trigger('navigate', path, { trigger: true});
-
-        },
 
         bindList: function() {
 
@@ -98,7 +88,6 @@ App.module('View', function(View, App, Backbone, Marionette, $, _) {
         onClose: function() {
             App.vent.off('item:resized');
         }
-    });
-
+    }));
 
 });

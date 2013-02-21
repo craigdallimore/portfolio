@@ -1,6 +1,8 @@
 App.module('View', function(View, App, Backbone, Marionette, $, _) {
 
-    View.About = App.View.AnimationView.extend({
+    View.About = App.View.AnimationView.extend(
+        _.extend({}, App.Mixin.Navigation, {
+
         tagName: 'section',
         className: 'about',
         template: 'About',
@@ -9,24 +11,12 @@ App.module('View', function(View, App, Backbone, Marionette, $, _) {
             'click .btn-go': 'navigate'
         },
 
-        navigate: function(e) {
-            e.preventDefault();
-            var path;
-            if(e.target.tagName === 'SPAN') {
-                path = $(e.target).parent('a').attr('href');
-            } else {
-               path =  $(e.target).attr('href');
-            }
-            App.vent.trigger('navigate', path, {trigger: true});
-        },
-
         initialize: function(options) {
 
             if (!options.DOMExists) {
                 this.renderSubViews();
             }
 
-            App.vent.trigger('canvas:removeheight');
         },
 
         renderSubViews: function() {
@@ -125,5 +115,5 @@ App.module('View', function(View, App, Backbone, Marionette, $, _) {
             var html = App.Tmpl[this.template]();
             this.$el.html(html);
         }
-    });
+    }));
 });

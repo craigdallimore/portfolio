@@ -1,6 +1,7 @@
 @import "_mixins";
 
 #header {
+    background: $header-bg;
     h1 {
         @include transition(all, 100ms);
     }

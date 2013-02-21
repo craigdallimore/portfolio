@@ -2,8 +2,6 @@
 
 #canvas {
     @include transition(height, 400ms);
-    min-height: 400px;
-    background: $canvas-bg;
     padding-bottom: 30px;
     nav {
         padding: 50px 0 14px;

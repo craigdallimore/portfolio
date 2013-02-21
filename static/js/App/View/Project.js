@@ -1,41 +1,21 @@
 App.module('View', function(View, App, Backbone, Marionette, $, _) {
 
-    View.Project = App.View.AnimationView.extend({
+    View.Project = App.View.AnimationView.extend(
+        _.extend({}, App.Mixin.Navigation, {
+
         tagName: 'section',
         className: 'project',
         template: 'Project',
 
         events: {
-            'click .btn-back': 'navigateBack',
+            'click .btn-back': 'navigate',
             'click .btn-prev': 'navigatePrev',
             'click .btn-next': 'navigateNext'
-        },
-
-        setSize: function() {
-
-            var self = this,
-                img = this.$el.find('img'),
-                src = $(img).attr('src'),
-                $img = $('<img>', { src: src });
-
-            $img.load(function() {
-                var height = self.$el.outerHeight();
-                App.vent.trigger('canvas:height', height);
-            });
-            return this;
         },
 
         animate: function() {
             this.$el.find('.projectTransformed').removeClass('projectTransformed');
             return this;
-        },
-
-        navigateBack: function(e) {
-            e.preventDefault();
-            var path = (e.target.tagName === 'SPAN') ?
-                $(e.target).parent().attr('href') :
-                $(e.target).attr('href');
-            App.vent.trigger('navigate', path, {trigger: true});
         },
 
         navigateNext: function(e) {
@@ -63,10 +43,9 @@ App.module('View', function(View, App, Backbone, Marionette, $, _) {
             _.defer(function() {
 
                 self.animate()
-                    .setSize()
                     .animateList('.transformed', 150);
 
             });
         }
-    });
+    }));
 });
