@@ -3,7 +3,6 @@ App.module("Routing", function(Routing, App, Backbone, Marionette, $, _) {
     var Router = Backbone.Marionette.AppRouter.extend({
         appRoutes: {
             '':                 'index',
-            'blog/':            'blog',
             'about/':           'about',
             'projects/':        'projects',
             'projects/:name':   'project',

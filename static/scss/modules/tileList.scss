@@ -2,9 +2,11 @@
 
 .tileList {
     @include transition(all, 300ms);
+    overflow: hidden;
     > li {
         @include perspective(1000);
         margin: 10px 10px 0 0;
+        float: left;
         display: block;
         &:hover {
             .tile {
@@ -33,7 +35,7 @@
     }
 
 }
-.js .tileListNoJS {
+.no-js .btn-enlarge {
     display: none;
 }
 .tileListNoJS {

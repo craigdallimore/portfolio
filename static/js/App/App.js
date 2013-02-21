@@ -17,6 +17,8 @@ App.vent.on('canvas:height', function(height) {
 App.vent.on('canvas:removeheight', function() {
     $('#canvas').removeAttr('style');
 });
+
+
 $(document).ready(function(){
     App.start();
 });

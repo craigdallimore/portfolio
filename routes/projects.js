@@ -1,16 +1,19 @@
 exports.init = function(app, db) {
 
     app.get('/projects/:label', function(req, res) {
-        db.findOne('projects', 'label', req.params.label, function(project) {
+        db.findAll('projects', function(projects) {
 
-            if (project) {
-                res.render('project.jade', {
-                    project: project
-                });
-            } else {
-                res.render('404.jade');
-            }
+            var _ = require('underscore');
+            var project = _.find(projects, function(match) {
+                return match.label === req.params.label;
+            });
+
+            res.render('project.jade', {
+                projects: projects,
+                project: project
+            });
         });
+
     });
 
     app.get('/projects/', function(req, res) {

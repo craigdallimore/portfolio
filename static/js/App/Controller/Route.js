@@ -1,80 +1,99 @@
 App.module('Controller', function(Controller, App, Backbone, Marionette, $, _) {
 
-    Controller.Route = {
-        index: function() {
-            var index = new App.View.Index();
-            var page = new App.Model.Page({ title: 'Portfolio' });
-            var header = new App.View.Header({ model: page });
-            var footer = new App.View.Footer();
+    var DOMExists = true,
+        headerEl = $('#header hgroup'),
+        footerEl = $('#footer ul');
 
-            App.canvas.show(index);
+    function renderPage(title, contentView) {
+
+            var page = new App.Model.Page({ title: title }),
+                content,
+                header,
+                footer;
+
+            if (DOMExists) {
+                header = new App.View.Header({ model: page, el: headerEl });
+                footer = new App.View.Footer({ el: footerEl });
+
+                App.canvas.attachView(contentView);
+                App.header.attachView(header);
+                App.footer.attachView(footer);
+                DOMExists = false;
+                return;
+            }
+
+            header = new App.View.Header({ model: page });
+
+            App.canvas.show(contentView);
             App.header.show(header);
-            App.footer.show(footer);
+
+    }
+
+    Controller.Route = {
+
+        index: function() {
+            var options = DOMExists ? { el: $('#canvas .welcome') } : {},
+                view = new App.View.Index(options);
+            renderPage('Index', view);
         },
 
         about: function() {
-            var about = new App.View.About();
-            var page = new App.Model.Page({ title: 'About / Contact' });
-            var header = new App.View.Header({ model: page });
-            var footer = new App.View.Footer();
-
-            App.canvas.show(about);
-            App.header.show(header);
-            App.footer.show(footer);
-
-        },
-
-        blog: function() {
-            var blog = new App.View.Blog();
-            var page = new App.Model.Page({ title: 'Blog' });
-            var header = new App.View.Header({ model: page });
-            var footer = new App.View.Footer();
-            App.canvas.show(blog);
-            App.header.show(header);
-            App.footer.show(footer);
+            var options = DOMExists ? { el: $('#canvas .about'), DOMExists: true } : {},
+                view = new App.View.About(options);
+            renderPage('About / Contact', view);
         },
 
         projects: function() {
-            if(! App.ProjectCollection) {
-                App.ProjectCollection = new App.Collection.Project();
-            }
-            var page = new App.Model.Page({ title: 'Projects' });
-            var header = new App.View.Header({ model: page });
-            var footer = new App.View.Footer();
-            var projects = new App.View.Projects({
+
+            App.ProjectCollection = App.ProjectCollection || new App.Collection.Project();
+
+            var options = {
                 collection: App.ProjectCollection,
                 itemView: App.View.Tile,
                 emptyView: App.View.TileEmpty
+            };
+
+            if (DOMExists) _.extend(options, {
+                el: $('#canvas .projects'),
+                DOMExists: true
             });
-            App.canvas.show(projects);
-            App.header.show(header);
-            App.footer.show(footer);
+
+            var view = new App.View.Projects(options);
+            renderPage('Projects', view);
+
         },
 
         project: function(label) {
 
-            var showProject = function() {
 
-                var model = App.ProjectCollection.find( function(project) {
+            function renderProject() {
+
+                var model = App.ProjectCollection.find(function(project) {
                     return project.get('label') == label;
                 });
+                var options = {
+                    model: model
+                };
+                if (DOMExists) _.extend(options, {
+                    el: $('#canvas .project'),
+                    DOMExists: true
+                });
 
-                var project = new App.View.Project({ model: model });
-                var header = new App.View.Header({ model: model });
-                var footer = new App.View.Footer();
-
-                App.canvas.show(project);
-                App.header.show(header);
-                App.footer.show(footer);
-            };
-
-            if(! App.ProjectCollection) {
-                App.ProjectCollection = new App.Collection.Project();
-                App.ProjectCollection.fetch({ success: showProject });
-            } else {
-                showProject();
+                var view = new App.View.Project(options);
+                renderPage(model.get('title'), view);
             }
 
+
+            // Project Collection is empty
+            if (DOMExists) {
+                var projectJSON = App.Data.Projects();
+                App.ProjectCollection = new App.Collection.Project(projectJSON);
+                renderProject();
+                return;
+            }
+
+            // Project Collection is full
+            renderProject();
         }
     };
 });

@@ -20,15 +20,24 @@ App.module('View', function(View, App, Backbone, Marionette, $, _) {
             App.vent.trigger('navigate', path, {trigger: true});
         },
 
-        initialize: function() {
+        initialize: function(options) {
+
+            if (!options.DOMExists) {
+                this.renderSubViews();
+            }
+
+            App.vent.trigger('canvas:removeheight');
+        },
+
+        renderSubViews: function() {
 
             var self = this;
 
             App.addRegions({
-                profile: '#canvas .profile',
+                profile:     '#canvas .profile',
                 networkList: '#canvas .networkList',
-                bookList: '#canvas .bookList',
-                techList: '#canvas .about .techList'
+                bookList:    '#canvas .bookList',
+                techList:    '#canvas .about .techList'
             });
 
             _.defer(function() {
@@ -37,16 +46,18 @@ App.module('View', function(View, App, Backbone, Marionette, $, _) {
                 self.renderBooks();
                 self.renderTech();
                 self.animateList('h2', 150);
+                self.subViewsOpen = true;
             });
 
-            App.vent.trigger('canvas:removeheight');
         },
 
         close: function() {
-            App.profile.close();
-            App.networkList.close();
-            App.bookList.close();
-            App.techList.close();
+            if ( this.subViewsOpen ) {
+                App.profile.close();
+                App.networkList.close();
+                App.bookList.close();
+                App.techList.close();
+            }
             App.vent.off('profile:ready');
         },
 

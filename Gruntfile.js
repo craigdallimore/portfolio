@@ -147,27 +147,4 @@ module.exports = function(grunt) {
     grunt.registerTask('css', ['concat:css', 'cssmin']);
     grunt.registerTask('sass', ['compass', 'css']);
 
-/*
-Need templates
-Need mocha?
-Needs welcome!
-
-    grunt.registerTask('tmpl', 'undertmpl js');
-        undertmpl: {
-            tmpl: {
-                src: [
-                     + 'templates/*.html'
-                ],
-                dest: WEB_APP_STATIC + 'js/App/App.Tmpl.js'
-            }
-        },
-        mocha: {
-            tests: {
-                src: ['tests/tests.html'],
-                options: {
-                    run: true
-                }
-            }
-        }
-* */
 };

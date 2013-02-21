@@ -10,20 +10,32 @@ App.module('View', function(View, App, Backbone, Marionette, $, _) {
             'click nav a': 'navigate'
         },
 
-        initialize: function() {
+        initialize: function(options) {
 
             App.vent.on('item:resized', _.bind(this.reLayout, this));
             App.vent.trigger('canvas:removeheight');
 
-            if(this.collection.length) {
-                _.defer(function(self) { self.renderList(); }, this);
+            if (! options.DOMExists) {
+
+                if (this.collection.length) {
+                    _.defer(function(self) { self.renderList();  }, this);
+                    return;
+                }
+
+                this.collection.fetch({
+                    success: _.bind(this.renderList, this),
+                    silent: true
+                });
                 return;
             }
 
-            this.collection.fetch({
-                success: _.bind(this.renderList, this),
-                silent: true
-            });
+            var projectsJSON = App.Data.Projects();
+            this.collection.reset(projectsJSON);
+
+            _.defer(function(self) {
+                self.bindList();
+                self.masonify();
+            }, this);
        },
 
         navigate: function(e) {
@@ -31,11 +43,24 @@ App.module('View', function(View, App, Backbone, Marionette, $, _) {
             e.preventDefault();
 
             var path = (e.target.tagName === 'SPAN') ?
-                $(e.target).parent().attr('href') :
-                $(e.target).attr('href');
-
+                $(e.target).parent().attr('href') : $(e.target).attr('href');
             App.vent.trigger('navigate', path, { trigger: true});
 
+        },
+
+        bindList: function() {
+
+            var collection = this.collection;
+
+            this.$el.find('.tileList').children().map( function(idx, el) {
+
+                var id = $(el).attr('data-project-id'),
+                    model = collection.get(id),
+                    view = new App.View.Tile({
+                        el: el,
+                        model: model
+                    });
+            });
         },
 
         renderList: function() {
@@ -73,7 +98,6 @@ App.module('View', function(View, App, Backbone, Marionette, $, _) {
         onClose: function() {
             App.vent.off('item:resized');
         }
-
     });
 
 
