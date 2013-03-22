@@ -8,6 +8,7 @@ exports.init = function(app, db) {
                 return match.label === req.params.label;
             });
 
+
             res.render('project.jade', {
                 projects: projects,
                 project: project
