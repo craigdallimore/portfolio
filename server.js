@@ -24,6 +24,7 @@ require('./routes/projects.js').init(app, db, q);
 require('./routes/about.js').init(app, db, q);
 require('./routes/api.js').init(app, db, q);
 require('./routes/downloads.js').init(app, db, q);
+require('./routes/cms.js').init(app, db, q);
 require('./routes/index.js').init(app, db, q);
 require('./routes/404.js').init(app, db, q);
 
