@@ -1,0 +1,77 @@
+@import "_mixins";
+
+.form {
+    width: 600px;
+    margin: 45px auto 0;
+
+    input[type='text'], input[type='email'], input[type='password'] {
+        @include transition(all, 150ms);
+        @include border-radius(25px);
+        text-shadow: 0 2px 2px rgba(0,0,0,.2);
+        outline: none;
+        font-size: 1.5em;
+        padding: 10px 15px;
+        margin: 20px auto 0;
+        width: 300px;
+        border: 3px solid $bdr-input;
+        color: $clr-input;
+        display: block;
+        &:focus {
+            @include box-shadow(0 0 25px rgba(255,255,255,0.4));
+            border: 3px solid lighten($bdr-input, 10%);
+        }
+    }
+    input[type='submit'] {
+        @include transition(all, 150ms);
+        @include border-radius(25px);
+        @include linear-gradient($bg-submit, darken($bg-submit, 10%), 1);
+        outline: none;
+        -moz-outline: none;
+        color: $clr-submit;
+        cursor: pointer;
+        text-shadow: 0 -1px 0 rgba(0,0,0,.4);
+        border: 2px solid darken($bdr-submit, 5%);
+        text-align:center;
+        width: 200px;
+        margin: 20px auto;
+        display: block;
+        padding: 10px;
+        font-size: 1.5em;
+        &:focus, &:hover {
+            @include box-shadow(0 0 25px rgba(255,255,255,0.4));
+            @include linear-gradient(lighten($bg-submit, 10%), $bg-submit, 1);
+            border: 2px solid $bdr-submit;
+        }
+        &:active {
+            @include box-shadow('inset 0 2px 5px rgba(0,0,0,.3), 0 0 20px rgba(255,255,255,0.6)');
+            background: darken($bg-submit, 5%);
+        }
+        &:disabled {
+            @include box-shadow(none);
+            text-shadow: 0 -1px 0 rgba(0,0,0,.3);
+            color: #ccc;
+            background: #aaa;
+            border: 2px solid #444;
+        }
+    }
+}
+@media all and (max-width: $bp_1), all and (max-device-width: $bp_1) {
+    .form {
+        width: 100%;
+        padding: 1em 1em 0;
+        margin: 0;
+    }
+
+}
+
+@media all and (max-width: $bp_2), all and (max-device-width: $bp_2) {
+
+
+}
+
+@media all and (max-width: $bp_3), all and (max-device-width: $bp_3) {
+
+    .form {
+    }
+
+}

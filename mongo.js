@@ -9,6 +9,22 @@ var dbname = 'dev_portfolio';
 var collNames = ['projects', 'books', 'networks', 'profiles', 'technologies'];
 
 var db = new Db(dbname, server, { safe: true});
+var populateDB = function() {
+
+    var insert = function(collName) {
+
+        var json = require('./App/Data/' + collName  + '.json');
+
+        db.collection(collName, function(err, collection) {
+            collection.insert(json, function(err, result) {
+                console.log('Created sample data for ' + collName);
+            });
+        });
+    };
+
+    collNames.forEach(insert);
+
+};
 
 // Attempt to open connection to database
 db.open(function(err, db) {
@@ -35,7 +51,7 @@ db.open(function(err, db) {
 // Find all items in a collection
 exports.findAll = function(collName, callback) {
     db.collection(collName, function(err, collection) {
-        if (err) throw err;
+        if (err) { throw err; }
         collection.find().toArray(function(err, items) {
             callback(items);
         });
@@ -44,11 +60,11 @@ exports.findAll = function(collName, callback) {
 
 // Find a single item in a collection
 exports.findOne = function(collName, key, val, callback) {
-    query = {};
+    var query = {};
     query[key] = val;
     db.collection(collName, function(err, collection) {
 
-        if(err) throw err;
+        if (err) { throw err; }
         var target = q.defer();
 
         collection.findOne(query, function(err, match) {
@@ -75,19 +91,3 @@ exports.flush = function( callback ) {
     collNames.forEach(flush);
 };
 
-var populateDB = function() {
-
-    var insert = function(collName) {
-
-        var json = require('./data/' + collName  + '.json');
-
-        db.collection(collName, function(err, collection) {
-            collection.insert(json, function(err, result) {
-                console.log('Created sample data for ' + collName);
-            });
-        });
-    };
-
-    collNames.forEach(insert);
-
-};

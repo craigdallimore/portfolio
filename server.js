@@ -1,34 +1,65 @@
 var express = require('express'),
     slashes = require('connect-slashes'),
     http = require('http'),
+    mongoose = require('mongoose'),
+    errorHandler = require('./middleware/errorHandler'),
+    App = express(),
+    server = http.createServer(App);
 
-    db = require('./mongo.js'),
-    q = require('q'),
+App.Model = {
+    Project: require('./App/Model/Project').Model(mongoose),
+    Profile: require('./App/Model/Profile').Model(mongoose),
+    Network: require('./App/Model/Network').Model(mongoose),
+    Book: require('./App/Model/Book').Model(mongoose),
+    Tech: require('./App/Model/Tech').Model(mongoose)
+};
 
-    app = express(),
-    server = http.createServer(app);
+App.Controller = {
+    Post: require('./App/Controller/Post').init(App),
+    Put: require('./App/Controller/Put').init(App),
+    Get: require('./App/Controller/Get').init(App),
+    Delete: require('./App/Controller/Delete').init(App)
+};
 
-app.configure(function() {
-    app.set('views', __dirname + '/views');
-    app.use('view engine', 'jade');
-    app.use('/static', express.static(__dirname + '/static'));
-    app.use(express.static(__dirname));
-    app.use(slashes());
+mongoose.connect('mongodb://localhost/test');
+mongoose.connection.on('error', console.error.bind(console, 'Connection Error:'));
+mongoose.connection.once('open', function() {
+
+    console.log('DB opened');
+
 });
 
-app.configure('development', function() {
-    app.use(express.logger('dev'));
-    app.locals.pretty = true;
+App.configure(function() {
+    App.use(express.compress());
+    App.use(express.bodyParser());
+    App.set('views', __dirname + '/App/View');
+    App.use('view engine', 'jade'); App.use('/static', express.static(__dirname + '/static'));
+    App.use(express.static(__dirname));
+    require('./App/Route/API/Project').init(App);
+    require('./App/Route/API/Profile').init(App);
+    require('./App/Route/API/Network').init(App);
+    require('./App/Route/API/Book').init(App);
+    require('./App/Route/API/Tech').init(App);
+
+    require('./App/Route/Index').init(App);
+    require('./App/Route/About.js').init(App);
+    require('./App/Route/Projects.js').init(App);
+    //require('./routes/downloads.js').init(app, db, q);
+    //require('./routes/index.js').init(app, db, q);
+    //require('./routes/404.js').init(app, db, q);
+    //require('./App/Route/CMS').init(App);
+
+    App.use(slashes());
+    App.use(errorHandler());
 });
-require('./routes/projects.js').init(app, db, q);
-require('./routes/about.js').init(app, db, q);
-require('./routes/api.js').init(app, db, q);
-require('./routes/downloads.js').init(app, db, q);
-require('./routes/cms.js').init(app, db, q);
-require('./routes/index.js').init(app, db, q);
-require('./routes/404.js').init(app, db, q);
 
+App.configure('development', function() {
+    App.use(express.logger('dev'));
+    App.locals.pretty = true;
+});
+module.exports = App;
 
-
-server.listen(process.env.VCAP_APP_PORT || 3000);
-console.log("Listening on port %d", server.address().port);
+if (!module.parent) {
+    server.listen(process.env.VCAP_APP_PORT || 3000);
+    console.log("Listening on port %d", server.address().port);
+}

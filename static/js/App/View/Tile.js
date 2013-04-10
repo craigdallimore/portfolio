@@ -34,7 +34,7 @@ App.module('View', function(View, App, Backbone, Marionette, $, _) {
             this.$el.removeClass('ts-1').addClass('ts-3');
             this.$el.find('.info').before($img);
 
-            _.defer(function(){
+            _.defer(function() {
                 $img.removeClass('transformed');
                 App.vent.trigger('item:resized', this.model);
             });

@@ -1,0 +1,38 @@
+extend layout
+block content
+    header#header
+        hgroup
+            h1 #{project.title}
+            h2 #{project.short_description}
+    section#canvas
+        section.project
+            nav
+                a.btn-back(href='/projects/')
+                    span.icon-up-30
+                    | Projects
+                a.btn-prev(href="/prev")
+                    span.icon-left-30
+                    | Previous
+                a.btn-next(href="/next")
+                    span.icon-right-30
+                    | Next
+                if project.href_available
+                    a.btn-link(href="/" + project.href, target="_blank")
+                        span.icon-link-30
+                        | Visit #{project.title}
+            div.content
+                img(src='/static/img/featured/' + project.label + '.png', alt='Featured image')
+                p #{project.long_description}
+                ul.techList
+                    for tech, i in project.technology
+                        li(class='logo-' + tech)
+
+
+
+block bootstrap
+    script
+        App.module("Data", function(Data, App) {
+          Data.Projects = function() {
+            return !{JSON.stringify(projects)};
+          };
+        });
