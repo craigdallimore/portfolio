@@ -1,5 +1,6 @@
 module.exports = function() {
     return function(err, req, res, next) {
+
         if(err) {
             switch(err.name) {
                 case 'ValidationError':

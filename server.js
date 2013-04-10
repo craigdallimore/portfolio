@@ -35,6 +35,7 @@ App.configure(function() {
     App.set('views', __dirname + '/App/View');
     App.use('view engine', 'jade'); App.use('/static', express.static(__dirname + '/static'));
     App.use(express.static(__dirname));
+
     require('./App/Route/API/Project').init(App);
     require('./App/Route/API/Profile').init(App);
     require('./App/Route/API/Network').init(App);
@@ -45,9 +46,8 @@ App.configure(function() {
     require('./App/Route/About.js').init(App);
     require('./App/Route/Projects.js').init(App);
     //require('./routes/downloads.js').init(app, db, q);
-    //require('./routes/index.js').init(app, db, q);
-    //require('./routes/404.js').init(app, db, q);
     //require('./App/Route/CMS').init(App);
+    require('./App/Route/404.js').init(App);
 
     App.use(slashes());
     App.use(errorHandler());

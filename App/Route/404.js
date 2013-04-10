@@ -1,8 +1,16 @@
-exports.init = function(app, js) {
+exports.init = function(App) {
 
-    //404
-    app.get('*', function(req, res) {
-        res.render('404.jade');
+    App.use(function(req, res, next) {
+        res.status(404);
+
+        if (req.accepts('html')) {
+            return res.render('404.jade');
+        }
+        if (req.accepts('json')) {
+            return res.send({ error: 'Not Found' });
+        }
+        res.type('text').send('Not found');
     });
+
 
 };
