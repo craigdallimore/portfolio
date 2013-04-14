@@ -1,0 +1,28 @@
+extend layout
+block title
+    title Register
+
+block content
+    header#header
+        hgroup
+            h1 Register
+
+    section#canvas
+        section.cms
+
+            if error
+                p #{error}
+
+            form.form.form-register(action='/register', method='POST')
+                fieldset
+                    input#email(type='email', placeholder='email', name='email', value=email)
+                fieldset
+                    input#password(type='password', placeholder='password', name='password')
+                fieldset
+                    input#confirm-password(type='password', placeholder=' confirm password', name='confirm_password')
+                fieldset
+                    input#submit(type='submit', value='Register')
+
+            p Maybe you want to log in instead?
+                a(href='/login') Log in
+                | here

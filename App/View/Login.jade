@@ -1,0 +1,27 @@
+extend layout
+block title
+    title Log In
+
+block content
+    header#header
+        hgroup
+            h1 Log In
+
+    section#canvas
+        section.login
+
+            if error
+                p #{error}
+
+            form.form.form-login(action='/login', method='POST')
+                fieldset
+                    input#email(type='email', placeholder='email', name='email')
+                fieldset
+                    input#password(type='password', placeholder='password', name='password')
+                fieldset
+                    input#submit(type='submit', value='Log in')
+
+            p Maybe you want to register instead?
+                a(href='/register') Register
+                | here
+
