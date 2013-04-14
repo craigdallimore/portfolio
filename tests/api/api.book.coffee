@@ -1,12 +1,3 @@
-###
-Mocha / Chai test
-prerequisites:
-    mocha testrunner
-    chai assertion library
-    server is running on port 3000
-    db is opened
-###
-
 url = 'http://localhost:3000/api/'
 http = require 'request'
 chai = require '../../node_modules/chai/chai'

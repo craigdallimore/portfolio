@@ -1,64 +1,113 @@
 var express = require('express'),
-    slashes = require('connect-slashes'),
     http = require('http'),
     mongoose = require('mongoose'),
+    slashes = require('connect-slashes'),
+    Route = require('./App/Route'),
+    API = Route.API,
+    flash = require('connect-flash'),
+    passport = require('passport'),
+    LocalStrategy = require('passport-local').Strategy,
     errorHandler = require('./middleware/errorHandler'),
+    notFoundHandler = require('./middleware/notFoundHandler'),
     App = express(),
     server = http.createServer(App);
 
-App.Model = {
-    Project: require('./App/Model/Project').Model(mongoose),
-    Profile: require('./App/Model/Profile').Model(mongoose),
-    Network: require('./App/Model/Network').Model(mongoose),
-    Book: require('./App/Model/Book').Model(mongoose),
-    Tech: require('./App/Model/Tech').Model(mongoose)
-};
-
-App.Controller = {
-    Post: require('./App/Controller/Post').init(App),
-    Put: require('./App/Controller/Put').init(App),
-    Get: require('./App/Controller/Get').init(App),
-    Delete: require('./App/Controller/Delete').init(App)
-};
-
+// Open Database
 mongoose.connect('mongodb://localhost/test');
 mongoose.connection.on('error', console.error.bind(console, 'Connection Error:'));
 mongoose.connection.once('open', function() {
-
     console.log('DB opened');
-
 });
 
+// Connect configuration
 App.configure(function() {
     App.use(express.compress());
-    App.use(express.bodyParser());
     App.set('views', __dirname + '/App/View');
-    App.use('view engine', 'jade'); App.use('/static', express.static(__dirname + '/static'));
+    App.use('view engine', 'jade');
+    App.use(express.bodyParser());
+    App.use(express.cookieParser());
+    //App.use(express.session({ secret: 'ghost chips' }));
+    //App.use(passport.initialize());
+    //App.use(passport.session());
+    App.use(App.router);
+
+    App.use('/static', express.static(__dirname + '/static'));
     App.use(express.static(__dirname));
 
-    require('./App/Route/API/Project').init(App);
-    require('./App/Route/API/Profile').init(App);
-    require('./App/Route/API/Network').init(App);
-    require('./App/Route/API/Book').init(App);
-    require('./App/Route/API/Tech').init(App);
+    App.use(function(req, res, next) {
+        res.status(404);
 
-    require('./App/Route/Index').init(App);
-    require('./App/Route/About.js').init(App);
-    require('./App/Route/Projects.js').init(App);
-    //require('./routes/downloads.js').init(app, db, q);
-    //require('./App/Route/CMS').init(App);
-    require('./App/Route/404.js').init(App);
+        if (req.accepts('html')) {
+            return res.render('404.jade');
+        }
+        if (req.accepts('json')) {
+            return res.send({ error: 'Not Found' });
+        }
+        res.type('text').send('Not found');
+    });
 
     App.use(slashes());
-    App.use(errorHandler());
+    App.use(notFoundHandler);
+    App.use(errorHandler);
 });
 
 App.configure('development', function() {
     App.use(express.logger('dev'));
     App.locals.pretty = true;
 });
+
+
+App.get('/api/book',            API.Book.findAll);
+App.get('/api/book/:id',        API.Book.findById);
+App.post('/api/book',           API.Book.create);
+App.put('/api/book/:id',        API.Book.update);
+App.delete('/api/book/:id',     API.Book.removeById);
+App.delete('/api/book',         API.Book.removeAll);
+
+App.get('/api/network',         API.Network.findAll);
+App.get('/api/network/:id',     API.Network.findById);
+App.post('/api/network',        API.Network.create);
+App.put('/api/network/:id',     API.Network.update);
+App.delete('/api/network/:id',  API.Network.removeById);
+App.delete('/api/network',      API.Network.removeAll);
+
+App.get('/api/profile',                 API.Profile.findAll);
+App.get('/api/profile/:id',             API.Profile.findById);
+App.get('/api/profile/label/:label',    API.Profile.findByLabel);
+App.post('/api/profile',                API.Profile.create);
+App.put('/api/profile/:id',             API.Profile.update);
+App.delete('/api/profile/:id',          API.Profile.removeById);
+App.delete('/api/profile',              API.Profile.removeAll);
+
+App.get('/api/project',                 API.Project.findAll);
+App.get('/api/project/:id',             API.Project.findById);
+App.get('/api/project/label/:label',    API.Project.findByLabel);
+App.put('/api/project/:id',             API.Project.update);
+App.post('/api/project/',               API.Project.create);
+App.delete('/api/project/:id',          API.Project.removeById);
+App.delete('/api/project',              API.Project.removeAll);
+
+App.get('/api/tech',            API.Tech.findAll);
+App.get('/api/tech/:id',        API.Tech.findById);
+App.put('/api/tech/:id',        API.Tech.update);
+App.post('/api/tech/',          API.Tech.create);
+App.delete('/api/tech/:id',     API.Tech.removeById);
+App.delete('/api/tech',         API.Tech.removeAll);
+
+App.get('/',                    Route.Index);
+App.get('/about',               Route.About);
+App.get('/projects',            Route.Projects);
+App.get('/projects/:label',     Route.Project);
+App.get('/cms',                 Route.CMS);
+App.get('/login',               Route.Login.get);
+App.post('/login',              Route.Login.post);
+App.get('/register',            Route.Register.get);
+App.post('/register',           Route.Register.post);
+
+// App is available for testing
 module.exports = App;
 
+// Start server
 if (!module.parent) {
     server.listen(process.env.VCAP_APP_PORT || 3000);
     console.log("Listening on port %d", server.address().port);

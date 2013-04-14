@@ -4,17 +4,6 @@
     "version": "0.0.2",
     "private": true,
     "dependencies": {
-        "gm": "1.8.1",
-        "grunt": "0.4.1",
-        "grunt-contrib-compass": "0.1.2",
-        "grunt-contrib-concat": "0.1.2",
-        "grunt-contrib-cssmin": "0.4.1",
-        "grunt-contrib-uglify": "0.1.1",
-        "grunt-contrib-watch": "0.2.0",
-        "grunt-mocha": "0.1.7",
-        "mocha": "1.9.0",
-        "chai": "1.5.0",
-        "casper-chai": "0.1.6",
         "jade": "0.27.7",
         "mongodb": "1.2.2",
         "mongoose": "3.6.0",
@@ -22,5 +11,19 @@
         "underscore": "1.4.2",
         "express": "3.x",
         "connect-slashes": "*"
+    },
+    "devDependencies": {
+        "grunt": "0.4.1",
+        "grunt-contrib-compass": "0.1.2",
+        "grunt-contrib-concat": "0.1.2",
+        "grunt-contrib-cssmin": "0.4.1",
+        "grunt-contrib-uglify": "0.1.1",
+        "grunt-contrib-watch": "0.2.0",
+        "grunt-mocha": "0.1.7",
+        "gm": "1.8.1",
+        "chai": "1.5.0",
+        "mocha": "1.9.0",
+        "casper-chai": "0.1.6",
+        "request": "2.16.6"
     }
 }
