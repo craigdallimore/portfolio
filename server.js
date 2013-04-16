@@ -26,26 +26,15 @@ App.configure(function() {
     App.use('view engine', 'jade');
     App.use(express.bodyParser());
     App.use(express.cookieParser());
-    //App.use(express.session({ secret: 'ghost chips' }));
-    //App.use(passport.initialize());
-    //App.use(passport.session());
+    App.use(express.session({ secret: 'ghost chips' }));
+    App.use(passport.initialize());
+    App.use(passport.session());
+    App.use(flash());
     App.use(App.router);
+
 
     App.use('/static', express.static(__dirname + '/static'));
     App.use(express.static(__dirname));
-
-    App.use(function(req, res, next) {
-        res.status(404);
-
-        if (req.accepts('html')) {
-            return res.render('404.jade');
-        }
-        if (req.accepts('json')) {
-            return res.send({ error: 'Not Found' });
-        }
-        res.type('text').send('Not found');
-    });
-
     App.use(slashes());
     App.use(notFoundHandler);
     App.use(errorHandler);
@@ -56,7 +45,7 @@ App.configure('development', function() {
     App.locals.pretty = true;
 });
 
-
+// Routes
 App.get('/api/book',            API.Book.findAll);
 App.get('/api/book/:id',        API.Book.findById);
 App.post('/api/book',           API.Book.create);
@@ -94,6 +83,8 @@ App.post('/api/tech/',          API.Tech.create);
 App.delete('/api/tech/:id',     API.Tech.removeById);
 App.delete('/api/tech',         API.Tech.removeAll);
 
+App.delete('/api/user',         API.User.removeAll);
+
 App.get('/',                    Route.Index);
 App.get('/about',               Route.About);
 App.get('/projects',            Route.Projects);
@@ -101,6 +92,7 @@ App.get('/projects/:label',     Route.Project);
 App.get('/cms',                 Route.CMS);
 App.get('/login',               Route.Login.get);
 App.post('/login',              Route.Login.post);
+App.get('/logout',              Route.Logout);
 App.get('/register',            Route.Register.get);
 App.post('/register',           Route.Register.post);
 

@@ -1,17 +1,17 @@
 var Q = require('q');
 
-exports.Register = function(user) {
+exports.Register = function(User) {
 
     var newUserPromise = function(credentials) {
-        console.log('new user promise..');
 
-        var deferred = Q.defer();
+        var deferred = Q.defer(),
+            newUser = new User(credentials);
 
-        user.save(function(err, newUser) {
+        newUser.save(function(err, item) {
             if(err) {
                 deferred.reject(err);
             } else {
-                deferred.resolve(newUser);
+                deferred.resolve(item);
             }
         });
 
@@ -38,6 +38,7 @@ exports.Register = function(user) {
                 email = req.body.email;
                 password = req.body.password;
                 confirmPassword = req.body.confirm_password;
+                console.log('req.body:\n', req.body);
             }
 
             if (!email && !password && !confirmPassword) {
@@ -52,16 +53,22 @@ exports.Register = function(user) {
 
             if (email && password && (password === confirmPassword)) {
 
-                user.findOne().exec().then(function(foundUser) {
+                return User.findOne().exec().then(function(foundUser) {
 
                     if (foundUser) {
                         message = 'Cannot register more than one user, you want to log in instead.';
                         console.log('Cannot register more than one user');
+                        foundUser.remove();
+                        res.render('Register.jade', {
+                            email: email,
+                            error: 'Only one registered user can exist at a time.'
+                        });
+
                     } else {
                         newUserPromise({ email: email, password: password }).then(function(newUser) {
-                            console.log('New user' + newUser);
+                            console.log('New user:\n' + newUser);
                             console.log('Log them in');
-                            res.redirect('/cms/');
+                            return res.redirect('/cms/');
                         }, next);
                     }
 
@@ -75,7 +82,5 @@ exports.Register = function(user) {
             });
         }
     };
-
-
 
 };

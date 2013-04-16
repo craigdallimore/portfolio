@@ -1,4 +1,7 @@
 extend layout
+block title
+    title Index
+
 block content
     header#header
         hgroup
@@ -6,6 +9,9 @@ block content
 
     section#canvas
         section.welcome
+            if message
+                p #{message}
+
             a(href="/projects/")
                 span.icon-right-30
                 | Projects

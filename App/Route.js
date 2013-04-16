@@ -22,4 +22,5 @@ exports.Projects =  require('./Controller/Projects').Projects(project);
 exports.Project =   require('./Controller/Project').Project(project);
 exports.CMS =       require('./Controller/CMS').CMS(user);
 exports.Login =     require('./Controller/Login').Login(user);
+exports.Logout =    require('./Controller/Logout').Logout;
 exports.Register =  require('./Controller/Register').Register(user);

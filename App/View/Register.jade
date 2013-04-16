@@ -10,8 +10,8 @@ block content
     section#canvas
         section.cms
 
-            if error
-                p #{error}
+            if message
+                p #{message}
 
             form.form.form-register(action='/register', method='POST')
                 fieldset
