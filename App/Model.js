@@ -1,4 +1,43 @@
-var mongoose = require('mongoose');
+var mongoose = require('mongoose'),
+    bcrypt = require('bcrypt-nodejs');
+
+exports.user = function() {
+
+    var schema = mongoose.Schema({
+        email: { type: String, required: true, unique: true },
+        password: { type: String, required: true }
+    });
+
+    schema.pre('save', function(next) {
+
+        var user = this;
+
+        if (!user.isModified('password')) { return next(); }
+
+        bcrypt.genSalt(11, function(err, salt) {
+            if (err) { return next(err); }
+
+            bcrypt.hash(user.password, salt, null, function(err, hash) {
+                if (err) { return next(err); }
+                user.password = hash;
+                next();
+            });
+        });
+
+    });
+
+    schema.methods.comparePassword = function(candidatePassword, callback) {
+        var user = this;
+        bcrypt.compare(candidatePassword, user.password, function(err, isMatch) {
+            if (err) { return callback(err); }
+            callback(null, isMatch);
+        });
+
+    };
+
+    return mongoose.model('User', schema);
+
+};
 
 exports.book = function() {
 
@@ -74,13 +113,3 @@ exports.tech = function() {
 
 };
 
-exports.user = function() {
-
-    var schema = mongoose.Schema({
-        email: { type: String, required: true },
-        password: { type: String, required: true }
-    });
-
-    return mongoose.model('User', schema);
-
-};

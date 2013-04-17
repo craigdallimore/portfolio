@@ -6,6 +6,7 @@
 #    db is opened
 
 casper = require('casper').create()
+testUser = require('./tests/dummy/user').user
 baseUrl = 'http://localhost:3000/'
 url = baseUrl + 'login'
 
@@ -52,12 +53,12 @@ casper.then ->
     @echo 'Login submit button was clicked, url is now ' + currentUrl
     @test.assertEqual currentUrl, url, 'The user should still be on the login screen'
     @test.assertTitle 'Log In', 'Page title is Log In'
-    @test.assertTextExists 'No Credentials', 'There should be an No Credentials message showing'
+    @test.assertTextExists 'Missing Credentials', 'There should be an Missing Credentials message showing'
 
     @echo 'Testing invalid email', 'INFO_BAR'
     @fill '.form-login',
-        'email': 'notanemail',
-        'password': 'nope'
+        email: 'notanemail'
+        password: 'nope'
     , true
 
 casper.then ->
@@ -70,17 +71,17 @@ casper.then ->
 
     @echo 'Testing valid credentials', 'INFO_BAR'
     @fill '.form-login',
-        'email': 'test@plusplusplusplus.com',
-        'password': 'testtest'
+        email: testUser.email
+        password: testUser.password
     , true
 
 casper.then ->
     currentUrl = @getCurrentUrl()
 
     @echo 'Login submit button was clicked, url is now ' + currentUrl
-    @test.assertEqual currentUrl, baseUrl + 'cms', 'The user should now be on the cms screen'
+    @test.assertEqual currentUrl, baseUrl + 'cms/', 'The user should now be on the cms screen'
     @test.assertTitle 'CMS', 'Page title is CMS'
-    # TODO LOGIN input is sanitized
+    @test.assertTextExists 'You have logged in', 'There should be a message confirming the log in'
 
 # Light the fuse
 casper.run ->

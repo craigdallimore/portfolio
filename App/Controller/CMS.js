@@ -1,5 +1,13 @@
 exports.CMS = function(User) {
     return function(req, res, next) {
-        res.render('cms.jade');
+
+        if(req.isAuthenticated()) {
+            res.render('cms.jade', {
+                message: req.flash('message')
+            });
+        } else {
+            res.redirect('/login');
+        }
+
     };
 };

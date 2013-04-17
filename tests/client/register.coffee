@@ -4,8 +4,10 @@
 #    casperjs
 #    server is running on port 3000
 #    db is opened
+#    no users exist in the database
 
 casper = require('casper').create()
+testUser = require('./tests/dummy/user').user
 baseUrl = 'http://localhost:3000/'
 url = baseUrl + 'register'
 
@@ -54,37 +56,37 @@ casper.then ->
     @echo 'Register submit button was clicked, url is now ' + currentUrl
     @test.assertEqual currentUrl, url, 'The user should still be on the register screen'
     @test.assertTitle 'Register', 'Page title is Register'
-    @test.assertTextExists 'No Credentials', 'There should be an No Credentials message showing'
+    @test.assertTextExists 'Missing Credentials', 'There should be an Missing Credentials message showing'
 
-    @echo 'Testing valid registration!', 'INFO_BAR'
+casper.then ->
+    @echo 'Testing mismatched passwords', 'INFO_BAR'
     @fill '.form-register',
-        'email': 'test@plusplusplusplus.com',
-        'password': 'testtest',
-        'confirm_password': 'testtest'
+        email: testUser.email
+        password: testUser.password
+        confirm_password: 'nope'
     , true
 
 casper.then ->
     currentUrl = @getCurrentUrl()
 
-    @echo 'New credentials were added, URL is now ' + currentUrl
+    @echo 'Register submit button was clicked, url is now ' + currentUrl
+    @test.assertEqual currentUrl, url, 'The user should still be on the register screen'
+    @test.assertTitle 'Register', 'Page title is Register'
+    @test.assertTextExists 'Passwords did not match', 'There should be a Passwords do not match message showing'
+
+    @echo 'Testing valid registration!', 'INFO_BAR'
+    @fill '.form-register',
+        email: testUser.email
+        password: testUser.password
+        confirm_password: testUser.password
+    , true
+
+casper.then ->
+    currentUrl = @getCurrentUrl()
+
+    @echo 'New credentials were posted, URL is now ' + currentUrl
     @test.assertTitle 'CMS', 'Title is now CMS'
-
-
-    # mismatched passwords
-    # existing email
-    # invalid email?
-    # Passwords are hashed
-    # REGISTER input is sanitized
-    # REGISTER users can be deleted
-    # REGISTER users must have email and password
-    # REGISTER passwords are hashed (dunno where PP comes in here)
-    # Only one person can be registered at a time. Me.
-    # successful register / login will start a session
-    # successful login will show the CMS controls after a login at /CMS
-    # user can log out
-    # logged out users see the login / register forms at /cms
-    # when users are logged out, their session will close
-
+    @test.assertTextExists 'You have logged in', 'There should be a message confirming the log in'
 
 # Light the fuse
 casper.run ->

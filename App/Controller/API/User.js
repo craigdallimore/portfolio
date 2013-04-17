@@ -7,6 +7,7 @@ exports.User = function(Model) {
     ep = new EndPoint(Model, fields);
 
     return {
+        findAll:        ep.findAll,
         removeAll:      ep.removeAll
     };
 

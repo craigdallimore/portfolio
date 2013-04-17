@@ -2,10 +2,10 @@ var express = require('express'),
     http = require('http'),
     mongoose = require('mongoose'),
     slashes = require('connect-slashes'),
-    Route = require('./App/Route'),
-    API = Route.API,
     flash = require('connect-flash'),
     passport = require('passport'),
+    Route = require('./App/Route').init(passport),
+    API = Route.API,
     LocalStrategy = require('passport-local').Strategy,
     errorHandler = require('./middleware/errorHandler'),
     notFoundHandler = require('./middleware/notFoundHandler'),
@@ -83,6 +83,7 @@ App.post('/api/tech/',          API.Tech.create);
 App.delete('/api/tech/:id',     API.Tech.removeById);
 App.delete('/api/tech',         API.Tech.removeAll);
 
+App.get('/api/user',            API.User.findAll);
 App.delete('/api/user',         API.User.removeAll);
 
 App.get('/',                    Route.Index);

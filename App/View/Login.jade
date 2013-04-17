@@ -10,12 +10,12 @@ block content
     section#canvas
         section.login
 
-            if error
-                p #{error}
+            if message
+                p #{message}
 
             form.form.form-login(action='/login', method='POST')
                 fieldset
-                    input#email(type='email', placeholder='email', name='email')
+                    input#email(type='email', placeholder='email', name='email', value=email)
                 fieldset
                     input#password(type='password', placeholder='password', name='password')
                 fieldset
