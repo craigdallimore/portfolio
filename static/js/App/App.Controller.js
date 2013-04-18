@@ -58,6 +58,14 @@ App.module('Controller', function(Controller, App, Backbone, Marionette, $, _) {
         });
     };
 
+    Controller.Register = function() {
+        renderPage({
+            viewName: 'Register',
+            bootstrapConfig: { el: $('#canvas .register') },
+            title: 'Register'
+        });
+    };
+
     Controller.Projects = function() {
         App.ProjectCollection = App.ProjectCollection || new App.Collection.Project();
         renderPage({

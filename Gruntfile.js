@@ -5,57 +5,57 @@ module.exports = function(grunt) {
     // Project config
     grunt.initConfig({
         dirs: {
-
+            dist:       './static/dist/',
+            js:         './static/js/',
+            app:        './static/js/App/',
+            mixin:      './static/js/App/Mixin/',
+            collection: './static/js/App/Collection/',
+            view:       './static/js/App/View/',
+            model:      './static/js/App/Model/'
         },
         concat: {
             js: {
                 src: [
-                    STATIC + 'js/libs/backbone.collection.iterator.js',
-                    STATIC + 'js/libs/jquery.isotope.min.js',
-                    STATIC + 'js/mixin.js',
-                    STATIC + 'js/App/App.js',
-
-                    STATIC + 'js/App/Mixin/Navigation.js',
-                    STATIC + 'js/App/Model/Tech.js',
-                    STATIC + 'js/App/Model/Profile.js',
-                    STATIC + 'js/App/Model/Page.js',
-                    STATIC + 'js/App/Model/Project.js',
-                    STATIC + 'js/App/Model/Network.js',
-                    STATIC + 'js/App/Model/Book.js',
-
-                    STATIC + 'js/App/View/AnimationView.js',
-                    STATIC + 'js/App/View/CMS.js',
-                    STATIC + 'js/App/View/Index.js',
-                    STATIC + 'js/App/View/Header.js',
-                    STATIC + 'js/App/View/Footer.js',
-                    STATIC + 'js/App/View/About.js',
-                    STATIC + 'js/App/View/Blog.js',
-                    STATIC + 'js/App/View/Project.js',
-                    STATIC + 'js/App/View/Profile.js',
-
-                    STATIC + 'js/App/View/Tech.js',
-                    STATIC + 'js/App/View/TechList.js',
-
-                    STATIC + 'js/App/View/Tile.js',
-                    STATIC + 'js/App/View/TileEmpty.js',
-                    STATIC + 'js/App/View/Projects.js',
-                    STATIC + 'js/App/View/Network.js',
-                    STATIC + 'js/App/View/NetworkList.js',
-                    STATIC + 'js/App/View/Book.js',
-                    STATIC + 'js/App/View/BookList.js',
-
-                    //STATIC + 'js/App/Controller/Route.js',
-                    STATIC + 'js/App/Collection/Project.js',
-                    STATIC + 'js/App/Collection/Network.js',
-                    STATIC + 'js/App/Collection/Book.js',
-                    STATIC + 'js/App/Collection/Tech.js',
-
-                    STATIC + 'js/App/App.Tmpl.js',
-                    STATIC + 'js/App/App.Data.js',
-                    STATIC + 'js/App/App.Controller.js',
-                    STATIC + 'js/App/App.Routing.js'
+                    '<%= dirs.js %>libs/backbone.collection.iterator.js',
+                    '<%= dirs.js %>libs/jquery.isotope.min.js',
+                    '<%= dirs.js %>mixin.js',
+                    '<%= dirs.app %>App.js',
+                    '<%= dirs.mixin %>Navigation.js',
+                    '<%= dirs.model %>Tech.js',
+                    '<%= dirs.model %>Profile.js',
+                    '<%= dirs.model %>Page.js',
+                    '<%= dirs.model %>Project.js',
+                    '<%= dirs.model %>Network.js',
+                    '<%= dirs.model %>Book.js',
+                    '<%= dirs.view %>AnimationView.js',
+                    '<%= dirs.view %>About.js',
+                    '<%= dirs.view %>Blog.js',
+                    '<%= dirs.view %>Book.js',
+                    '<%= dirs.view %>BookList.js',
+                    '<%= dirs.view %>CMS.js',
+                    '<%= dirs.view %>Footer.js',
+                    '<%= dirs.view %>Header.js',
+                    '<%= dirs.view %>Index.js',
+                    '<%= dirs.view %>Network.js',
+                    '<%= dirs.view %>NetworkList.js',
+                    '<%= dirs.view %>Profile.js',
+                    '<%= dirs.view %>Project.js',
+                    '<%= dirs.view %>Projects.js',
+                    '<%= dirs.view %>Register.js',
+                    '<%= dirs.view %>Tech.js',
+                    '<%= dirs.view %>TechList.js',
+                    '<%= dirs.view %>Tile.js',
+                    '<%= dirs.view %>TileEmpty.js',
+                    '<%= dirs.collection %>Project.js',
+                    '<%= dirs.collection %>Network.js',
+                    '<%= dirs.collection %>Book.js',
+                    '<%= dirs.collection %>Tech.js',
+                    '<%= dirs.app %>App.Tmpl.js',
+                    '<%= dirs.app %>App.Data.js',
+                    '<%= dirs.app %>App.Controller.js',
+                    '<%= dirs.app %>App.Routing.js'
                 ],
-                dest: STATIC + 'dist/app.concat.js'
+                dest: '<%= dirs.dist  %>app.concat.js'
             },
             css: {
                 src: [
@@ -87,19 +87,19 @@ module.exports = function(grunt) {
                     STATIC + 'css/modules/fourohfour.css',
                     STATIC + 'css/layout/tileSize.css'
                 ],
-                dest: STATIC + 'dist/app.concat.css'
+                dest: '<%= dirs.dist %>app.concat.css'
             }
         },
         uglify: {
             files: {
                 src: ['<%= concat.js.dest %>'],
-                dest: STATIC + 'dist/app.min.js'
+                dest: '<%= dirs.dist %>app.min.js'
             }
         },
         cssmin: {
             files: {
                 src: ['<%= concat.css.dest %>'],
-                dest: STATIC + 'dist/app.min.css'
+                dest: '<%= dirs.dist %>app.min.css'
             }
         },
         compass: {

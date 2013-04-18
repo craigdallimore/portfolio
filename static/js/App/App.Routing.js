@@ -6,6 +6,7 @@ App.module("Routing", function(Routing, App, Backbone, Marionette, $, _) {
             appRoutes: {
                 '':                 'Index',
                 'cms/':             'CMS',
+                'register':         'Register',
                 'about/':           'About',
                 'projects/':        'Projects',
                 'projects/:name':   'Project',
