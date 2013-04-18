@@ -10,7 +10,10 @@ App.addRegions({
 App.vent.on('title:change', function(title) {
     document.title = title;
 });
+App.vent.on('start', function() {
+    App.Routing.start();
+});
 
-$(document).ready(function(){
+$(document).ready(function() {
     App.start();
 });

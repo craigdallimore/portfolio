@@ -24,6 +24,7 @@ module.exports = function(grunt) {
                     STATIC + 'js/App/Model/Book.js',
 
                     STATIC + 'js/App/View/AnimationView.js',
+                    STATIC + 'js/App/View/CMS.js',
                     STATIC + 'js/App/View/Index.js',
                     STATIC + 'js/App/View/Header.js',
                     STATIC + 'js/App/View/Footer.js',
@@ -43,7 +44,7 @@ module.exports = function(grunt) {
                     STATIC + 'js/App/View/Book.js',
                     STATIC + 'js/App/View/BookList.js',
 
-                    STATIC + 'js/App/Controller/Route.js',
+                    //STATIC + 'js/App/Controller/Route.js',
                     STATIC + 'js/App/Collection/Project.js',
                     STATIC + 'js/App/Collection/Network.js',
                     STATIC + 'js/App/Collection/Book.js',
@@ -51,6 +52,7 @@ module.exports = function(grunt) {
 
                     STATIC + 'js/App/App.Tmpl.js',
                     STATIC + 'js/App/App.Data.js',
+                    STATIC + 'js/App/App.Controller.js',
                     STATIC + 'js/App/App.Routing.js'
                 ],
                 dest: STATIC + 'dist/app.concat.js'

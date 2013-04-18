@@ -2,3 +2,4 @@
 /static/dist/
 /static/css/
 *.sh
+*.swp

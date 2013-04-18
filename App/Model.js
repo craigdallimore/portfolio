@@ -5,6 +5,7 @@ exports.user = function() {
 
     var schema = mongoose.Schema({
         email: { type: String, required: true, unique: true },
+        apikey: { type: String, unique: true },
         password: { type: String, required: true }
     });
 
@@ -21,6 +22,22 @@ exports.user = function() {
                 if (err) { return next(err); }
                 user.password = hash;
                 next();
+            });
+
+        });
+
+    });
+
+    schema.post('save', function(user) {
+        if(user.apikey) { return; }
+
+        var date = new Date().toString();
+
+        bcrypt.genSalt(11, function(err, salt) {
+
+            bcrypt.hash(date, salt, null, function(err, hash) {
+                user.apikey = hash;
+                user.save();
             });
         });
 

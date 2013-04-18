@@ -17,7 +17,6 @@ casper.start logoutUrl, ->
 
     @echo 'Testing CMS', 'INFO_BAR'
     @test.info 'Logging out'
-    # Should redirect to /login if there is no authenticated user session
     @test.assertEqual currentUrl, baseUrl, 'URL is the one expected'
 
 casper.thenOpen url, ->
@@ -38,15 +37,40 @@ casper.then ->
     @test.info 'Submitted login form, url is ' + currentUrl
     @test.assertEquals url, currentUrl, 'URL is the one expected'
     @test.assertTitle 'CMS', 'Page title is CMS'
+    @test.assertTextExists 'apikey', 'API key is shown'
 
-
-
-    # successful register / login will start a session
-    # successful login will show the CMS controls after a login at /CMS
     # user can log out
-    # logged out users see the login / register forms at /cms
-    # when users are logged out, their session will close
 
+    # user can get their apikey
+
+    # user can create books
+    # user can read books
+    # user can update books
+    # user can delete books
+
+    # user can create tech
+    # user can read tech
+    # user can update tech
+    # user can delete tech
+
+    # user can create projects
+    # user can read projects
+    # user can update projects
+    # user can delete projects
+
+    # user can create networks
+    # user can read networks
+    # user can update networks
+    # user can delete networks
+
+    # user can delete their account
+
+    # NEW BEHAVIOURS
+
+    # user can create new posts in markdown
+    # user can read a list of posts
+    # user can update a post
+    # user can delete a post
 
 # Light the fuse
 casper.run ->

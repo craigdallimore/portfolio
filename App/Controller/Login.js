@@ -28,6 +28,7 @@ exports.Login = function(User, passport) {
                 req.logIn(user, function(err) {
                     if (err) { return next(err); }
                     req.flash('message', 'You have logged in');
+                    req.flash('apikey', user.apikey);
                     return res.redirect('/cms/');
                 });
             })(req, res, next);

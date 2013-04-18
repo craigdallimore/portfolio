@@ -9,6 +9,7 @@
         "mongoose": "3.6.0",
         "passport": "0.1.16",
         "passport-local": "0.1.6",
+        "passport-localapikey": "0.0.3",
         "bcrypt-nodejs": "0.0.3",
         "q": "0.8.12",
         "underscore": "1.4.2",

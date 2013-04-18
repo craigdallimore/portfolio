@@ -24,26 +24,22 @@ describe 'API/book', ->
         author: "Andrew Hunt, David Thomas",
 
     # TODO authentication
-    #
-    # ok so what does this even mean?
-    # Send an email/key and log in?
-    # How do sessions work in node?
-    # I want to log in, then successfully use the api
-    # Password should just be an envirnoment variable
-    # SO RAD
-    # 1. Create log in form
-    # 2. Create new user (up to ONE, hah)
-    # 3. User can log in / log out
-    # 4. Only a logged in user can upload / delete / put to the api
-    #
-    #
-    #
     # TODO sanitization
-    # ok so everything that is input must be sanitized
-    # no script tags
-    # no angle brackets
 
     describe 'POST a new ' + itemName, ->
+
+        it 'should return an error if the user is not logged in', (done) ->
+            http.post
+                url: path
+                form: mockResource
+                (err, res, body) ->
+                    if err
+                        done err
+
+                    result = JSON.parse body
+                    res.statusCode.should.be.equal 403
+
+                    done()
 
         it 'should be successful', (done) ->
 

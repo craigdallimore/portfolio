@@ -1,20 +1,19 @@
 App.module("Routing", function(Routing, App, Backbone, Marionette, $, _) {
 
-    var Router = Backbone.Marionette.AppRouter.extend({
-        appRoutes: {
-            '':                 'index',
-            'about/':           'about',
-            'projects/':        'projects',
-            'projects/:name':   'project',
-            'projects/:name/':  'project'
-        }
-    });
-
     Routing.start = function() {
 
-        App.Router = new Router({
-            controller: App.Controller.Route
+        var Router = Backbone.Marionette.AppRouter.extend({
+            appRoutes: {
+                '':                 'Index',
+                'cms/':             'CMS',
+                'about/':           'About',
+                'projects/':        'Projects',
+                'projects/:name':   'Project',
+                'projects/:name/':  'Project'
+            }
         });
+
+        App.Router = new Router({ controller: App.Controller });
 
         App.vent.on('navigate', App.Router.navigate);
 
@@ -28,9 +27,5 @@ App.module("Routing", function(Routing, App, Backbone, Marionette, $, _) {
             });
         }
     };
-
-    App.vent.on('start', function(){
-        Routing.start();
-    });
 
 });

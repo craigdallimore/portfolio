@@ -1,4 +1,7 @@
 extend layout
+block title
+    title Projects
+
 block content
     header#header
         hgroup
@@ -16,7 +19,7 @@ block content
                         div.tile
                             div.front(class= "s-" + project.label + "-1x1")
                             div.back
-                                a.btn-enlarge(title = "Enlarge")
+                                a.btn-enlarge(href="#", title = "Enlarge")
                                     span.icon-zoom-in-30
                                     | Enlarge
                                 a.btn-more(href="/projects/" + project.label, title="More Information" )
