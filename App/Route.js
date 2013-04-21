@@ -39,21 +39,21 @@ exports.init = function(passport) {
 
     return {
         API : {
-            Book:           require('./Controller/API/Book').Book(Book),
-            Tech:           require('./Controller/API/Tech').Tech(Tech),
-            Network:        require('./Controller/API/Network').Network(Network),
-            Profile:        require('./Controller/API/Profile').Profile(Profile),
-            Project:        require('./Controller/API/Project').Project(Project),
-            User:           require('./Controller/API/User').User(User)
+            Book:       require('./Controller/API/Book').Book(Book),
+            Tech:       require('./Controller/API/Tech').Tech(Tech),
+            Network:    require('./Controller/API/Network').Network(Network),
+            Profile:    require('./Controller/API/Profile').Profile(Profile),
+            Project:    require('./Controller/API/Project').Project(Project),
+            User:       require('./Controller/API/User').User(User)
         },
-        Index :     require('./Controller/Index').Index,
-        About :     require('./Controller/About').About({ book: Book, network: Network, profile: Profile, tech: Tech }),
-        Projects :  require('./Controller/Projects').Projects(Project),
-        Project :   require('./Controller/Project').Project(Project),
-        CMS :       require('./Controller/CMS').CMS(User),
-        Login :     require('./Controller/Login').Login(User, passport),
-        Logout :    require('./Controller/Logout').Logout,
-        Register :  require('./Controller/Register').Register(User, passport)
+        Index:          require('./Controller/Index').Index,
+        About:          require('./Controller/About').About({ Book: Book, Network: Network, Profile: Profile, Tech: Tech }),
+        Projects:       require('./Controller/Projects').Projects(Project),
+        Project:        require('./Controller/Project').Project(Project),
+        CMS:            require('./Controller/CMS').CMS({ User: User, Book: Book }),
+        Login:          require('./Controller/Login').Login(User, passport),
+        Logout:         require('./Controller/Logout').Logout,
+        Register:       require('./Controller/Register').Register(User, passport)
 
     };
 

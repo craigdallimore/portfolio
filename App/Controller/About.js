@@ -6,10 +6,10 @@ exports.About = function(model) {
 
         Q.all([
 
-            model.profile.findOne({ label: 'craigdallimore' }).exec(),
-            model.network.find().exec(),
-            model.tech.find().exec(),
-            model.book.find().exec()
+            model.Profile.findOne({ label: 'craigdallimore' }).exec(),
+            model.Network.find().exec(),
+            model.Tech.find().exec(),
+            model.Book.find().exec()
 
         ]).spread(function(profile, networks, tech, books) {
 

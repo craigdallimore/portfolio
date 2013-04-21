@@ -7,6 +7,7 @@
 
 casper = require('casper').create()
 testUser = require('./tests/dummy/user').user
+testBook = require('./tests/dummy/book').book
 baseUrl = 'http://localhost:3000/'
 loginUrl = baseUrl + 'login'
 logoutUrl = baseUrl + 'logout'
@@ -41,10 +42,35 @@ casper.then ->
 
     # user can log out
 
-    # user can get their apikey
+    @test.assertExists '#bookTable', 'A table of books is present'
+    @test.assertEval ->
+        __utils__.findAll('#bookTable tbody tr').length > 0
+    , 'There are book items in the table'
 
     # user can create books
+    @test.assertExists '.form-new-book', 'A new book form exists'
+    @test.assertExists '.form-new-book input[name="title"]', 'A title input is present'
+    @test.assertExists '.form-new-book input[name="author"]', 'An author input is present'
+    @test.assertExists '.form-new-book input[name="link"]', 'An link input is present'
+    @test.assertExists '.form-new-book input[name="label"]', 'An label input is present'
+
+    @test.info 'Submit a new book'
+    @fill '.form-new-book',
+        title: testBook.title
+        author: testBook.author
+        link: testBook.link
+        label: testBook.label
+    , true
+
+casper.then ->
+    currentUrl = @getCurrentUrl()
+
+    @test.info 'Submitted new book form, url is ' + currentUrl
+    @test.assertEquals currentUrl, url, 'URL is the one expected'
+    @test.assertTitle 'CMS', 'Page title is CMS'
+    @test.assertTextExists testBook.title, 'The new book is shown in the list:' + testBook.title
     # user can read books
+
     # user can update books
     # user can delete books
 

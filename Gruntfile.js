@@ -11,7 +11,12 @@ module.exports = function(grunt) {
             mixin:      './static/js/App/Mixin/',
             collection: './static/js/App/Collection/',
             view:       './static/js/App/View/',
-            model:      './static/js/App/Model/'
+            model:      './static/js/App/Model/',
+            base:       './static/css/base/',
+            layout:     './static/css/layout/',
+            modules:    './static/css/modules/',
+            css:        './static/css/',
+            templates:  './static/templates/'
         },
         concat: {
             js: {
@@ -36,12 +41,14 @@ module.exports = function(grunt) {
                     '<%= dirs.view %>Footer.js',
                     '<%= dirs.view %>Header.js',
                     '<%= dirs.view %>Index.js',
+                    '<%= dirs.view %>ResourceManager.js',
                     '<%= dirs.view %>Network.js',
                     '<%= dirs.view %>NetworkList.js',
                     '<%= dirs.view %>Profile.js',
                     '<%= dirs.view %>Project.js',
                     '<%= dirs.view %>Projects.js',
                     '<%= dirs.view %>Register.js',
+                    '<%= dirs.view %>Row.js',
                     '<%= dirs.view %>Tech.js',
                     '<%= dirs.view %>TechList.js',
                     '<%= dirs.view %>Tile.js',
@@ -59,33 +66,33 @@ module.exports = function(grunt) {
             },
             css: {
                 src: [
-                    STATIC + 'css/base/reset.css',
-                    STATIC + 'css/base/common.css',
-                    STATIC + 'css/base/typography.css',
-                    STATIC + 'css/base/buttons.css',
-                    STATIC + 'css/base/sprites.css',
-                    STATIC + 'css/libs/isotope.css',
-                    STATIC + 'css/layout/header.css',
-                    STATIC + 'css/layout/footer.css',
-                    STATIC + 'css/layout/canvas.css',
-                    STATIC + 'css/layout/modal.css',
-                    STATIC + 'css/modules/tile.css',
-                    STATIC + 'css/modules/form.css',
-                    STATIC + 'css/modules/form-login.css',
-                    STATIC + 'css/modules/info.css',
-                    STATIC + 'css/modules/tileList.css',
-                    STATIC + 'css/modules/techList.css',
-                    STATIC + 'css/modules/tipList.css',
-                    STATIC + 'css/modules/networkList.css',
-                    STATIC + 'css/modules/bookList.css',
-                    STATIC + 'css/modules/project.css',
-                    STATIC + 'css/modules/projects.css',
-                    STATIC + 'css/modules/about.css',
-                    STATIC + 'css/modules/cms.css',
-                    STATIC + 'css/modules/profile.css',
-                    STATIC + 'css/modules/welcome.css',
-                    STATIC + 'css/modules/fourohfour.css',
-                    STATIC + 'css/layout/tileSize.css'
+                    '<%= dirs.base %>reset.css',
+                    '<%= dirs.base %>common.css',
+                    '<%= dirs.base %>typography.css',
+                    '<%= dirs.base %>buttons.css',
+                    '<%= dirs.base %>sprites.css',
+                    '<%= dirs.css %>libs/isotope.css',
+                    '<%= dirs.layout %>header.css',
+                    '<%= dirs.layout %>footer.css',
+                    '<%= dirs.layout %>canvas.css',
+                    '<%= dirs.layout %>modal.css',
+                    '<%= dirs.modules %>tile.css',
+                    '<%= dirs.modules %>form.css',
+                    '<%= dirs.modules %>form-login.css',
+                    '<%= dirs.modules %>info.css',
+                    '<%= dirs.modules %>tileList.css',
+                    '<%= dirs.modules %>techList.css',
+                    '<%= dirs.modules %>tipList.css',
+                    '<%= dirs.modules %>networkList.css',
+                    '<%= dirs.modules %>bookList.css',
+                    '<%= dirs.modules %>project.css',
+                    '<%= dirs.modules %>projects.css',
+                    '<%= dirs.modules %>about.css',
+                    '<%= dirs.modules %>cms.css',
+                    '<%= dirs.modules %>profile.css',
+                    '<%= dirs.modules %>welcome.css',
+                    '<%= dirs.modules %>fourohfour.css',
+                    '<%= dirs.layout %>tileSize.css'
                 ],
                 dest: '<%= dirs.dist %>app.concat.css'
             }
@@ -112,8 +119,8 @@ module.exports = function(grunt) {
         },
         undertmpl: {
             files: {
-                src: STATIC + 'templates/*.html',
-                dest: STATIC + 'js/App/App.Tmpl.js'
+                src: '<%= templates %>*.html',
+                dest: '<%= app %>App.Tmpl.js'
             }
         },
         watch: {
@@ -130,7 +137,7 @@ module.exports = function(grunt) {
                 tasks: 'sass'
             },
             templates: {
-                files: STATIC + 'templates/*.html',
+                files: '<%= templates %>*.html',
                 tasks: 'undertmpl'
             }
         }

@@ -62,7 +62,7 @@ exports.book = function() {
         title: { type: String, required: true },
         author: { type: String, required: true },
         link: { type: String, required: true },
-        label: { type: String, required: true }
+        label: { type: String, required: true, unique: true }
     });
 
     return mongoose.model('Book', schema);

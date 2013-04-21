@@ -50,19 +50,28 @@ App.module('Controller', function(Controller, App, Backbone, Marionette, $, _) {
         });
     };
 
-    Controller.CMS = function() {
-        renderPage({
-            viewName: 'CMS',
-            bootstrapConfig: { el: $('#canvas .cms') },
-            title: 'CMS'
-        });
-    };
-
     Controller.Register = function() {
         renderPage({
             viewName: 'Register',
             bootstrapConfig: { el: $('#canvas .register') },
             title: 'Register'
+        });
+    };
+
+    Controller.CMS = function() {
+
+        if (!bootstrapped) {
+            var bookJSON = App.Data.Books();
+            App.BookCollection = new App.Collection.Book(bookJSON);
+        }
+
+        renderPage({
+            viewName: 'CMS',
+            bootstrapConfig: {
+                el: $('#canvas .cms'),
+                DOMExists: true
+            },
+            title: 'CMS'
         });
     };
 
