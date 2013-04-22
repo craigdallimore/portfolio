@@ -33,6 +33,8 @@ block content
                                     td #{book.author}
                                     td #{book.link}
                                     td #{book.label}
+                                    td
+                                        button.remove Remove
 
                     form.form-new-book(method="POST", action="/api/book")
                         fieldset

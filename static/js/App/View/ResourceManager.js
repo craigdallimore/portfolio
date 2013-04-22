@@ -9,6 +9,7 @@ App.module('View', function(View, App, Backbone, Marionette, $, _) {
         itemViewContainer: 'tbody',
 
         initialize: function() {
+            _.log('init bookmanager', this.$el);
             var collection = this.collection;
 
             this.$el.find('tbody').children().map(function(idx, el) {
@@ -30,16 +31,16 @@ App.module('View', function(View, App, Backbone, Marionette, $, _) {
             },
             model = new App.Model.Book();
             model.save(attributes, {
-                success: _.bind(this.onSuccess, this),
-                error: _.bind(this.onError, this)
+                success: _.bind(this.onSave, this),
+                error: _.bind(this.onSaveErr, this)
             });
             this.collection.add(model);
         },
 
-        onSuccess: function(model, response, options) {
+        onSave: function(model, response, options) {
         },
 
-        onError: function(model, xhr, options) {
+        onSaveErr: function(model, xhr, options) {
             this.collection.remove(model);
         }
 

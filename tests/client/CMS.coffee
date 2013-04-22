@@ -1,10 +1,3 @@
-# casperjs tests
-# prerequisites:
-#    phantomjs
-#    casperjs
-#    server is running on port 3000
-#    db is opened
-
 casper = require('casper').create()
 testUser = require('./tests/dummy/user').user
 testBook = require('./tests/dummy/book').book
@@ -43,9 +36,6 @@ casper.then ->
     # user can log out
 
     @test.assertExists '#bookTable', 'A table of books is present'
-    @test.assertEval ->
-        __utils__.findAll('#bookTable tbody tr').length > 0
-    , 'There are book items in the table'
 
     # user can create books
     @test.assertExists '.form-new-book', 'A new book form exists'
@@ -60,7 +50,8 @@ casper.then ->
         author: testBook.author
         link: testBook.link
         label: testBook.label
-    , true
+
+    @click '.form-new-book input[type="submit"]'
 
 casper.then ->
     currentUrl = @getCurrentUrl()
@@ -69,10 +60,32 @@ casper.then ->
     @test.assertEquals currentUrl, url, 'URL is the one expected'
     @test.assertTitle 'CMS', 'Page title is CMS'
     @test.assertTextExists testBook.title, 'The new book is shown in the list:' + testBook.title
-    # user can read books
+    @test.assertEval ->
+        __utils__.findAll('#bookTable tbody tr').length > 0
+    , 'There are book items in the table'
+
+    # incomplete book info wont result in a book being created
+    # a toast message should show when an async operation completes
+    # a spinner should show during async operation
+    # a failed async operation will undo its effect
 
     # user can update books
     # user can delete books
+    @test.info 'Removing a book'
+    number_of_books = @evaluate ->
+        __utils__.findAll('#bookTable tbody tr').length
+
+    @echo 'Number of books: ' + number_of_books
+    @test.assertExists '#bookTable tr button.remove', 'A remove button should exist on a book row'
+    @click '#bookTable tbody tr .remove'
+
+# casper.then ->
+    updated_number_of_books = @evaluate ->
+        __utils__.findAll('#bookTable tbody tr').length
+    @echo 'Clicked remove, updated number of books: ' + updated_number_of_books
+
+    @test.assertNotEquals number_of_books, updated_number_of_books, 'The number of rows of books should change'
+
 
     # user can create tech
     # user can read tech

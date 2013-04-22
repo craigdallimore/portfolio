@@ -10,8 +10,9 @@ module.exports = function(grunt) {
             app:        './static/js/App/',
             mixin:      './static/js/App/Mixin/',
             collection: './static/js/App/Collection/',
-            view:       './static/js/App/View/',
             model:      './static/js/App/Model/',
+            view:       './static/js/App/View/',
+            controller: './static/js/App/Controller/',
             base:       './static/css/base/',
             layout:     './static/css/layout/',
             modules:    './static/css/modules/',
@@ -53,16 +54,21 @@ module.exports = function(grunt) {
                     '<%= dirs.view %>TechList.js',
                     '<%= dirs.view %>Tile.js',
                     '<%= dirs.view %>TileEmpty.js',
-                    '<%= dirs.collection %>Project.js',
-                    '<%= dirs.collection %>Network.js',
+                    '<%= dirs.controller %>About.js',
+                    '<%= dirs.controller %>CMS.js',
+                    '<%= dirs.controller %>Index.js',
+                    '<%= dirs.controller %>Register.js',
+                    '<%= dirs.controller %>Projects.js',
+                    '<%= dirs.controller %>Project.js',
                     '<%= dirs.collection %>Book.js',
+                    '<%= dirs.collection %>Network.js',
+                    '<%= dirs.collection %>Project.js',
                     '<%= dirs.collection %>Tech.js',
                     '<%= dirs.app %>App.Tmpl.js',
                     '<%= dirs.app %>App.Data.js',
-                    '<%= dirs.app %>App.Controller.js',
                     '<%= dirs.app %>App.Routing.js'
                 ],
-                dest: '<%= dirs.dist  %>app.concat.js'
+                dest: '<%= dirs.dist %>app.concat.js'
             },
             css: {
                 src: [
@@ -119,8 +125,8 @@ module.exports = function(grunt) {
         },
         undertmpl: {
             files: {
-                src: '<%= templates %>*.html',
-                dest: '<%= app %>App.Tmpl.js'
+                src: '<%= dirs.templates %>*.html',
+                dest: '<%= dirs.app %>App.Tmpl.js'
             }
         },
         watch: {
@@ -137,7 +143,7 @@ module.exports = function(grunt) {
                 tasks: 'sass'
             },
             templates: {
-                files: '<%= templates %>*.html',
+                files: '<%= dirs.templates %>*.html',
                 tasks: 'undertmpl'
             }
         }

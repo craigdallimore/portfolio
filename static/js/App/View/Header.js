@@ -1,5 +1,5 @@
 App.module('View', function(View, App, Backbone, Marionette, $, _) {
-    View.Header = Marionette.View.extend({
+    View.Header = Marionette.ItemView.extend({
         tagName: 'hgroup',
         template: 'Header',
 

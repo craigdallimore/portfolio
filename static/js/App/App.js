@@ -2,9 +2,7 @@ window.App = new Backbone.Marionette.Application();
 
 App.addRegions({
     canvas: '#canvas',
-    modal: '#modal',
-    header: '#header',
-    footer: '#footer'
+    header: '#header'
 });
 
 App.vent.on('title:change', function(title) {
@@ -13,6 +11,8 @@ App.vent.on('title:change', function(title) {
 App.vent.on('start', function() {
     App.Routing.start();
 });
+
+App.bootstrapped = false;
 
 $(document).ready(function() {
     App.start();
