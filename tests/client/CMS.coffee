@@ -1,16 +1,21 @@
 casper = require('casper').create()
-testUser = require('./tests/dummy/user').user
-testBook = require('./tests/dummy/book').book
+dummyUser = require('./tests/dummy/user').user
+dummyBook = require('./tests/dummy/book').dummyBook
+updateBook = require('./tests/dummy/book').updateBook
 baseUrl = 'http://localhost:3000/'
 loginUrl = baseUrl + 'login'
 logoutUrl = baseUrl + 'logout'
 url = baseUrl + 'cms/'
 
+num_rows = 0
+updated_num_rows = 0
+
+# Testing login / logout of CMS
+###############################
 casper.start logoutUrl, ->
     currentUrl = @getCurrentUrl()
 
-    @echo 'Testing CMS', 'INFO_BAR'
-    @test.info 'Logging out'
+    @echo 'CMS LOGIN/LOGOUT', 'INFO_BAR'
     @test.assertEqual currentUrl, baseUrl, 'URL is the one expected'
 
 casper.thenOpen url, ->
@@ -21,8 +26,8 @@ casper.thenOpen url, ->
     @test.assertTitle 'Log In', 'Page title is Login'
 
     @fill '.form-login',
-        email: testUser.email
-        password: testUser.password
+        email: dummyUser.email
+        password: dummyUser.password
     , true
 
 casper.then ->
@@ -33,23 +38,41 @@ casper.then ->
     @test.assertTitle 'CMS', 'Page title is CMS'
     @test.assertTextExists 'apikey', 'API key is shown'
 
-    # user can log out
+    @test.assertExists 'a[href="/logout"]', 'A log out button should be available'
+    @click 'a[href="/logout"]'
 
+    @test.info 'Logging out'
+casper.then ->
+    currentUrl = @getCurrentUrl()
+    @test.assertEqual currentUrl, baseUrl, 'URL is the one expected'
+
+    @test.info 'Logging in'
+casper.thenOpen url, ->
+    @fill '.form-login',
+        email: dummyUser.email
+        password: dummyUser.password
+    , true
+
+# Testing Book creation
+#######################
+casper.then ->
+    @echo 'BOOK CREATION', 'INFO_BAR'
     @test.assertExists '#bookTable', 'A table of books is present'
 
-    # user can create books
     @test.assertExists '.form-new-book', 'A new book form exists'
     @test.assertExists '.form-new-book input[name="title"]', 'A title input is present'
     @test.assertExists '.form-new-book input[name="author"]', 'An author input is present'
-    @test.assertExists '.form-new-book input[name="link"]', 'An link input is present'
-    @test.assertExists '.form-new-book input[name="label"]', 'An label input is present'
+    @test.assertExists '.form-new-book input[name="link"]', 'A link input is present'
+    @test.assertExists '.form-new-book input[name="label"]', 'A label input is present'
+    num_rows = @evaluate ->
+        __utils__.findAll('#bookTable tbody tr').length
 
     @test.info 'Submit a new book'
     @fill '.form-new-book',
-        title: testBook.title
-        author: testBook.author
-        link: testBook.link
-        label: testBook.label
+        title: dummyBook.title
+        author: dummyBook.author
+        link: dummyBook.link
+        label: dummyBook.label
 
     @click '.form-new-book input[type="submit"]'
 
@@ -59,32 +82,74 @@ casper.then ->
     @test.info 'Submitted new book form, url is ' + currentUrl
     @test.assertEquals currentUrl, url, 'URL is the one expected'
     @test.assertTitle 'CMS', 'Page title is CMS'
-    @test.assertTextExists testBook.title, 'The new book is shown in the list:' + testBook.title
+
+    updated_num_rows = @evaluate ->
+        __utils__.findAll('#bookTable tbody tr').length
+
+    @test.assertNotEquals num_rows, updated_num_rows, 'The number of rows of books should change'
+
     @test.assertEval ->
         __utils__.findAll('#bookTable tbody tr').length > 0
     , 'There are book items in the table'
 
+    # successful creation should erase the text in the inputs
+    @test.assertField 'title', '', 'Title field has been emptied'
+    @test.assertField 'author', '', 'Author field has been emptied'
+    @test.assertField 'link', '', 'Link field has been emptied'
+    @test.assertField 'label', '', 'Label field has been emptied'
+
+
     # incomplete book info wont result in a book being created
-    # a toast message should show when an async operation completes
-    # a spinner should show during async operation
     # a failed async operation will undo its effect
 
-    # user can update books
-    # user can delete books
-    @test.info 'Removing a book'
-    number_of_books = @evaluate ->
+    # a toast message should show when an async operation completes
+    # a spinner should show during async operation
+
+# Testing Book updating
+#######################
+casper.then ->
+    @echo 'BOOK UPDATING', 'INFO_BAR'
+    @test.assertExists '#bookTable tbody tr:first-child .edit', 'Edit buttons should exist'
+    @click '#bookTable tbody tr .edit'
+
+    @test.assertExists '#bookTable tbody tr:first-child input', 'Clicking the edit button should change the template'
+    @test.assertExists '#bookTable tbody tr:first-child .update', 'An update button should exist'
+
+    @click '#bookTable tbody tr:first-child .update'
+
+    @test.assertExists '#bookTable tbody tr:first-child .edit', 'Clicking the update button will change the template back'
+    @test.info 'Setting first row back to edit mode'
+    @click '#bookTable tbody tr:first-child .edit'
+
+
+    @test.info 'Updating first row to "updateBook" info'
+    @fill '#bookTable tbody tr:first-child',
+        title: updateBook.title
+        author: updateBook.author
+        link: updateBook.link
+        label: updateBook.label
+
+    @click '#bookTable tbody tr:first-child .update'
+
+    @test.assertTextExists updateBook.title, 'Row has been updated'
+
+    # user should be able to see a toast message confirming the async has completed
+
+# Testing Book deletion
+#######################
+    @echo 'BOOK DELETION', 'INFO_BAR'
+    num_rows = @evaluate ->
         __utils__.findAll('#bookTable tbody tr').length
 
-    @echo 'Number of books: ' + number_of_books
-    @test.assertExists '#bookTable tr button.remove', 'A remove button should exist on a book row'
-    @click '#bookTable tbody tr .remove'
+    @echo 'Number of books: ' + num_rows
+    @test.assertExists '#bookTable tbody tr:first-child .remove', 'A remove button should exist on a book row'
+    @click '#bookTable tbody tr:first-child .remove'
 
-# casper.then ->
-    updated_number_of_books = @evaluate ->
+    updated_num_rows = @evaluate ->
         __utils__.findAll('#bookTable tbody tr').length
-    @echo 'Clicked remove, updated number of books: ' + updated_number_of_books
+    @echo 'Clicked remove, updated number of books: ' + updated_num_rows
 
-    @test.assertNotEquals number_of_books, updated_number_of_books, 'The number of rows of books should change'
+    @test.assertNotEquals num_rows, updated_num_rows, 'The number of rows of books should change'
 
 
     # user can create tech

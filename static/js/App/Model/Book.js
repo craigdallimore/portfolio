@@ -9,6 +9,8 @@ App.module('Model', function(Model, App, Backbone, Marionette, $, _) {
             switch(method) {
                 case 'delete':
                     return this.url + '/' + this.id;
+                case 'put':
+                    return this.url + '/' + this.id;
                 default:
                     return this.url;
             }

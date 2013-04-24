@@ -95,6 +95,7 @@ module.exports = function(grunt) {
                     '<%= dirs.modules %>projects.css',
                     '<%= dirs.modules %>about.css',
                     '<%= dirs.modules %>cms.css',
+                    '<%= dirs.modules %>resourceManager.css',
                     '<%= dirs.modules %>profile.css',
                     '<%= dirs.modules %>welcome.css',
                     '<%= dirs.modules %>fourohfour.css',

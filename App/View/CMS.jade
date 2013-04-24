@@ -11,12 +11,13 @@ block content
         section.cms
             if message
                 p #{message}
+            a(href='/logout') Log out
 
             if apikey
                 p apikey: #{apikey}
 
             if books
-                section#bookTable
+                section.resourceManager#bookTable
                     h2 Books
                     table
                         thead
@@ -35,6 +36,7 @@ block content
                                     td #{book.label}
                                     td
                                         button.remove Remove
+                                        button.edit Edit
 
                     form.form-new-book(method="POST", action="/api/book")
                         fieldset

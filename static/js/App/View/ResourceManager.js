@@ -9,7 +9,7 @@ App.module('View', function(View, App, Backbone, Marionette, $, _) {
         itemViewContainer: 'tbody',
 
         initialize: function() {
-            _.log('init bookmanager', this.$el);
+
             var collection = this.collection;
 
             this.$el.find('tbody').children().map(function(idx, el) {
@@ -38,6 +38,9 @@ App.module('View', function(View, App, Backbone, Marionette, $, _) {
         },
 
         onSave: function(model, response, options) {
+            this.$el.find('form input[type="text"]').each(function(idx, input) {
+                input.value = '';
+            });
         },
 
         onSaveErr: function(model, xhr, options) {

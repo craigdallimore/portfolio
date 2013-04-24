@@ -1,0 +1,26 @@
+@import "_mixins";
+
+.resourceManager {
+
+    background: lighten($body-bg, 5%);
+    padding: 10px;
+    margin: 15px 0 0;
+
+    table {
+        margin: 15px 0 0;
+    }
+    th {
+        font-weight: bold;
+    }
+    td, th {
+        border: 1px solid $table-bdr;
+        padding: 5px;
+    }
+    form {
+        margin: 15px 0 0;
+    }
+    fieldset {
+        margin: 10px 0 0;
+    }
+
+}
