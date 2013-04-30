@@ -73,7 +73,8 @@ casper.then ->
         author: dummyBook.author
         link: dummyBook.link
         label: dummyBook.label
-
+    , false
+casper.then ->
     @click '.form-new-book input[type="submit"]'
 
 casper.then ->
@@ -92,15 +93,36 @@ casper.then ->
         __utils__.findAll('#bookTable tbody tr').length > 0
     , 'There are book items in the table'
 
-    # successful creation should erase the text in the inputs
+casper.then ->
     @test.assertField 'title', '', 'Title field has been emptied'
-    @test.assertField 'author', '', 'Author field has been emptied'
+    # TODO: Investigate possible bug with CasperJS formSelector - this is a workaround
+    @test.assertEvalEquals ->
+        __utils__.findOne('input[name="author"]').value
+    , '', 'Author field has been emptied'
     @test.assertField 'link', '', 'Link field has been emptied'
     @test.assertField 'label', '', 'Label field has been emptied'
 
-
     # incomplete book info wont result in a book being created
-    # a failed async operation will undo its effect
+    num_rows = @evaluate ->
+        __utils__.findAll('#bookTable tbody tr').length
+
+    @click '.form-new-book input[type="submit"]'
+
+casper.then ->
+    updated_num_rows = @evaluate ->
+        __utils__.findAll('#bookTable tbody tr').length
+
+    @test.assertEquals num_rows, updated_num_rows, 'Submitting with missing information should not create a new item'
+    @test.assertTextExists 'This field is required', 'Error messages should be shown'
+
+    @test.info 'Submit a book with incomplete informations'
+    @fill '.form-new-book',
+        title: dummyBook.title
+        author: dummyBook.author
+        link: dummyBook.link
+        label: dummyBook.label
+
+    @click '.form-new-book input[type="submit"]'
 
     # a toast message should show when an async operation completes
     # a spinner should show during async operation
@@ -133,7 +155,30 @@ casper.then ->
 
     @test.assertTextExists updateBook.title, 'Row has been updated'
 
+    @click '#bookTable tbody tr:first-child .edit'
+
+    @test.info 'Updating a book with incomplete information'
+
+    @fill '#bookTable tbody tr:first-child',
+        title: updateBook.title
+        author: updateBook.author
+        link: updateBook.link
+        label: ''
+
+    @click '#bookTable tbody tr:first-child .update'
+
+    @test.assertTextExists 'This field is required'
+    @test.assertExists '#bookTable tbody tr:first-child .update', 'The row should still be in edit mode'
+
+    @test.assertExists '#bookTable tbody tr:first-child .undo', 'There should be an undo button'
+
+    @click '#bookTable tbody tr:first-child .undo'
+    @test.assertExists '#bookTable tbody tr:first-child .edit', 'Clicking the undo button will change the template back'
+    @test.assertTextExists updateBook.label, 'The row should revert correctly'
+
+
     # user should be able to see a toast message confirming the async has completed
+    # user should be able to cancel updates
 
 # Testing Book deletion
 #######################

@@ -10,9 +10,9 @@ App.module('Controller', function(Controller, App, Backbone, Marionette, $, _) {
         if (App.bootstrapped) {
 
             // SPA navigation
-            CMSView = new App.view.CMS();
+            CMSView = new App.View.CMS();
             bookManagerView = new App.View.ResourceManager({
-                itemView: App.View.Row,
+                itemView: App.View.BookRow,
                 collection: App.BookCollection
             });
 
@@ -29,7 +29,7 @@ App.module('Controller', function(Controller, App, Backbone, Marionette, $, _) {
 
             bookManagerView = new App.View.ResourceManager({
                 el: $('#bookTable'),
-                itemView: App.View.Row,
+                itemView: App.View.BookRow,
                 collection: App.BookCollection
             });
 

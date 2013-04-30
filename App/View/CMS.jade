@@ -38,20 +38,26 @@ block content
                                         button.remove Remove
                                         button.edit Edit
 
-                    form.form-new-book(method="POST", action="/api/book")
+                    form#newBook.form-new-book(method='POST', action='/api/book')
                         fieldset
                             legend Create a new book
                         fieldset
-                            input(name="title", placeholder="Title", type="text")
-                            input(name="author", placeholder="author", type="text")
-                            input(name="link", placeholder="link", type="text")
-                            input(name="label", placeholder="label", type="text")
-                            input(type="submit", value="Create Book")
+                            ul
+                                li
+                                    input(name='title', placeholder='Title', type='text')
+                                li
+                                    input(name='author', placeholder='author', type='text')
+                                li
+                                    input(name='link', placeholder='link', type='text')
+                                li
+                                    input(name='label', placeholder='label', type='text')
+                                li
+                                    input(type='submit', value='Create Book')
 
 block bootstrap
     if books
         script
-            App.module("Data", function(Data, App) {
+            App.module('Data', function(Data, App) {
                 Data.Books = function() {
                     return !{JSON.stringify(books)};
                 };
