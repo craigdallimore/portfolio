@@ -6,7 +6,10 @@ App.module('View', function(View, App, Backbone, Marionette, $, _) {
         tagName: 'section',
         className: 'projects',
         template: 'Projects',
+        itemView: App.View.Tile,
+        emptyView: App.View.TileEmpty,
         itemViewContainer: '.tileList',
+
         events: {
             'click nav a': 'navigate'
         },
@@ -15,28 +18,20 @@ App.module('View', function(View, App, Backbone, Marionette, $, _) {
 
             App.vent.on('item:resized', _.bind(this.reLayout, this));
 
-            if (! options.DOMExists) {
-
-                if (this.collection.length) {
-                    _.defer(function(self) { self.renderList();  }, this);
-                    return;
-                }
-
+            if (! this.collection.length ) {
                 this.collection.fetch({
-                    success: _.bind(this.renderList, this),
-                    silent: true
+                    success: _.bind(this.deferMasonry, this)
                 });
                 return;
             }
 
-            var projectsJSON = App.Data.Projects();
-            this.collection.reset(projectsJSON);
-
-            _.defer(function(self) {
-                self.bindList();
-                self.masonify();
-            }, this);
-       },
+            if (options.DOMExists) {
+                this.bindList();
+                this.masonify();
+            } else {
+                this.deferMasonry();
+            }
+        },
 
         bindList: function() {
 
@@ -53,17 +48,11 @@ App.module('View', function(View, App, Backbone, Marionette, $, _) {
             });
         },
 
-        renderList: function() {
-            this.renderCollection();
-            this.masonify();
-        },
-
         reLayout: function() {
             this.$el.find('.tileList').isotope('reLayout');
         },
 
         masonify: function() {
-            var self = this;
             this.$el.find('.tileList').isotope({
                 itemSelector: 'li',
                 layoutMode: 'masonry',
@@ -74,15 +63,20 @@ App.module('View', function(View, App, Backbone, Marionette, $, _) {
             this.$el.find('.tileList').children().each(this.animateIn);
         },
 
+        deferMasonry: function() {
+            _.defer(function(self) {
+                self.masonify();
+            }, this);
+        },
+
         animateIn: function(idx, child) {
             setTimeout(function() {
                 $(child).find('.tile').removeClass('transformed');
             }, idx * 80);
         },
 
-        render: function() {
-            var html = App.Tmpl[this.template]();
-            this.$el.html(html);
+        renderModel: function() {
+            return App.Tmpl[this.template]();
         },
 
         onClose: function() {

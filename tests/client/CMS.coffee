@@ -176,9 +176,7 @@ casper.then ->
     @test.assertExists '#bookTable tbody tr:first-child .edit', 'Clicking the undo button will change the template back'
     @test.assertTextExists updateBook.label, 'The row should revert correctly'
 
-
     # user should be able to see a toast message confirming the async has completed
-    # user should be able to cancel updates
 
 # Testing Book deletion
 #######################

@@ -11,9 +11,8 @@ App.module('Controller', function(Controller, App, Backbone, Marionette, $, _) {
 
             App.canvas.show(new App.View.Projects({
                 collection: App.ProjectCollection,
-                itemView: App.View.Tile,
-                emptyView: App.View.TileEmpty
             }));
+
             App.header.show(new App.View.Header({ model: pageModel }));
 
         } else {
@@ -24,13 +23,12 @@ App.module('Controller', function(Controller, App, Backbone, Marionette, $, _) {
             App.canvas.attachView(new App.View.Projects({
                 el: $('#canvas .projects'),
                 collection: App.ProjectCollection,
-                itemView: App.View.Tile,
-                emptyView: App.View.TileEmpty,
                 DOMExists: true
             }));
 
             App.header.attachView(new App.View.Header({
                 model: pageModel,
+                collection: App.ProjectCollection,
                 el: $('#header hgroup')
             }));
 
